@@ -1,0 +1,12 @@
+
+
+.top {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: center;
+    margin-top: 350px;
+}
+
+
+
