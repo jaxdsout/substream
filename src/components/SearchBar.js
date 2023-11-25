@@ -1,23 +1,19 @@
 import "./SearchBar.css"
-import { SearchIcon } from '../shared/AppIcons'
+import { Search } from "semantic-ui-react"
 
-function SearchBar ({ handleSubmit, handleChange, searchString }) {
+function SearchBar ({ handleSubmit, handleChange, searchString, results }) {
   return (
         <div>
-            <form
-                className="form-horizontal"
-                onSubmit={handleSubmit}>
-                    <input 
-                        placeholder="Search" 
-                        type="search" 
-                        name="searchString" 
-                        required
-                        onChange={handleChange}
-                        value={searchString} />
-                    <button type="submit">
-                        <SearchIcon height='1rem' width='1rem' />
-                    </button>
-            </form>
+           <Search
+                placeholder="Search"
+                onSearchChange={handleChange}
+                onKeyDown={handleSubmit}
+                value={searchString}
+                onResultSelect={() => {}}
+                results={results}
+                showNoResults={false}
+                noResultsDescription={"/////"}
+            />
         </div>
         
   )

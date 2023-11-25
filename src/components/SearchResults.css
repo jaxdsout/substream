@@ -1,34 +1,11 @@
-.list {
-    margin-left: 90px;
-    margin-right: 90px;
-    overflow-x: auto;
-}
-
 .results {
     display: flex;
-    flex-direction: row;
-    margin-top: 20px;
+    margin-top: 0 !important;
     overflow-x: auto;
+    overflow-y: hidden;
     height: 390px;
-}
+    vertical-align: bottom;
 
-.result {
-    padding: 20px 10px 5px 10px;
-    margin: 20px;
-    width: 150px;
-    text-wrap: wrap;
-    text-align: center;
-}
 
-.title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.thumbnail {
-    position: relative;
-    width: 120px
 }
 

@@ -1,20 +1,20 @@
 import "./SearchResults.css"
-function SearchResults ({ results }) {
+import Result from "./Result"
+import { Fragment } from "react";
 
+function SearchResults({ results, onResultClick }) {
+  console.log(results)
   return (
-    <div className="list">
-    {Object.keys(results).map((key, index) => (
-      <div className="results" key={index}>
-        {results[key].map((item, itemIndex) => (
-            <div className="result" key={itemIndex}>
-                <p className="title">{item.name}</p>
-                <img className="thumbnail" src={item.image_url} alt={item.name} />
-            </div>
-        ))}
-      </div>
-    ))}
-  </div>
-  )
+    <div className="results">
+      {Object.keys(results).map((key, index) => (
+        <Fragment key={index}>
+          {results[key].map((result, resultIndex) => (
+            <Result key={resultIndex} result={result} onResultClick={onResultClick} />
+          ))}
+        </Fragment>
+      ))}
+    </div>
+  );
 }
 
-export default SearchResults
+export default SearchResults;

@@ -1,12 +1,21 @@
 
 
+main {
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: black;
+}
+
 .top {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     text-align: center;
     margin-top: 350px;
+    padding-top: 30px;
+    background-color: antiquewhite;
 }
+
 
 
 
