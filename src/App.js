@@ -1,49 +1,57 @@
 import './App.css';
 import SearchBar from './components/SearchBar';
 import Header from './components/Header';
+import SearchResults from './components/SearchResults';
 import { useState, useEffect } from 'react';
-
+import axios from 'axios';
 
 function App () {
     const [searchString, setSearchString] = useState('')
+    const [results, setResults] = useState([])
+    const key = process.env.REACT_APP_KEY
     
-    let country = 'us'
+    function handleSearch (event) {
+      setSearchString(event.target.value)
+    }
 
-    const options = {
-        method: 'GET',
-        url: 'https://streaming-availability.p.rapidapi.com/search/title',
-        params: {
-          title: {searchString},
-          country: {country},
-          show_type: 'all',
-          output_language: 'en'
-        },
-        headers: {
-          'X-RapidAPI-Key': process.env.REACT_APP_MOTN_KEY,
-          'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-        }
-    };
+    function handleSubmit (event) { 
+      event.preventDefault();
+      getMovie(searchString);
+    }
 
-    console.log(options)
-      
+    useEffect(() => {
+      getMovie(searchString);
+    }, [])
+  
+    function getMovie (searchString) {
+      const url = `https://api.watchmode.com/v1/autocomplete-search/?apiKey=${key}&search_value=${searchString}&search_type=2`;
+      axios.get(url)
+        .then((res) => {
+          console.log(res.data)
+          setResults(res.data)
+          console.log(results)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+      }
 
-    //   try {
-    //       const response = await axios.request(options);
-    //       console.log(response.data);
-    //   } catch (error) {
-    //       console.error(error);
-    //   }
-
- 
+      ;
 
     return (
        <div>
             <div className='top'>
                 <Header />
-                <SearchBar />
+                <SearchBar 
+                  handleChange={handleSearch}
+                  handleSubmit={handleSubmit}
+                  searchString={searchString}
+                  />
             </div>
             <div className='bottom'>
-
+                <SearchResults
+                  results={results}
+                  />
             </div>
 
        </div>
