@@ -1,33 +1,3 @@
-// import "./SearchBar.css"
-// import { Search } from "semantic-ui-react"
-
-// function SearchBar ({ handleSubmit, handleChange, searchString, results }) {
-//     const handleSelect = (e, data) => {
-//         e.preventDefault();
-//         handleSubmit();
-//     }
-  
-//     return (
-//         <div className="searchBox">
-//            <Search 
-//                 className="searchBar"
-//                 placeholder="Search"
-//                 onSearchChange={handleChange}
-//                 onKeyDown={handleSubmit}
-//                 value={searchString}
-//                 results={results}
-//                 showNoResults={true}
-//                 onResultSelect={handleSelect}
-//                 noResultsMessage={null}
-//             />
-//         </div>
-        
-//   )
-// }
-
-// export default SearchBar
-
-
 import "./SearchBar.css"
 import "semantic-ui-css/semantic.min.css";
 

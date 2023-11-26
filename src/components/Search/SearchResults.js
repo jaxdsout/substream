@@ -1,5 +1,5 @@
 import "./SearchResults.css"
-import Result from "./Result"
+import Result from "../Search/Result"
 import { Fragment } from "react";
 
 function SearchResults({ results, onResultClick }) {

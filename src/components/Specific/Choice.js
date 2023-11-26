@@ -2,13 +2,8 @@ import { Fragment, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import "./Choice.css"
-
-
-import MaxLogo from "../logos/maxlogo.png"
-import NetflixLogo from "../logos/netflixlogo.png"
-import HuluLogo from "../logos/hululogo.png"
-import imdbLogo from "../logos/imdblogo.png"
-import letterLogo from "../logos/letterboxdlogo.png"
+import Sources from "./Sources"
+import Reviews from "./Reviews"
 
 
 function Choice () {
@@ -28,24 +23,6 @@ function Choice () {
             })
     }, [id, key])
 
-
-    function filterUniqueSources(sources) {
-        const subSources = [];
-        const sourceNames = new Set();
-    
-        for (const source of sources) {
-          const { name, type } = source;
-          const sourceKey = `${name}-${type}`;
-    
-          if (type==="sub" && !sourceNames.has(sourceKey)) {
-            subSources.push(source)
-            sourceNames.add(sourceKey);
-          }
-        }
-
-        return subSources;
-    }
-
     if (!resultDetails) {
         return (
             <div>
@@ -54,30 +31,6 @@ function Choice () {
         )
     }
     
-    const sources = filterUniqueSources(resultDetails.sources);
-
-    console.log(resultDetails)
-    console.log(sources)
-
-
-    function getLogo(name) {        
-        switch (name) {
-            case "Max":
-                return MaxLogo;
-            case "Netflix":
-                return NetflixLogo;
-            case "Hulu":
-                return HuluLogo;
-            default:
-                return ``;
-        }
-    }
-
-    let imdbURL = `https://www.imdb.com/title/${resultDetails.imdb_id}/`
-
-    
-    const letterboxd = resultDetails.title.toLowerCase().replace(/ /g,"-")
-    let letterURL = `https://letterboxd.com/film/${letterboxd}/`
 
 
     return (
@@ -92,35 +45,8 @@ function Choice () {
                         ))}
                     </p>
                 </Fragment>
-                <div className="sources">
-                    <h3>Sources:</h3>
-                        {sources.map((source, index) => (
-                            <Fragment key={index}>
-                                <a href={source.web_url} target="_blank" rel="noopener noreferrer">
-                                    <img
-                                        className="sourceLogo"
-                                        src={getLogo(source.name)}
-                                        alt={`${source.name} Logo`}
-                                    />
-                                </a>
-                            </Fragment>
-                        ))}   
-                    <h3>Reviews:</h3>
-                    <a href={imdbURL} target="_blank" rel="noopener noreferrer">
-                        <img
-                            className="sourceLogo"
-                            src={imdbLogo}
-                            alt={`IMDB Logo`}
-                        />
-                    </a>
-                    <a href={letterURL} target="_blank" rel="noopener noreferrer">
-                        <img
-                            className="sourceLogo"
-                            src={letterLogo}
-                            alt={`Letterbox'd Logo`}
-                        />
-                    </a>
-                </div>
+                <Sources resultDetails={resultDetails}/>
+                <Reviews resultDetails={resultDetails}/>
        
         </div>
     )
