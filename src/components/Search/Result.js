@@ -7,10 +7,16 @@ function Result ({ result, onResultClick }) {
     };
   
     return (
-      <div className="result" onClick={handleClick}>
+      result.image_url ? (
+        <div className="result">
+        <img className="thumbnail" 
+          src={result.image_url} 
+          alt={result.name}
+          onClick={handleClick}
+        />
         <p className="title">{result.name}</p>
-        <img className="thumbnail" src={result.image_url} alt={result.name} />
       </div>
+      ) : null
     );
 }
 

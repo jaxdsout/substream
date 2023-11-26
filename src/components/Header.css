@@ -1,5 +1,10 @@
 .logo {
     width: 80rem;
+    font-family: 'Bungee', sans-serif;
+    color: white;
+    font-size: 11rem;
+    font-style: italic;
+    text-align: center;
 }
 
 .header {

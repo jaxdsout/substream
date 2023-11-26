@@ -3,13 +3,14 @@ import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
 import './App.css';
-import SearchBar from './components/SearchBar';
+import SearchBar from './components/Search/SearchBar';
 import Header from './components/Header';
-import SearchResults from './components/SearchResults';
-import Choice from './components/Choice';
+import SearchResults from './components/Search/SearchResults';
+import Choice from './components/Specific/Choice';
 
 function App () {
     const [searchString, setSearchString] = useState('')
+    const [lastSearch, setLastSearch] = useState('')
     const [results, setResults] = useState({})
 
     const navigate = useNavigate()
@@ -21,11 +22,12 @@ function App () {
     }
 
     function handleSubmit (event) { 
-      if (event.key === 'Enter') {
+      if (event.key === 'Enter' || event.type === 'click') {
         getMovie(searchString)
       }
     }
 
+    
     function handleResultClick(result) {
       console.log(`result clicked ${result.name}`)
       navigate(`/${result.id}`)
@@ -33,6 +35,7 @@ function App () {
 
     function handleHeaderClick(event) {
       event.preventDefault()
+      setLastSearch('')
       navigate("/")
     }
 
@@ -47,6 +50,7 @@ function App () {
         .then((res) => {
           console.log(res.data)
           setResults(res.data)
+          setLastSearch(searchString)
           navigate("/results")
         })
         .catch((error) => {
@@ -64,7 +68,6 @@ function App () {
                 handleChange={handleSearch}
                 handleSubmit={handleSubmit}
                 searchString={searchString}
-                results={results}
                 />
           </div>
           <div className='bottom'>

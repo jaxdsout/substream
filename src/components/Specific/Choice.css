@@ -1,8 +1,14 @@
 .choiceBox {
     margin-top: 20px;
+    width: 800px;
     display: flex;
     flex-direction: column;
-    color: white;
+    columns: 3;
+    background-color: white;
+    padding: 50px 20px 50px 20px;
+    border-radius: 25% 25% 25% 25%;
+    text-align: center;
+    margin-left: 170px;
 }
 
 .poster {
@@ -19,6 +25,6 @@ h3 {
 }
 
 .sourceLogo {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
 }
