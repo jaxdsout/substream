@@ -1,0 +1,24 @@
+.choiceBox {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.poster {
+    width: 150px;
+    align-self: center;
+}
+
+h2 {
+    text-transform: uppercase;
+}
+
+h3 {
+    text-transform: uppercase;
+}
+
+.sourceLogo {
+    width: 100px;
+    height: 100px;
+}

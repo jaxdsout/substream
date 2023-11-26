@@ -1,20 +1,24 @@
 
 
-main {
-    margin-left: 150px;
-    margin-right: 150px;
-    background-color: black;
+.mainBox {
+    display: flex;    
+    flex-direction: column;
+    margin: 350px 120px 0px 120px;
+    padding: 50px 50px 50px 50px;
+    background: linear-gradient(180deg, #373737, #FFFFFF);
 }
 
 .top {
-    display: flex;
-    flex-direction: column;
     flex-wrap: nowrap;
     text-align: center;
-    margin-top: 350px;
-    padding-top: 30px;
-    background-color: antiquewhite;
 }
+
+.bottom {
+    background-color: rgba(0, 0, 0, 0.471);
+    flex-wrap: wrap;
+    text-align: center;
+}
+
 
 
 

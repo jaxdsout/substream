@@ -7,7 +7,6 @@ import SearchBar from './components/SearchBar';
 import Header from './components/Header';
 import SearchResults from './components/SearchResults';
 import Choice from './components/Choice';
-import { Divider } from 'semantic-ui-react';
 
 function App () {
     const [searchString, setSearchString] = useState('')
@@ -58,19 +57,17 @@ function App () {
       ;
 
     return (
-       <main>
+       <div className='mainBox'>
           <div className='top'>
-             <Header onClick={handleHeaderClick}/>
-          </div>
-          <Divider horizontal className='divider'>
-          <SearchBar 
+             <Header onClick={handleHeaderClick}/>  
+             <SearchBar 
                 handleChange={handleSearch}
                 handleSubmit={handleSubmit}
                 searchString={searchString}
                 results={results}
                 />
-          </Divider>
-            <div className='bottom'>
+          </div>
+          <div className='bottom'>
               <Routes>
                 <Route path="/" element={ <Navigate to="/" /> } />
                 <Route path="/results" element={
@@ -78,13 +75,13 @@ function App () {
                     results={results}
                     onResultClick={handleResultClick}
                   />
-                } />
+                }/>
                 <Route path="/:id" element={
-                    <Choice />
-                } />
+                  <Choice />
+                }/>
               </Routes>
-            </div>
-       </main>
+          </div>
+       </div>
     )
 }
 

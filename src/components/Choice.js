@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import "./Choice.css"
+
+
+import MaxLogo from "../maxlogo.png"
+import NetflixLogo from "../netflixlogo.png"
+
 
 function Choice () {
     const { id } = useParams()
@@ -22,28 +28,19 @@ function Choice () {
 
     function filterUniqueSources(sources) {
         const subSources = [];
-        const buySources = []
         const sourceNames = new Set();
     
         for (const source of sources) {
           const { name, type } = source;
           const sourceKey = `${name}-${type}`;
     
-          if (!sourceNames.has(sourceKey)) {
-            if (type === "sub") {
-                subSources.push(source)
-            } else  {
-                buySources.push(source)
-            }
+          if (type==="sub" && !sourceNames.has(sourceKey)) {
+            subSources.push(source)
             sourceNames.add(sourceKey);
           }
         }
 
-        buySources.sort((a, b) => a.name.localeCompare(b.name))
-
-        const sortedSources = [...subSources, ...buySources]
-    
-        return sortedSources;
+        return subSources;
     }
 
     if (!resultDetails) {
@@ -54,19 +51,39 @@ function Choice () {
         )
     }
     
-    const sortedSources = filterUniqueSources(resultDetails.sources);
+    const sources = filterUniqueSources(resultDetails.sources);
+
+    console.log(sources)
+
+
+    function getLogo(name) {        
+        switch (name) {
+            case "Max":
+                return MaxLogo;
+            case "Netflix":
+                return NetflixLogo;
+            default:
+                return ``;
+        }
+    }
 
     return (
-        <div>
-            <h2> {resultDetails.title}</h2>
-            <img src={resultDetails.poster} alt={resultDetails.title} />
-            <p> Release Date: {resultDetails.release_date} </p>
-            <h3>Sources:</h3>
-            {sortedSources.map((source, index) => (
-                <div key={index}>
-                    <p>{source.name} | {source.type}</p>
-                </div>
-            ))}
+        <div className="choiceBox">
+                <img className="poster" src={resultDetails.poster} alt={resultDetails.title} />
+                <h2> {resultDetails.title}</h2>
+                <p> Release Date: {resultDetails.release_date} </p>
+                <h3>Sources:</h3>
+                            {sources.map((source, index) => (
+                                <div key={index}>
+                                    <a href={source.web_url} target="_blank" rel="noopener noreferrer">
+                <img
+                    className="sourceLogo"
+                    src={getLogo(source.name)}
+                    alt={`${source.name} Logo`}
+                />
+            </a>
+                                </div>
+                            ))}          
         </div>
     )
 }
