@@ -10,24 +10,26 @@ import Choice from './components/Specific/Choice';
 
 function App () {
     const [searchString, setSearchString] = useState('')
-    const [lastSearch, setLastSearch] = useState('')
     const [results, setResults] = useState({})
-
+    const [filters, setFilters] = useState('2')
     const navigate = useNavigate()
-    const key = process.env.REACT_APP_KEY
     
+
+    const filterOptions = [
+      {key: '2', text: 'TV & Movies', value: '2'},
+      {key: '3', text: 'Movies', value: '3'},
+      {key: '4', text: 'TV', value: '4'},
+    ]
 
     function handleSearch (event) {
       setSearchString(event.target.value)
     }
 
-    function handleSubmit (event) { 
-      if (event.key === 'Enter' || event.type === 'click') {
-        getMovie(searchString)
-      }
+    function handleClear (event) {
+      event.preventDefault();
+      setSearchString('')
     }
 
-    
     function handleResultClick(result) {
       console.log(`result clicked ${result.name}`)
       navigate(`/${result.id}`)
@@ -35,22 +37,34 @@ function App () {
 
     function handleHeaderClick(event) {
       event.preventDefault()
-      setLastSearch('')
+      setSearchString('')
       navigate("/")
     }
 
+    function handleBack (event) {
+      event.preventDefault();
+      navigate("/results")
+    }
 
-    useEffect(() => {
-    }, [])
-  
+    function handleFilter (filter) {
+      setFilters(filter)
+    }
+
+    const searchOptions = {
+      key: process.env.REACT_APP_KEY,
+      filter: filters,
+      url: `https://api.watchmode.com/v1/autocomplete-search/?`
+    }
+
+    console.log(searchOptions.filter)
+    
     function getMovie (searchString) {
       const encodedSearchString = encodeURIComponent(searchString);
-      const url = `https://api.watchmode.com/v1/autocomplete-search/?apiKey=${key}&search_value=${encodedSearchString}&search_type=2`;
+      const url = `${searchOptions.url}apiKey=${searchOptions.key}&search_value=${encodedSearchString}&search_type=${searchOptions.filter}`;
+      console.log(url)
       axios.get(url)
         .then((res) => {
-          console.log(res.data)
           setResults(res.data)
-          setLastSearch(searchString)
           navigate("/results")
         })
         .catch((error) => {
@@ -58,7 +72,11 @@ function App () {
         })
       }
 
-      ;
+    function handleSubmit (event) { 
+      if (event.key === 'Enter' || event.type === 'click') {
+        getMovie(searchString)
+      }
+    }
 
     return (
        <div className='mainBox'>
@@ -68,9 +86,12 @@ function App () {
                 handleChange={handleSearch}
                 handleSubmit={handleSubmit}
                 searchString={searchString}
+                handleClear={handleClear}
+                handleFilter={handleFilter}
+                filters={filterOptions}
                 />
           </div>
-          <div className='bottom'>
+          <div className='middle'>
               <Routes>
                 <Route path="/" element={ <Navigate to="/" /> } />
                 <Route path="/results" element={
@@ -79,8 +100,13 @@ function App () {
                     onResultClick={handleResultClick}
                   />
                 }/>
+              </Routes>
+          </div>
+          <div className='bottom'>
+              <Routes>
                 <Route path="/:id" element={
-                  <Choice />
+                  <Choice 
+                    handleBack={handleBack}/>
                 }/>
               </Routes>
           </div>

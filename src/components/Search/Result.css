@@ -1,22 +1,21 @@
 .result {
-    padding: 20px 10px 5px 10px;
-    margin: 30px;
-    width: 150px;
+    width: 120px;
+    margin-left: 20px;
     text-align: center;
-}
-
-.title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 10px;
 }
 
 .thumbnail {
     width: 120px;
-    vertical-align: bottom;
 }
+
+.title {
+    font-size: .9rem;
+    font-weight: 600;
+    color: black;
+}
+
 
 .thumbnail:hover {
     cursor: pointer;
-    pointer-events: visible;
+    background: rgba(0, 0, 0, 0.411);
 }

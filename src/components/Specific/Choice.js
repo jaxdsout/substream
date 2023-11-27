@@ -1,18 +1,24 @@
 import { Fragment, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { Button, Icon } from "semantic-ui-react"
 import axios from "axios"
 import "./Choice.css"
 import Sources from "./Sources"
 import Reviews from "./Reviews"
 
 
-function Choice () {
+function Choice ({handleBack}) {
     const { id } = useParams()
     const [resultDetails, setResultDetails] = useState(null)
-    const key = process.env.REACT_APP_KEY
+
+    const searchOptions = {
+        key: process.env.REACT_APP_KEY,
+        url: `https://api.watchmode.com/v1/title/`,
+        append: `&append_to_response=sources`
+    }
 
     useEffect(() => {
-        const url = `https://api.watchmode.com/v1/title/${id}/details/?apiKey=${key}&append_to_response=sources`;
+        const url = `${searchOptions.url}${id}/details/?apiKey=${searchOptions.key}${searchOptions.append}`;
         axios
             .get(url)
             .then((res) => {
@@ -21,12 +27,14 @@ function Choice () {
             .catch((error) => {
                 console.error(error);
             })
-    }, [id, key])
+    }, [id, searchOptions.key])
 
     if (!resultDetails) {
         return (
             <div>
-                Loading...
+                <Button loading secondary>
+                    Loading
+                </Button>            
             </div>
         )
     }
@@ -34,17 +42,23 @@ function Choice () {
 
 
     return (
-        <div className="choiceBox">
-                <img className="poster" src={resultDetails.poster} alt={resultDetails.title} />
-                <Fragment>
-                    <h2> {resultDetails.title}</h2> 
+        <div>
+                <div className="backBox">
+                    <Button icon onClick={handleBack}>
+                        <Icon name='fast backward' /> 
+                        <span> RESULTS </span>
+                    </Button>
+                </div>
+                <div classname="description">
+                    <img className="poster" src={resultDetails.poster} alt={resultDetails.title} />
+                    <h3> {resultDetails.title}</h3> 
                     <p>{resultDetails.us_rating}</p>
                     <p> Release Date: {resultDetails.release_date} </p>
                     <p> Genre(s): {resultDetails.genre_names.map((genre) => (
                         <span>{genre}, </span>  
                         ))}
                     </p>
-                </Fragment>
+                </div>
                 <Sources resultDetails={resultDetails}/>
                 <Reviews resultDetails={resultDetails}/>
        

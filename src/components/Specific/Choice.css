@@ -1,21 +1,16 @@
-.choiceBox {
-    margin-top: 20px;
-    width: 800px;
+.backBox {
     display: flex;
-    flex-direction: column;
-    columns: 3;
-    background-color: white;
-    padding: 50px 20px 50px 20px;
-    border-radius: 25% 25% 25% 25%;
-    text-align: center;
-    margin-left: 170px;
+}
+
+.description {
+    display: flex;
+    margin-right: 30px;
 }
 
 .poster {
-    width: 150px;
-    align-self: center;
+    width: 135px;
 }
 
-h2 {
+h3 {
     text-transform: uppercase;
 }

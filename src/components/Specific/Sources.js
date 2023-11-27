@@ -1,6 +1,8 @@
 import MaxLogo from "../../logos/maxlogo.png"
 import NetflixLogo from "../../logos/netflixlogo.png"
 import HuluLogo from "../../logos/hululogo.png"
+import ParamountLogo from "../../logos/paramountlogo.png"
+import DisneyLogo from "../../logos/disneylogo.png"
 
 import { Fragment } from "react";
 
@@ -34,6 +36,10 @@ function Sources ({ resultDetails }) {
                 return NetflixLogo;
             case "Hulu":
                 return HuluLogo;
+            case "Paramount+":
+              return ParamountLogo;
+            case "Disney+":
+              return DisneyLogo;
             default:
                 return ``;
         }

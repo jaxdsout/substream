@@ -8,5 +8,7 @@ h3 {
 }
 
 .sources {
-    margin-bottom: 20px;
+    display: flex;
+    text-wrap: wrap;
+    margin-right: 20px;
 }

@@ -3,15 +3,15 @@ import letterLogo from "../../logos/letterboxdlogo.png"
 import "./Reviews.css"
 
 function Reviews ({ resultDetails }) {
-
+    console.log(resultDetails)
     let imdbURL = `https://www.imdb.com/title/${resultDetails.imdb_id}/`
 
     
-    const letterboxd = resultDetails.title.toLowerCase().replace(/ /g,"-")
+    const letterboxd = resultDetails.title.toLowerCase().replace(/ /g,"-").replace(/[:()]/g, '')
     let letterURL = `https://letterboxd.com/film/${letterboxd}/`
 
     return (
-        <div>
+        <div className="reviews">
         <h3>Reviews:</h3>
                     <a href={imdbURL} target="_blank" rel="noopener noreferrer">
                         <img
@@ -20,15 +20,16 @@ function Reviews ({ resultDetails }) {
                             alt={`IMDB Logo`}
                         />
                     </a>
-                    <a href={letterURL} target="_blank" rel="noopener noreferrer">
+            {resultDetails.type === "movie" && (
+                <a href={letterURL} target="_blank" rel="noopener noreferrer">
                         <img
                             className="sourceLogo"
                             src={letterLogo}
                             alt={`Letterbox'd Logo`}
                         />
                     </a>
+            )}    
         </div>
-
     )
 }
 

@@ -1,5 +1,18 @@
-.searchBox {
-    margin-top: 20px;
-    margin-bottom: 30px;
+
+
+
+
+.ui.action.input {
+    width: 800px;
 }
 
+.ui.button.dropdown {
+    width: 80px;
+    background-color: rgb(224, 225, 226) !important;
+    border: none !important;
+    color: rgb(73, 73, 74) !important
+}
+
+.ui.button.dropdown:hover {
+    background-color: rgb(202, 203, 205) !important;
+}
