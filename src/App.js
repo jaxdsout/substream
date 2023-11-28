@@ -10,6 +10,7 @@ import Choice from './components/Specific/Choice';
 
 function App () {
     const [searchString, setSearchString] = useState('')
+    const [lastSearchString, setLastSearchString] = useState('')
     const [results, setResults] = useState({})
     const [filters, setFilters] = useState('2')
     const navigate = useNavigate()
@@ -75,6 +76,7 @@ function App () {
     function handleSubmit (event) { 
       if (event.key === 'Enter' || event.type === 'click') {
         getMovie(searchString)
+        setLastSearchString(searchString)
       }
     }
 
@@ -96,14 +98,11 @@ function App () {
                 <Route path="/" element={ <Navigate to="/" /> } />
                 <Route path="/results" element={
                   <SearchResults
+                    lastSearchString={lastSearchString}
                     results={results}
                     onResultClick={handleResultClick}
                   />
                 }/>
-              </Routes>
-          </div>
-          <div className='bottom'>
-              <Routes>
                 <Route path="/:id" element={
                   <Choice 
                     handleBack={handleBack}/>

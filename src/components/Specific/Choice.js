@@ -42,14 +42,14 @@ function Choice ({handleBack}) {
 
 
     return (
-        <div>
+        <div className="choice">
                 <div className="backBox">
                     <Button icon onClick={handleBack}>
                         <Icon name='fast backward' /> 
                         <span> RESULTS </span>
                     </Button>
                 </div>
-                <div classname="description">
+                <div className="description">
                     <img className="poster" src={resultDetails.poster} alt={resultDetails.title} />
                     <h3> {resultDetails.title}</h3> 
                     <p>{resultDetails.us_rating}</p>

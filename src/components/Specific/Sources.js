@@ -64,7 +64,7 @@ function Sources ({ resultDetails }) {
             ))}
           </Fragment>
         ) : (
-          <p>This movie is currently not streaming on any platforms.</p>
+          <p className="no-sources">This movie is currently not streaming on any platforms.</p>
         )}
       </div>
     )

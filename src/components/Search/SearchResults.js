@@ -2,10 +2,10 @@ import "./SearchResults.css"
 import Result from "./Result"
 import { Fragment } from "react";
 
-function SearchResults({ results, onResultClick }) {
+function SearchResults({ results, onResultClick, lastSearchString }) {
   return (
     <div>
-    <h2> Results for: </h2>
+    <h2> Results for: <span>{lastSearchString}</span></h2>
     <div className="results">
       {Object.keys(results).map((key, index) => (
         <Fragment key={index} className="resultsII">

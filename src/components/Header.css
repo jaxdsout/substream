@@ -13,5 +13,6 @@
 }
 
 .logo:hover {
-    color: rgb(44, 44, 44)
+    color: rgb(44, 44, 44);
+    transform: translateY(-3px);
 }

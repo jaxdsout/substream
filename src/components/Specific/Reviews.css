@@ -9,4 +9,5 @@ h3 {
 
 .reviews {
     display: flex;
+    flex-direction: column;
 }

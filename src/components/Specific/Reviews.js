@@ -12,22 +12,22 @@ function Reviews ({ resultDetails }) {
 
     return (
         <div className="reviews">
-        <h3>Reviews:</h3>
-                    <a href={imdbURL} target="_blank" rel="noopener noreferrer">
-                        <img
-                            className="sourceLogo"
-                            src={imdbLogo}
-                            alt={`IMDB Logo`}
-                        />
-                    </a>
+            <h3>Reviews:</h3>
+            <a href={imdbURL} target="_blank" rel="noopener noreferrer">
+                <img
+                    className="sourceLogo"
+                    src={imdbLogo}
+                    alt={`IMDB Logo`}
+                />
+            </a>
             {resultDetails.type === "movie" && (
                 <a href={letterURL} target="_blank" rel="noopener noreferrer">
-                        <img
-                            className="sourceLogo"
-                            src={letterLogo}
-                            alt={`Letterbox'd Logo`}
-                        />
-                    </a>
+                    <img
+                        className="sourceLogo"
+                        src={letterLogo}
+                        alt={`Letterbox'd Logo`}
+                    />
+                </a>
             )}    
         </div>
     )

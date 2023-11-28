@@ -9,6 +9,11 @@ h3 {
 
 .sources {
     display: flex;
+    flex-direction: column;
     text-wrap: wrap;
     margin-right: 20px;
+}
+
+.no-sources {
+    width: 300px;
 }
