@@ -15,6 +15,7 @@
 .logo:hover {
     color: rgb(44, 44, 44);
     transform: translateY(-3px);
+    transition: color 0.3s ease;
 }
 
 
