@@ -1,13 +1,9 @@
-
-
-
-
 .ui.action.input {
     width: 800px;
 }
 
 .ui.button.dropdown {
-    width: 80px;
+    width: 200px !important;
     background-color: rgb(224, 225, 226) !important;
     border: none !important;
     color: rgb(73, 73, 74) !important
@@ -15,4 +11,37 @@
 
 .ui.button.dropdown:hover {
     background-color: rgb(202, 203, 205) !important;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    .ui.action.input {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .ui.button.dropdown {
+        width: 20px !important;
+        background-color: rgb(224, 225, 226) !important;
+        border: none !important;
+        color: rgb(73, 73, 74) !important
+    }
+
+    .searchBox {
+        width: 280px
+    }
+
+    .ui.button.search {
+        width: 20px;
+    }
+
+    .ui.button.clear {
+        width: 20px;
+    }
+    
+    
+    .ui.button.dropdown:hover {
+        background-color: rgb(202, 203, 205) !important;
+    }
 }

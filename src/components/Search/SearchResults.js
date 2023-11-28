@@ -8,7 +8,7 @@ function SearchResults({ results, onResultClick, lastSearchString }) {
     <h2> Results for: <span>{lastSearchString}</span></h2>
     <div className="results">
       {Object.keys(results).map((key, index) => (
-        <Fragment key={index} className="resultsII">
+        <Fragment key={index}>
           {results[key].map((result, resultIndex) => (
             <Result key={resultIndex} result={result} onResultClick={onResultClick} />
           ))}

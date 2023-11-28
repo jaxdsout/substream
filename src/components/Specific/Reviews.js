@@ -3,9 +3,7 @@ import letterLogo from "../../logos/letterboxdlogo.png"
 import "./Reviews.css"
 
 function Reviews ({ resultDetails }) {
-    console.log(resultDetails)
     let imdbURL = `https://www.imdb.com/title/${resultDetails.imdb_id}/`
-
     
     const letterboxd = resultDetails.title.toLowerCase().replace(/ /g,"-").replace(/[:()]/g, '')
     let letterURL = `https://letterboxd.com/film/${letterboxd}/`

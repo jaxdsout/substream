@@ -4,8 +4,8 @@ import { Dropdown, Icon } from "semantic-ui-react";
 import { useState } from "react";
 
 function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, handleFilter, filters }) {
+    
     const [selectedFilter, setSelectedFilter] = useState(filters[0].value);
-
     const handleFilterChange = (event, data) => {
         setSelectedFilter(event.target.value)
         handleFilter(data.value)
@@ -20,6 +20,7 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
                     onChange={handleChange}
                     onKeyDown={handleSubmit}
                     value={searchString}
+                    className="searchBox"
                 />
                 <button className="ui button search" onClick={handleSubmit}>
                     <Icon name="search" text="Search" />
@@ -33,7 +34,6 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
                     value={selectedFilter}
                     onChange={handleFilterChange}
                     header="CONTENT SELECTION"
-
                 >
                 </Dropdown>
             </div>

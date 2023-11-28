@@ -28,6 +28,7 @@ function Choice ({handleBack}) {
                 console.error(error);
             })
     }, [id, searchOptions.key])
+    
 
     if (!resultDetails) {
         return (

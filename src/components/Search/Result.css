@@ -9,13 +9,11 @@
 }
 
 .title {
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: black;
 }
 
-
 .thumbnail:hover {
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.411);
 }
