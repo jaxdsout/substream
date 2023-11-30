@@ -1,28 +1,75 @@
 .choice {
     display: flex;
-    flex-direction: row;
     text-align: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-top: 10px;
 
 }
 
+.backButton {
+    position: absolute !important;
+    top: 580px;
+    left: 300px;
+    height: 40px;
+}
+
+.backButton:hover{
+    -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+.backButton:active{
+    -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
+    animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
+}
+
 .description {
-    width: 255px;
+    width: 270px;
     text-wrap: wrap;
+    margin: 0px 30px 0px 30px;
+    padding: 0px 10px 5px 10px;
+    color: white;
 }
 
 .poster {
     width: 135px;
+    margin-bottom: 10px;
+    box-shadow: 0px 7px 4px rgb(208, 103, 65);
+
 }
 
 h3 {
     text-transform: uppercase;
+    color: white;
 }
 
+.buttons {
+    width: 210px;
+    margin: 0px 10px 0px 10px;
+}
+
+p {
+    margin-bottom: 8px;
+}
+
+
 @media only screen and (min-width: 320px) and (max-width: 479px) {
+    h3 {
+        font-size: 1rem;
+    }
+
     .description {
-        width: 100px;
-        text-wrap: wrap;
+        margin: 0px 10px 0px 70px;
+
+    }
+
+    .buttons {
+        width: 150px;
+        margin: 0px 80px 0px 10px; 
+    }
+
+    .backButton {
+        top: 280px;
+        left: 160px;
     }
 }
 

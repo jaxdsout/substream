@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Button, Icon } from "semantic-ui-react"
 import axios from "axios"
@@ -29,7 +29,6 @@ function Choice ({handleBack}) {
             })
     }, [id, searchOptions.key])
     
-
     if (!resultDetails) {
         return (
             <div>
@@ -40,29 +39,32 @@ function Choice ({handleBack}) {
         )
     }
     
-
-
     return (
         <div className="choice">
-                <div className="backBox">
-                    <Button icon onClick={handleBack}>
-                        <Icon name='fast backward' /> 
-                        <span> RESULTS </span>
-                    </Button>
-                </div>
-                <div className="description">
-                    <img className="poster" src={resultDetails.poster} alt={resultDetails.title} />
+            <Button 
+                icon onClick={handleBack}
+                className="backButton"
+            >
+                <Icon name='fast backward' /> 
+                <span> RESULTS </span>
+            </Button>
+            <div className="description">
+                <img className="poster" src={resultDetails.poster} alt={resultDetails.title} />
+                <div className="info">
                     <h3> {resultDetails.title}</h3> 
                     <p>{resultDetails.us_rating}</p>
-                    <p> Release Date: {resultDetails.release_date} </p>
-                    <p> Genre(s): {resultDetails.genre_names.map((genre) => (
+                    <p> <b>Release Date:</b> {resultDetails.release_date} </p>
+                    <p> <b>Genre(s):</b> {resultDetails.genre_names.map((genre) => (
                         <span>{genre}, </span>  
-                        ))}
-                    </p>
+                        ))}</p>
                 </div>
+            </div>
+            <div className="buttons">
+                <h3>SOURCES:</h3>
                 <Sources resultDetails={resultDetails}/>
+                <h3>REVIEWS:</h3>
                 <Reviews resultDetails={resultDetails}/>
-       
+            </div>
         </div>
     )
 }

@@ -9,14 +9,11 @@ import PrimeLogo from "../../logos/primevideologo.png"
 import PeacockLogo from "../../logos/peacocklogo.png"
 import PlutoLogo from "../../logos/plutologo.png"
 
-// import axios from "axios"
-
 import { Fragment } from "react";
 
 import "./Sources.css"
 
 function Sources ({ resultDetails }) {
-  // const [logos, setLogos] = useState([]);
     
   function filterUniqueSources(sources) {
     const subSources = [];
@@ -44,64 +41,34 @@ function Sources ({ resultDetails }) {
   }
 
   const sources = filterUniqueSources(resultDetails.sources);
-
-  // const searchOptions = {
-  //   key: process.env.REACT_APP_KEY,
-  //   url: `https://api.watchmode.com/v1/`,
-  //   subregion: `&types=sub&regions=US`,
-  // }
-
-  // useEffect(() => {
-  //   const logosUrl = `${searchOptions.url}sources/?apiKey=${searchOptions.key}${searchOptions.subregion}`;
-
-  //   axios
-  //   .get(logosUrl)
-  //   .then((res) => {
-  //       setLogos(res.data);
-  //   })
-  //   .catch((error) => {
-  //       console.error(error);
-  //   })
-  // }, [searchOptions.key])
-
     function getLogo(name) {        
-        switch (name) {
-            case "Max":
-                return MaxLogo;
-            case "Netflix":
-                return NetflixLogo;
-            case "Hulu":
-                return HuluLogo;
-            case "Paramount+":
-              return ParamountLogo;
-            case "Disney+":
-              return DisneyLogo;
-            case "STARZ":
-              return StarzLogo;
-            case "Tubi TV":
-              return TubiLogo;
-            case "Prime Video":
-              return PrimeLogo
-            case "Peacock Premium":
-              return PeacockLogo
-            case "Pluto TV":
-              return PlutoLogo
-            default:
-                return ``;
-        }
+      switch (name) {
+        case "Max":
+            return MaxLogo;
+        case "Netflix":
+            return NetflixLogo;
+        case "Hulu":
+            return HuluLogo;
+        case "Paramount+":
+          return ParamountLogo;
+        case "Disney+":
+          return DisneyLogo;
+        case "STARZ":
+          return StarzLogo;
+        case "Tubi TV":
+          return TubiLogo;
+        case "Prime Video":
+          return PrimeLogo
+        case "Peacock Premium":
+          return PeacockLogo
+        case "Pluto TV":
+          return PlutoLogo
+        default:
+            return ``;
+      }
     }
-
-    // console.log(logos)
-    // console.log(sources)
-    // function getLogo() {
-    //   const sourceID = sources.find((source) => source.source_id);
-    //   console.log(sourceID) 
-    // }
-
-
   return (
       <div className="sources">
-      <h3>Sources:</h3>
       {sources.length > 0 ? (
         <Fragment>
           {sources.map((source, index) => (

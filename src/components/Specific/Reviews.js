@@ -10,7 +10,6 @@ function Reviews ({ resultDetails }) {
 
     return (
         <div className="reviews">
-            <h3>Reviews:</h3>
             <a href={imdbURL} target="_blank" rel="noopener noreferrer">
                 <img
                     className="sourceLogo"

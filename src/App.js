@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
@@ -15,7 +15,6 @@ function App () {
     const [filters, setFilters] = useState('2')
     const navigate = useNavigate()
     
-
     const filterOptions = [
       {key: '2', text: 'TV & Movies', value: '2'},
       {key: '3', text: 'Movies', value: '3'},
@@ -57,12 +56,9 @@ function App () {
       url: `https://api.watchmode.com/v1/autocomplete-search/?`
     }
 
-    console.log(searchOptions.filter)
-    
     function getMovie (searchString) {
       const encodedSearchString = encodeURIComponent(searchString);
       const url = `${searchOptions.url}apiKey=${searchOptions.key}&search_value=${encodedSearchString}&search_type=${searchOptions.filter}`;
-      console.log(url)
       axios.get(url)
         .then((res) => {
           setResults(res.data)
@@ -83,7 +79,9 @@ function App () {
     return (
        <div className='mainBox'>
           <div className='top'>
-             <Header onClick={handleHeaderClick}/>  
+             <Header 
+              onClick={handleHeaderClick}
+              />  
              <SearchBar 
                 handleChange={handleSearch}
                 handleSubmit={handleSubmit}
@@ -92,8 +90,10 @@ function App () {
                 handleFilter={handleFilter}
                 filters={filterOptions}
                 />
-          </div>
-          <div className='middle'>
+              <div className='middle'>
+              {lastSearchString ? (
+                <p className="resultsFor"> Results for: <b>{lastSearchString}</b></p>
+              ) : ''}
               <Routes>
                 <Route path="/" element={ <Navigate to="/" /> } />
                 <Route path="/results" element={
@@ -108,6 +108,7 @@ function App () {
                     handleBack={handleBack}/>
                 }/>
               </Routes>
+              </div>
           </div>
        </div>
     )

@@ -1,53 +1,119 @@
+.searchBox {
+    font-size: 3rem !important;
+    font: 'Bungee Hairline', sans-serif;
+}
+
 .ui.action.input {
-    width: 800px;
+    height: 100px !important;
+    box-shadow: 0 15px 9px #003f31;
 }
 
 .ui.button.dropdown {
-    width: 200px !important;
     background-color: rgb(224, 225, 226) !important;
     border: none !important;
-    color: rgb(73, 73, 74) !important
+    color: rgb(73, 73, 74) !important;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    width: 180px !important;
+    padding-right: 50px !important;
 }
+
 
 .ui.button.dropdown:hover {
     background-color: rgb(202, 203, 205) !important;
-    transition: background-color 0.3s ease;
-
+    -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 
-.ui.button.search:hover, .ui.button.clear:hover {
-    transition: background-color 0.3s ease;
+.ui.button.clear:hover, .ui.button.search:hover {
+    -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+.ui.button.clear:active, .ui.button.search:active {
+    -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
+    animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
 }
 
+@-webkit-keyframes shadow-pop-tr {
+    0% {
+      -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+              box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+      -webkit-transform: translateX(0) translateY(0);
+              transform: translateX(0) translateY(0);
+    }
+    100% {
+      -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e;
+              box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e;
+      -webkit-transform: translateX(-5px) translateY(5px);
+              transform: translateX(-5px) translateY(5px);
+    }
+  }
+  @keyframes shadow-pop-tr {
+    0% {
+      -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+              box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+      -webkit-transform: translateX(0) translateY(0);
+              transform: translateX(0) translateY(0);
+    }
+    100% {
+      -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e;
+              box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e;
+      -webkit-transform: translateX(-5px) translateY(5px);
+              transform: translateX(-5px) translateY(5px);
+    }
+  }
+  
+
+  
+  
+  
+  
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {
-    .ui.action.input {
-        width: 350px;
-        display: flex;
-        flex-direction: column;
+
+    .ui.input {
+        display: flex !important;
+        flex-direction: row;
+        width: 200px !important;
+        margin: 0px 0px 0px -50px;
     }
-    
+
+    .ui.button.search{
+        width: 50px !important;
+    }
+
+    .ui.button.clear{
+        width: 50px !important;
+    }
+
     .ui.button.dropdown {
-        width: 20px !important;
-        background-color: rgb(224, 225, 226) !important;
-        border: none !important;
-        color: rgb(73, 73, 74) !important
+        font-size: .65rem !important;
+        width: 70px !important;
+    }
+
+    .ui.dropdown .menu {
+        width: 70px !important;
+        font-size: .5rem;
+    }
+
+    .ui.dropdown .menu>.item {
+        line-height: .5rem !important;
+        font-size: .5rem !important;
+    }
+
+    .ui.dropdown .menu>.header {
+        text-wrap: wrap;
+        font-size: .5rem;
+    }
+
+    .ui.action.input>.button, .ui.action.input>.buttons {
+        display: flex;
+        align-items: center;
+        flex: none;
     }
 
     .searchBox {
-        width: 280px
-    }
-
-    .ui.button.search {
-        width: 20px;
-    }
-
-    .ui.button.clear {
-        width: 20px;
-    }
-    
-    
-    .ui.button.dropdown:hover {
-        background-color: rgb(202, 203, 205) !important;
+        font-size: 1.5rem !important;
+        font: 'Bungee Hairline', sans-serif;
     }
 }
