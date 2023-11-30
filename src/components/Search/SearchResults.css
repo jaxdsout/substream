@@ -8,10 +8,17 @@
 
 .results {
     display: flex;
-    padding: 20px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
     overflow-x: auto;
     overflow-y: hidden;   
     box-sizing: border-box;
+    margin-top: 32px;
+    background-image: radial-gradient( rgb(227, 111, 69) 20%, coral 80%);
+}
+
+.noResults {
+    color: white;
+    margin-top: 150px;
 }
 
 

@@ -38,6 +38,7 @@ function App () {
     function handleHeaderClick(event) {
       event.preventDefault()
       setSearchString('')
+      setLastSearchString('')
       navigate("/")
     }
 
@@ -91,9 +92,6 @@ function App () {
                 filters={filterOptions}
                 />
               <div className='middle'>
-              {lastSearchString ? (
-                <p className="resultsFor"> Results for: <b>{lastSearchString}</b></p>
-              ) : ''}
               <Routes>
                 <Route path="/" element={ <Navigate to="/" /> } />
                 <Route path="/results" element={

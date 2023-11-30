@@ -26,7 +26,7 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
                     <Icon name="large search" text="Search" />
                 </button>
                 <button className="ui button clear" onClick={handleClear}>
-                    <Icon name="large remove circle" text="Clear" />
+                    <Icon name="large eraser" text="Clear" />
                 </button>
                 <Dropdown className="ui button dropdown"
                     options={filters}
