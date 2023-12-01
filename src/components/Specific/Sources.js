@@ -1,3 +1,6 @@
+import { Fragment } from "react";
+import "./Sources.css"
+
 import MaxLogo from "../../logos/maxlogo.png"
 import NetflixLogo from "../../logos/netflixlogo.png"
 import HuluLogo from "../../logos/hululogo.png"
@@ -8,10 +11,13 @@ import TubiLogo from "../../logos/tubilogo.png"
 import PrimeLogo from "../../logos/primevideologo.png"
 import PeacockLogo from "../../logos/peacocklogo.png"
 import PlutoLogo from "../../logos/plutologo.png"
-
-import { Fragment } from "react";
-
-import "./Sources.css"
+import MGMLogo from "../../logos/mgmlogo.png"
+import ShudderLogo from "../../logos/shudderlogo.png"
+import AMCLogo from "../../logos/amclogo.png"
+import CWLogo from "../../logos/thecwlogo.png"
+import DiscoveryLogo from "../../logos/discoverylogo.png"
+import CrackleLogo from "../../logos/cracklelogo.png"
+import FreeveeLogo from "../../logos/freeveelogo.png"
 
 function Sources ({ resultDetails }) {
     
@@ -26,13 +32,12 @@ function Sources ({ resultDetails }) {
       if (name==="Showtime") {
         name = "Paramount+";
         web_url = `https://www.paramountplus.com/`
-
       }
 
       if ((type==="sub" || type==="free") && !sourceNames.has(sourceKey) && 
-      (
-        !name.includes("(Via") && !name.includes("(via") && !name.includes("with")
-        && !name.includes("fubo"))) {
+      (!name.includes("(Via") && !name.includes("(via") && !name.includes("with")
+        && !name.includes("fubo") && !name.includes("Hoopla") 
+        && !name.includes("On Demand") && !name.includes("Discovery GO"))) {
         subSources.push({...source, name, web_url})
         sourceNames.add(sourceKey);
       }
@@ -41,32 +46,48 @@ function Sources ({ resultDetails }) {
   }
 
   const sources = filterUniqueSources(resultDetails.sources);
-    function getLogo(name) {        
-      switch (name) {
-        case "Max":
-            return MaxLogo;
-        case "Netflix":
-            return NetflixLogo;
-        case "Hulu":
-            return HuluLogo;
-        case "Paramount+":
-          return ParamountLogo;
-        case "Disney+":
-          return DisneyLogo;
-        case "STARZ":
-          return StarzLogo;
-        case "Tubi TV":
-          return TubiLogo;
-        case "Prime Video":
-          return PrimeLogo
-        case "Peacock Premium":
-          return PeacockLogo
-        case "Pluto TV":
-          return PlutoLogo
-        default:
-            return ``;
-      }
+
+  function getLogo(name) {        
+    switch (name) {
+      case "Max":
+          return MaxLogo;
+      case "Netflix":
+          return NetflixLogo;
+      case "Hulu":
+          return HuluLogo;
+      case "Paramount+":
+        return ParamountLogo;
+      case "Disney+":
+        return DisneyLogo;
+      case "STARZ":
+        return StarzLogo;
+      case "Tubi TV":
+        return TubiLogo;
+      case "Prime Video":
+        return PrimeLogo
+      case "Peacock Premium":
+        return PeacockLogo
+      case "Pluto TV":
+        return PlutoLogo
+      case "MGM+":
+        return MGMLogo
+      case "Shudder":
+        return ShudderLogo
+      case "AMC+":
+        return AMCLogo
+      case "The CW":
+        return CWLogo
+      case "Discovery+":
+        return DiscoveryLogo
+      case "Crackle":
+        return CrackleLogo
+      case "Amazon Freevee":
+        return FreeveeLogo
+      default:
+          return ``;
     }
+  }
+
   return (
       <div className="sources">
       {sources.length > 0 ? (
@@ -84,7 +105,9 @@ function Sources ({ resultDetails }) {
           ))}
         </Fragment>
       ) : (
-        <p className="no-sources">This movie is currently not streaming on any platforms.</p>
+        <div className="no-sources">
+          <p>This content is currently not streaming on any platforms.</p>
+        </div>
       )}
     </div>
   )

@@ -1,5 +1,3 @@
-
-
 .resultsFor {
     text-transform: uppercase;
     text-align: center;
@@ -11,9 +9,8 @@
     padding: 10px 0px 10px 0px;
     overflow-x: auto;
     overflow-y: hidden;   
-    box-sizing: border-box;
     margin-top: 32px;
-    background-image: radial-gradient( rgb(227, 111, 69) 20%, coral 80%);
+    background-image: radial-gradient(#66696c, #e0e1e2 50%);
 }
 
 .noResults {
@@ -22,7 +19,25 @@
 }
 
 
-@media only screen and (min-width: 320px) and (max-width: 479px) {
+.loading {
+    background-color: #e0e1e2 !important;
+    margin-top: 150px !important;
+}
 
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    .results {
+        display: flex;
+        flex-direction: column;
+        padding: 5px 0px 5px 0px;
+        max-width: 160px;
+        max-height: 480px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        direction: rtl;
+        margin-top: 55px;
+        margin: -5px 0px 0px 70px;
+        background-image: radial-gradient(rgb(227, 111, 69) 30%, coral 70%)
+    }
 }
 

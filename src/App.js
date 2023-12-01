@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import Fuse from 'fuse.js'
 
 import './App.css';
 import SearchBar from './components/Search/SearchBar';
@@ -14,12 +15,6 @@ function App () {
     const [results, setResults] = useState({})
     const [filters, setFilters] = useState('2')
     const navigate = useNavigate()
-    
-    const filterOptions = [
-      {key: '2', text: 'TV & Movies', value: '2'},
-      {key: '3', text: 'Movies', value: '3'},
-      {key: '4', text: 'TV', value: '4'},
-    ]
 
     function handleSearch (event) {
       setSearchString(event.target.value)
@@ -51,6 +46,12 @@ function App () {
       setFilters(filter)
     }
 
+    const filterOptions = [
+      {key: '2', text: 'TV & Movies', value: '2'},
+      {key: '3', text: 'Movies', value: '3'},
+      {key: '4', text: 'TV', value: '4'},
+    ]
+
     const searchOptions = {
       key: process.env.REACT_APP_KEY,
       filter: filters,
@@ -62,8 +63,9 @@ function App () {
       const url = `${searchOptions.url}apiKey=${searchOptions.key}&search_value=${encodedSearchString}&search_type=${searchOptions.filter}`;
       axios.get(url)
         .then((res) => {
-          setResults(res.data)
-          navigate("/results")
+          setResults(res.data.results)
+          console.log(results)
+          navigate("/results");
         })
         .catch((error) => {
           console.error(error)

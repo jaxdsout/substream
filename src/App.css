@@ -1,10 +1,10 @@
 .top {
     display: flex;    
     flex-direction: column;
-    box-shadow: 1px -1px #003f31, 2px -2px #003f31, 3px -3px #003f31, 4px -4px #003f31, 5px -5px #003f31, 6px -6px #003f31, 7px -7px #003f31, 8px -8px #003f31;
+    box-shadow: 1px -1px #17774b, 2px -2px #17774b, 3px -3px #17774b, 4px -4px #17774b, 5px -5px #17774b, 6px -6px #17774b, 7px -7px #17774b, 8px -8px #17774b;
     margin: 50px 120px 0px 120px;
     padding: 50px 50px 50px 50px;
-    background: #005543;
+    background-color: #19935b;
     border-radius: 77% 23% 44% 56% / 50% 53% 47% 50% ;
     text-align: center;
     max-width: 1250px;
@@ -14,9 +14,9 @@
 
 .middle {
     flex-wrap: wrap;
-    box-shadow: 1px -1px rgb(208, 103, 65), 2px -2px #d06741, 3px -3px rgb(208, 103, 65), 4px -4px rgb(208, 103, 65), 5px -5px rgb(208, 103, 65), 6px -6px rgb(208, 103, 65), 7px -7px rgb(208, 103, 65), 8px -8px rgb(208, 103, 65);
+    box-shadow: 1px -1px #c9c9c9, 2px -2px #c9c9c9, 3px -3px #c9c9c9, 4px -4px #c9c9c9, 5px -5px #c9c9c9, 6px -6px #c9c9c9, 7px -7px #c9c9c9, 8px -8px #c9c9c9;
     border-radius: 23% 77% 34% 66% / 79% 31% 69% 21%;
-    background-color: coral;
+    background-color: #e0e1e2;
     margin: 50px 0px 0px 0px;
     padding: 40px 150px 50px 150px;
     height: 470px;
@@ -29,15 +29,16 @@
         max-width: 469px;
         min-width: 320px;
         margin: 50px 20px 0px 20px;
-        border-radius: 28% 72% 56% 44% / 85% 17% 83% 15%;
+        border-radius: 8% 22% 0% 84% / 85% 27% 0% 15%;
     }
 
     .middle {
         max-width: 469px;
         min-width: 320px;
-        margin: 70px 50px 0px -20px !important;
+        height: 550px;
+        margin: 30px 50px 0px -20px !important;
         padding: 40px 12px 10px 12px;
-        border-radius: 23% 77% 34% 66% / 79% 31% 69% 21%;
+        border-radius: 23% 99% 44% 96% / 79% 31% 5% 21%;
     }
 }
 

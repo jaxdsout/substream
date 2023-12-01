@@ -1,18 +1,19 @@
 import "./SearchBar.css"
 import "semantic-ui-css/semantic.min.css";
 import { Dropdown, Icon } from "semantic-ui-react";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, handleFilter, filters }) {
     
     const [selectedFilter, setSelectedFilter] = useState(filters[0].value);
+    
     const handleFilterChange = (event, data) => {
         setSelectedFilter(event.target.value)
         handleFilter(data.value)
     }
     
     return (
-           <div className="ui action input">
+           <div className="ui action input buster">
                 <input 
                     type="text"
                     placeholder="search..."
