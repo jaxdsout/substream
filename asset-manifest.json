@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/substream/static/css/main.54bedf50.css",
-    "main.js": "/substream/static/js/main.9f470fb0.js",
+    "main.css": "/substream/static/css/main.ff84c4d6.css",
+    "main.js": "/substream/static/js/main.cf9df2c6.js",
     "static/js/787.4ff63c6f.chunk.js": "/substream/static/js/787.4ff63c6f.chunk.js",
     "static/media/brand-icons.svg": "/substream/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/substream/static/media/icons.62d9dae4e0040e81c980.svg",
@@ -27,6 +27,7 @@
     "static/media/cracklelogo.png": "/substream/static/media/cracklelogo.896cd7bc0f51bf72e43e.png",
     "static/media/peacocklogo.png": "/substream/static/media/peacocklogo.3b9c7cc8fd6f349756ac.png",
     "static/media/flags.png": "/substream/static/media/flags.99f63ae7a743f21ab308.png",
+    "static/media/appletvlogo.png": "/substream/static/media/appletvlogo.eb778ecfc379c416b83c.png",
     "static/media/letterboxdlogo.png": "/substream/static/media/letterboxdlogo.50ced5f99cfdc7bda89a.png",
     "static/media/plutologo.png": "/substream/static/media/plutologo.4e82946ba29696184378.png",
     "static/media/paramountlogo.png": "/substream/static/media/paramountlogo.ab5082684af350555d5a.png",
@@ -39,12 +40,12 @@
     "static/media/imdblogo.png": "/substream/static/media/imdblogo.8f3f7a4983cc3a231b10.png",
     "static/media/outline-icons.woff2": "/substream/static/media/outline-icons.687a4990ea22bb1a49d4.woff2",
     "index.html": "/substream/index.html",
-    "main.54bedf50.css.map": "/substream/static/css/main.54bedf50.css.map",
-    "main.9f470fb0.js.map": "/substream/static/js/main.9f470fb0.js.map",
+    "main.ff84c4d6.css.map": "/substream/static/css/main.ff84c4d6.css.map",
+    "main.cf9df2c6.js.map": "/substream/static/js/main.cf9df2c6.js.map",
     "787.4ff63c6f.chunk.js.map": "/substream/static/js/787.4ff63c6f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.54bedf50.css",
-    "static/js/main.9f470fb0.js"
+    "static/css/main.ff84c4d6.css",
+    "static/js/main.cf9df2c6.js"
   ]
 }
