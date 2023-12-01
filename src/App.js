@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
-import Fuse from 'fuse.js'
 
 import './App.css';
 import SearchBar from './components/Search/SearchBar';
