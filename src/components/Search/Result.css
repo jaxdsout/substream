@@ -66,7 +66,7 @@
  * ---------------------------------------------- */
 
 
-@media only screen and (min-width: 320px) and (max-width: 479px) {
+@media only screen and (min-width: 320px) and (max-width: 450px) {
         .thumbnail {
                 width: 110px;
         }

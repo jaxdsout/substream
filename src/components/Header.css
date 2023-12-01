@@ -10,6 +10,7 @@
     font-style: italic;
     text-align: center;
     cursor: pointer;
+    user-select: none;
     -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.70, 0.450, 0.940) both;
     animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -20,8 +21,9 @@
 
 .logo:active {
         color: white;
+        color: #3dbf84;
         -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.70, 0.450, 0.940) reverse both;
-    animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
+        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
 }
 
 @-webkit-keyframes text-pop-up-top {
@@ -33,11 +35,11 @@
       text-shadow: none;
     }
     100% {
-      -webkit-transform: translateY(-10px);
-              transform: translateY(-10px);
+      -webkit-transform: translateY(-8px);
+              transform: translateY(-8px);
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
-      text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 40px 30px #003f31;
+      text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 30px 40px #003f31;
     }
   }
   @keyframes text-pop-up-top {
@@ -49,11 +51,11 @@
       text-shadow: none;
     }
     100% {
-      -webkit-transform: translateY(-10px);
-              transform: translateY(-10px);
+      -webkit-transform: translateY(-8px);
+              transform: translateY(-8px);
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
-      text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 40px 30px #003f31;
+      text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 30px 40px #003f31;
     }
 }      
  
@@ -65,7 +67,7 @@
  * ---------------------------------------------- */
 
 
-@media screen and (min-width: 320px) and (max-width: 479px) {
+@media screen and (min-width: 320px) and (max-width: 450px) {
    .logo {
         font-size: 4rem;
         margin-left: -50px !important;
@@ -80,27 +82,27 @@
           text-shadow: none;
         }
         100% {
-          -webkit-transform: translateY(-3px);
-                  transform: translateY(-3px);
+          -webkit-transform: translateY(-3px) !important;
+                  transform: translateY(-3px) !important;
           -webkit-transform-origin: 50% 50%;
                   transform-origin: 50% 50%;
-          text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 40px 30px #003f31;
+                  text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 30px 60px #003f31;
         }
       }
       @keyframes text-pop-up-top {
         0% {
-          -webkit-transform: translateY(0);
-                  transform: translateY(0);
+          -webkit-transform: translateY(0) !important;
+                  transform: translateY(0) !important;
           -webkit-transform-origin: 50% 50%;
                   transform-origin: 50% 50%;
           text-shadow: none;
         }
         100% {
-          -webkit-transform: translateY(-3px);
-                  transform: translateY(-3px);
+          -webkit-transform: translateY(-3px) !important;
+                  transform: translateY(-3px) !important;
           -webkit-transform-origin: 50% 50%;
                   transform-origin: 50% 50%;
-          text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 40px 30px #003f31;
+        text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 30px 60px #003f31;
         }
     
 }

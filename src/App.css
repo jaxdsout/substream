@@ -24,7 +24,7 @@
     min-width: 799px;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 479px) {
+@media only screen and (min-width: 320px) and (max-width: 450px) {
     .top {
         max-width: 469px;
         min-width: 320px;

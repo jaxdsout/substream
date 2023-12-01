@@ -30,11 +30,7 @@ function Choice ({handleBack}) {
     
     if (!resultDetails) {
         return (
-            <Fragment>
-                <Button className="loading" loading secondary>
-                    Loading
-                </Button>            
-            </Fragment>
+           null
         )
     }
     

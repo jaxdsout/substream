@@ -24,25 +24,25 @@ function App () {
       setSearchString('')
     }
 
+    function handleFilter (filter) {
+      setFilters(filter)
+    }
+
     function handleResultClick(result) {
       console.log(`result clicked ${result.name}`)
-      navigate(`/${result.id}`)
+      navigate(`/substream/${result.id}`)
     }
 
     function handleHeaderClick(event) {
       event.preventDefault()
       setSearchString('')
       setLastSearchString('')
-      navigate("/")
+      navigate("/substream")
     }
 
     function handleBack (event) {
       event.preventDefault();
-      navigate("/results")
-    }
-
-    function handleFilter (filter) {
-      setFilters(filter)
+      navigate("/substream/results")
     }
 
     const filterOptions = [
@@ -64,7 +64,7 @@ function App () {
         .then((res) => {
           setResults(res.data.results)
           console.log(results)
-          navigate("/results");
+          navigate("/substream/results");
         })
         .catch((error) => {
           console.error(error)
@@ -94,15 +94,15 @@ function App () {
                 />
               <div className='middle'>
               <Routes>
-                <Route path="/" element={ <Navigate to="/" /> } />
-                <Route path="/results" element={
+                <Route path="/" element={ <Navigate to="/substream" /> } />
+                <Route path="/substream/results" element={
                   <SearchResults
                     lastSearchString={lastSearchString}
                     results={results}
                     onResultClick={handleResultClick}
                   />
                 }/>
-                <Route path="/:id" element={
+                <Route path="/substream/:id" element={
                   <Choice 
                     handleBack={handleBack}/>
                 }/>
