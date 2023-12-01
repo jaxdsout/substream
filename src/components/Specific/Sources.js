@@ -18,6 +18,7 @@ import CWLogo from "../../logos/thecwlogo.png"
 import DiscoveryLogo from "../../logos/discoverylogo.png"
 import CrackleLogo from "../../logos/cracklelogo.png"
 import FreeveeLogo from "../../logos/freeveelogo.png"
+import AppleTVLogo from "../../logos/appletvlogo.png"
 
 function Sources ({ resultDetails }) {
     
@@ -83,6 +84,8 @@ function Sources ({ resultDetails }) {
         return CrackleLogo
       case "Amazon Freevee":
         return FreeveeLogo
+      case "AppleTV+":
+        return AppleTVLogo
       default:
           return ``;
     }
