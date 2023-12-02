@@ -42,7 +42,7 @@ function App () {
     function handleBack (event) {
       const userSearch = encodeURIComponent(searchString)
       event.preventDefault();
-      navigate(`/substream/results/${userSearch}`)
+      navigate(`/substream/search/${userSearch.toLowerCase()}`)
     }
 
     const filterOptions = [
@@ -64,7 +64,7 @@ function App () {
       axios.get(url)
         .then((res) => {
           setResults(res.data.results)
-          navigate(`/substream/results/${userSearch}`);
+          navigate(`/substream/search/${userSearch.toLowerCase()}`);
         })
         .catch((error) => {
           console.error(error)
@@ -98,7 +98,7 @@ function App () {
               <div className='middle'>
               <Routes>
                 <Route path="/" element={ <Navigate to="/substream" /> } />
-                <Route path="/substream/results/:userSearch" element={
+                <Route path="/substream/search/:userSearch" element={
                   <SearchResults
                     results={results}
                     onResultClick={handleResultClick}
