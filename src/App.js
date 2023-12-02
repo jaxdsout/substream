@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate, useParams } from 'react-router-dom';
 import './App.css';
 
 import SearchBar from './components/Search/SearchBar';
@@ -29,7 +29,6 @@ function App () {
     }
 
     function handleResultClick(result) {
-      console.log(`result clicked ${result.name}`)
       navigate(`/substream/${result.id}`)
     }
 
@@ -41,8 +40,9 @@ function App () {
     }
 
     function handleBack (event) {
+      const userSearch = encodeURIComponent(searchString)
       event.preventDefault();
-      navigate("/substream/results")
+      navigate(`/substream/results/${userSearch}`)
     }
 
     const filterOptions = [
@@ -57,19 +57,21 @@ function App () {
       url: `https://api.watchmode.com/v1/autocomplete-search/?`
     }
 
-    function getMovie (searchString) {
-      const encodedSearchString = encodeURIComponent(searchString);
-      const url = `${searchOptions.url}apiKey=${searchOptions.key}&search_value=${encodedSearchString}&search_type=${searchOptions.filter}`;
+    const getMovie = useCallback(
+      (searchString) => {
+      const userSearch = encodeURIComponent(searchString)
+      const url = `${searchOptions.url}apiKey=${searchOptions.key}&search_value=${userSearch}&search_type=${searchOptions.filter}`;
       axios.get(url)
         .then((res) => {
           setResults(res.data.results)
-          console.log(results)
-          navigate("/substream/results");
+          navigate(`/substream/results/${userSearch}`);
         })
         .catch((error) => {
           console.error(error)
         })
-      }
+      },
+      [searchOptions.key, searchOptions.filter]
+    )
 
     function handleSubmit (event) { 
       if (event.key === 'Enter' || event.type === 'click') {
@@ -77,6 +79,7 @@ function App () {
         setLastSearchString(searchString)
       }
     }
+
 
     return (
        <div className='mainBox'>
@@ -95,11 +98,12 @@ function App () {
               <div className='middle'>
               <Routes>
                 <Route path="/" element={ <Navigate to="/substream" /> } />
-                <Route path="/substream/results" element={
+                <Route path="/substream/results/:userSearch" element={
                   <SearchResults
-                    lastSearchString={lastSearchString}
                     results={results}
                     onResultClick={handleResultClick}
+                    lastSearchString={lastSearchString}
+                    getMovie={getMovie}
                   />
                 }/>
                 <Route path="/substream/:id" element={

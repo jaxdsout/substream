@@ -1,17 +1,17 @@
 import "./SearchResults.css"
 import Result from "./Result"
 import { Fragment, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function SearchResults({ results, onResultClick }) {
-  const navigate = useNavigate()
-  console.log(results.length)
+function SearchResults({ results, onResultClick, lastSearchString, getMovie }) {
+  const { userSearch } = useParams()
+  const reloadString = encodeURIComponent(userSearch)
 
   useEffect(() => {
-    if (!results) {
-      navigate('/substreams/');
+    if (!lastSearchString) {
+      getMovie(reloadString);
     }
-  }, [results, navigate]);
+  }, [reloadString, lastSearchString])
 
   if (results && results.length > 0) {
     return (
