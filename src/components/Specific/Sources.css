@@ -72,4 +72,9 @@
         .no-sources{
                 text-wrap: wrap;
         }
+
+        .sourceLogo:active{
+                -webkit-animation: none;
+                animation: none;
+            }
 }

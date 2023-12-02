@@ -19,6 +19,7 @@ import DiscoveryLogo from "../../logos/discoverylogo.png"
 import CrackleLogo from "../../logos/cracklelogo.png"
 import FreeveeLogo from "../../logos/freeveelogo.png"
 import AppleTVLogo from "../../logos/appletvlogo.png"
+import RokuLogo from "../../logos/rokulogo.png"
 
 function Sources ({ resultDetails }) {
     
@@ -86,6 +87,8 @@ function Sources ({ resultDetails }) {
         return FreeveeLogo
       case "AppleTV+":
         return AppleTVLogo
+      case "The Roku Channel":
+        return RokuLogo
       default:
           return ``;
     }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
-
 import './App.css';
+
 import SearchBar from './components/Search/SearchBar';
 import Header from './components/Header';
 import SearchResults from './components/Search/SearchResults';

@@ -15,7 +15,7 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
     return (
            <div className="ui action input buster">
                 <input 
-                    type="text"
+                    type="search"
                     placeholder="search..."
                     onChange={handleChange}
                     onKeyDown={handleSubmit}
