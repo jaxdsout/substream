@@ -36,18 +36,10 @@ function Choice ({handleBack}) {
     
     return (
         <div className="choice">
-            <Button 
-                icon onClick={handleBack}
-                className="backButton"
-            >
-                <Icon name='fast backward' /> 
-                <span> RESULTS </span>
-            </Button>
-
             <div className="description">
                 <img className="poster" src={resultDetails.poster} alt={resultDetails.title} />
                 <div className="info">
-                    <h3> {resultDetails.title}</h3> 
+                    <h3 className="smallTitle"> {resultDetails.title}</h3> 
                     <p>{resultDetails.us_rating}</p>
                     <p> <b>Release Date:</b> {resultDetails.release_date} </p>
                     <p> <b>Genre:</b>{' '}
@@ -66,6 +58,13 @@ function Choice ({handleBack}) {
                 <Sources resultDetails={resultDetails}/>
                 <h3>REVIEWS:</h3>
                 <Reviews resultDetails={resultDetails}/>
+                <Button 
+                    icon onClick={handleBack}
+                    className="backButton"
+                >
+                    <Icon name='fast backward' /> 
+                        <span> RESULTS </span>
+                </Button>
             </div>
         </div>
     )

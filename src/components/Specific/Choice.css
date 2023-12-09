@@ -7,9 +7,7 @@
 }
 
 .backButton {
-    position: absolute !important;
-    top: 580px;
-    left: 300px;
+    margin-top: 50px !important;
     height: 40px;
 }
 
@@ -18,6 +16,7 @@
     animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 .backButton:active{
+    background-color: #e0e1e2 !important;
     -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
     animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
 }
@@ -25,16 +24,25 @@
 .description {
     width: 270px;
     text-wrap: wrap;
-    margin: 0px 30px 0px 30px;
-    padding: 0px 10px 5px 10px;
-    color: #49494a;
+    margin: 0px -15px 0px 0px;
+    padding: 20px 30px 10px 30px;
+    background-image: #49494a !important;
+    border: 5px solid #e0e1e2;
+    border-radius: 2% 0% 0% 2%;
+    color: #e0e1e2;
 }
 
 .poster {
     width: 135px;
     margin-bottom: 10px;
-    box-shadow: 0px 7px 4px #66696c;
+    box-shadow: 0px 3px 4px #373737;
 
+}
+
+.smallTitle {
+    text-transform: uppercase;
+    color: #e0e1e2;
+    font-size: x-large;
 }
 
 h3 {
@@ -43,8 +51,14 @@ h3 {
 }
 
 .buttons {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     width: 210px;
     margin: 0px 10px 0px 10px;
+    padding-top: 20px;
+    background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
+    border-radius: 2% 2% 2% 2%;
 }
 
 p {
@@ -63,24 +77,18 @@ p {
     }
 
     .description {
-        margin: 20px 10px 0px 90px;
-        width: 150px;
+        margin: 0px -15px 0px 0px;
+        width: 200px;
     }
 
     .buttons {
-        width: 150px;
-        margin: 0px 80px 0px 10px; 
+        width: 200px;
+        margin: 0px 0px 0px 10px; 
+        padding: 5px auto;
     }
 
-    .backButton {
-        top: 270px;
-        left: 160px;
-    }
-
-    .choice {
-        display: flex;
-        text-align: center;
-        margin-top: 60px;
+    .smallTitle {
+        font-size: large;
     }
 
     .poster {
