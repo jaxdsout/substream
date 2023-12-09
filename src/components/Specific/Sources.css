@@ -63,7 +63,7 @@
  * ---------------------------------------------- */
 
  
-@media only screen and (min-width: 320px) and (max-width: 450px) {
+@media only screen and (min-width: 320px) and (max-width: 430px) {
         .sources {
                 display: inline;
                 text-align: center;
