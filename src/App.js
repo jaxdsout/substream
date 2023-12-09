@@ -95,24 +95,31 @@ function App () {
                 handleFilter={handleFilter}
                 filters={filterOptions}
                 />
-              <div className='middle'>
-              <Routes>
-                <Route path="/" element={ <Navigate to="/substream" /> } />
-                <Route path="/substream/search/:userSearch" element={
-                  <SearchResults
-                    results={results}
-                    onResultClick={handleResultClick}
-                    lastSearchString={lastSearchString}
-                    getMovie={getMovie}
-                  />
-                }/>
-                <Route path="/substream/:id" element={
-                  <Choice 
-                    handleBack={handleBack}/>
-                }/>
-              </Routes>
-              </div>
-          </div>
+              {results ? (
+                <div className='middle'>
+                  <Routes>
+            <Route path="/" element={<Navigate to="/substream" />} />
+            <Route
+              path="/substream/search/:userSearch"
+              element={
+                <SearchResults
+                  results={results}
+                  onResultClick={handleResultClick}
+                  lastSearchString={lastSearchString}
+                  getMovie={getMovie}
+                />
+              }
+            />
+            <Route
+              path="/substream/:id"
+              element={<Choice handleBack={handleBack} />}
+            />
+          </Routes>
+        </div>
+      ) : (
+        <></>
+      )}
+    </div>
        </div>
     )
 }

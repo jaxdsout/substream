@@ -5,8 +5,8 @@
 
 .logo {
     font-family: 'Bungee', sans-serif;
-    color: white;
-    font-size: 9rem;
+    color: #e0e1e2;
+    font-size: 9.5rem;
     font-style: italic;
     text-align: center;
     cursor: pointer;
@@ -16,12 +16,11 @@
 }
 
 .logo:hover{
-        color: #3dbf84;
+        color: white;
 }
 
 .logo:active {
-        color: white;
-        color: #3dbf84;
+        color: #e0e1e2;
         -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.70, 0.450, 0.940) reverse both;
         animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
 }
@@ -39,7 +38,7 @@
               transform: translateY(-8px);
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
-      text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 30px 40px #003f31;
+      text-shadow: 0 1px 0 #3e3e3e, 0 2px 0 #3e3e3e, 0 3px 0 #3e3e3e, 0 4px 0 #3e3e3e, 0 5px 0 #3e3e3e, 0 6px 0 #3e3e3e, 0 7px 0 #3e3e3e, 0 8px 0 #3e3e3e, 0 9px 0 #3e3e3e;
     }
   }
   @keyframes text-pop-up-top {
@@ -55,7 +54,7 @@
               transform: translateY(-8px);
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
-      text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 5px 0 #003f31, 0 6px 0 #003f31, 0 7px 0 #003f31, 0 8px 0 #003f31, 0 9px 0 #003f31, 0 30px 40px #003f31;
+      text-shadow: 0 1px 0 #3e3e3e, 0 2px 0 #3e3e3e, 0 3px 0 #3e3e3e, 0 4px 0 #3e3e3e, 0 5px 0 #3e3e3e, 0 6px 0 #3e3e3e, 0 7px 0 #3e3e3e, 0 8px 0 #3e3e3e, 0 9px 0 #3e3e3e;
     }
 }      
  
@@ -70,40 +69,8 @@
 @media screen and (min-width: 320px) and (max-width: 450px) {
    .logo {
         font-size: 3.8rem;
-        margin-left: -50px !important;
+        margin-left: -28px !important;
+        margin-bottom: 8px !important;
    }
 
-   @-webkit-keyframes text-pop-up-top {
-        0% {
-          -webkit-transform: translateY(0);
-                  transform: translateY(0);
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-          text-shadow: none;
-        }
-        100% {
-          -webkit-transform: translateY(-3px) !important;
-                  transform: translateY(-3px) !important;
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-                  text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 10px 60px #003f31
-        }
-      }
-      @keyframes text-pop-up-top {
-        0% {
-          -webkit-transform: translateY(0) !important;
-                  transform: translateY(0) !important;
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-          text-shadow: none;
-        }
-        100% {
-          -webkit-transform: translateY(-3px) !important;
-                  transform: translateY(-3px) !important;
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-        text-shadow: 0 1px 0 #003f31, 0 2px 0 #003f31, 0 3px 0 #003f31, 0 4px 0 #003f31, 0 10px 60px #003f31
-        }
-    
-}
 }

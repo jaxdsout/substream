@@ -39,7 +39,8 @@ function Sources ({ resultDetails }) {
       if ((type==="sub" || type==="free") && !sourceNames.has(sourceKey) && 
       (!name.includes("(Via") && !name.includes("(via") && !name.includes("with")
         && !name.includes("fubo") && !name.includes("Hoopla") 
-        && !name.includes("On Demand") && !name.includes("Discovery GO"))) {
+        && !name.includes("On Demand") && !name.includes("Discovery GO")
+        && !name.includes("Adult Swim"))) {
         subSources.push({...source, name, web_url})
         sourceNames.add(sourceKey);
       }

@@ -1,27 +1,33 @@
+.mainBox {
+    display: flex;
+    justify-content: center;   
+}
+
 .top {
     display: flex;    
     flex-direction: column;
-    box-shadow: 1px -1px #17774b, 2px -2px #17774b, 3px -3px #17774b, 4px -4px #17774b, 5px -5px #17774b, 6px -6px #17774b, 7px -7px #17774b, 8px -8px #17774b;
-    margin: 50px 120px 0px 120px;
+    margin: 50px 0px 0px 0px;
     padding: 50px 50px 50px 50px;
-    background-color: #19935b;
-    border-radius: 77% 23% 44% 56% / 50% 53% 47% 50% ;
+    background-image: radial-gradient(black 20%, rgb(21, 21, 21) );
+    border-radius: 3% 3% 3% 3%;
     text-align: center;
-    max-width: 1250px;
-    min-width: 1249px;
+    max-width: 1000px;
+    min-width: 999px;
 }
-
 
 .middle {
     flex-wrap: wrap;
-    box-shadow: 1px -1px #c9c9c9, 2px -2px #c9c9c9, 3px -3px #c9c9c9, 4px -4px #c9c9c9, 5px -5px #c9c9c9, 6px -6px #c9c9c9, 7px -7px #c9c9c9, 8px -8px #c9c9c9;
-    border-radius: 23% 77% 34% 66% / 79% 31% 69% 21%;
-    background-color: #e0e1e2;
-    margin: 50px 0px 0px 0px;
-    padding: 40px 150px 50px 150px;
-    height: 470px;
+    border-radius: 2% 2% 2% 2%;
+    background-color: none;
+    margin: 5px 0px 0px 0px;
+    padding: 10px 0px 10px 0px;
     max-width: 800;
     min-width: 799px;
+}
+
+
+.bottom {
+    background-color: black !important;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 450px) {
@@ -29,16 +35,14 @@
         max-width: 435px;
         min-width: 350px;
         margin: 50px 20px 0px 20px;
-        border-radius: 8% 22% 0% 84% / 85% 27% 0% 15%;
     }
 
     .middle {
-        max-width: 435px;
-        min-width: 350px;
-        height: 550px;
-        margin: 30px 50px 0px -20px !important;
-        padding: 40px 12px 10px 12px;
-        border-radius: 23% 99% 44% 96% / 79% 31% 5% 21%;
+        max-width: 455px;
+        min-width: 370px;
+        height: 600px;
+        margin: 10px 20px 0px -40px !important;
+        padding: 20px 10px 10px 10px;
     }
 }
 
