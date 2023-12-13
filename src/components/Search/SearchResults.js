@@ -1,6 +1,6 @@
 import "./SearchResults.css"
 import Result from "./Result"
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, Loader } from "react";
 import { useParams } from "react-router-dom";
 
 function SearchResults({ results, onResultClick, lastSearchString, getMovie }) {
@@ -13,7 +13,12 @@ function SearchResults({ results, onResultClick, lastSearchString, getMovie }) {
     }
   }, [reloadString, lastSearchString])
 
-  if (results && results.length > 0) {
+  if (!results) {
+    return <div className="results">
+      <Loader active inline='centered' />
+    </div>
+  }
+  else {
     return (
       <div className="results">
         <Fragment>
@@ -22,10 +27,8 @@ function SearchResults({ results, onResultClick, lastSearchString, getMovie }) {
               ))}
         </Fragment>
       </div>
-    ) 
+    )
   }
-
-  return null;
 }
 
 export default SearchResults;
