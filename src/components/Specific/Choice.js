@@ -63,7 +63,7 @@ function Choice ({handleBack}) {
                     className="backButton"
                 >
                     <Icon name='fast backward' /> 
-                        <span> RESULTS </span>
+                        <span> BACK TO RESULTS </span>
                 </Button>
             </div>
         </div>

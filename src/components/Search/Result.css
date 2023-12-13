@@ -20,41 +20,28 @@
 
 .thumbnail:hover {
     cursor: pointer;
-    -webkit-animation: text-pop-down-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) alternate-reverse both;
-    animation: text-pop-down-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) alternate-reverse both;
+    -webkit-animation: scale-down-center 0.05s steps(1, end) both;
+        animation: scale-down-center 0.05s steps(1, end) both;
 }
 
-
-@-webkit-keyframes text-pop-down-top {
+@-webkit-keyframes scale-down-center {
         0% {
-          -webkit-transform: translateY(0);
-                  transform: translateY(0);
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-          text-shadow: none;
+          -webkit-transform: scale(1);
+                  transform: scale(1);
         }
         100% {
-          -webkit-transform: translateY(10px);
-                  transform: translateY(10px);
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-          text-shadow: 0 1px 0 #FFFFFF, 0 2px 0 #FFFFFF, 0 3px 0 #FFFFFF, 0 4px 0 #FFFFFF, 0 5px 0 #FFFFFF, 0 6px 0 #FFFFFF, 0 7px 0 #FFFFFF, 0 8px 0 #FFFFFF, 0 9px 0 #FFFFFF, 0 50px 30px rgba(0, 0, 0, 0.3);
+          -webkit-transform: scale(0.95);
+                  transform: scale(0.95);
         }
       }
-      @keyframes text-pop-down-top {
+      @keyframes scale-down-center {
         0% {
-          -webkit-transform: translateY(0);
-                  transform: translateY(0);
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-          text-shadow: none;
+          -webkit-transform: scale(1);
+                  transform: scale(1);
         }
         100% {
-          -webkit-transform: translateY(10px);
-                  transform: translateY(10px);
-          -webkit-transform-origin: 50% 50%;
-                  transform-origin: 50% 50%;
-          text-shadow: 0 1px 0 #FFFFFF, 0 2px 0 #FFFFFF, 0 3px 0 #FFFFFF, 0 4px 0 #FFFFFF, 0 5px 0 #FFFFFF, 0 6px 0 #FFFFFF, 0 7px 0 #FFFFFF, 0 8px 0 #FFFFFF, 0 9px 0 #FFFFFF, 0 50px 30px rgba(0, 0, 0, 0.3);
+          -webkit-transform: scale(0.95);
+                  transform: scale(0.95);
         }
 }
 

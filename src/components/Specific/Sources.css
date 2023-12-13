@@ -28,30 +28,30 @@
 
 @-webkit-keyframes shadow-pop-tr-logo {
     0% {
-      -webkit-box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
-              box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
+      -webkit-box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
+              box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
       -webkit-transform: translateX(0) translateY(0);
               transform: translateX(0) translateY(0);
     }
     100% {
-      -webkit-box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a, 4px -4px #49494a, 5px -5px #49494a;
-              box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a, 4px -4px #49494a, 5px -5px #49494a;
-      -webkit-transform: translateX(-5px) translateY(5px);
-              transform: translateX(-5px) translateY(5px);
+      -webkit-box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
+              box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
+      -webkit-transform: translateX(-3px) translateY(3px);
+              transform: translateX(-3px) translateY(3px);
     }
   }
   @keyframes shadow-pop-tr-logo {
     0% {
-      -webkit-box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
-              box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
+      -webkit-box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
+              box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
       -webkit-transform: translateX(0) translateY(0);
               transform: translateX(0) translateY(0);
     }
     100% {
-      -webkit-box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a, 4px -4px #49494a, 5px -5px #49494a;
-              box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a, 4px -4px #49494a, 5px -5px #49494a;
-      -webkit-transform: translateX(-5px) translateY(5px);
-              transform: translateX(-5px) translateY(5px);
+      -webkit-box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
+              box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
+      -webkit-transform: translateX(-3px) translateY(3px);
+              transform: translateX(-3px) translateY(3px);
     }
 }
 
@@ -71,6 +71,7 @@
 
         .no-sources{
                 text-wrap: wrap;
+                font-size: .7rem !important;
         }
 
         .sourceLogo:active{

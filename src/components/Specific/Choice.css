@@ -7,8 +7,11 @@
 }
 
 .backButton {
-    margin-top: 50px !important;
+    margin-top: 30px !important;
     height: 40px;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+
 }
 
 .backButton:hover{
@@ -35,7 +38,7 @@
 .poster {
     width: 135px;
     margin-bottom: 10px;
-    box-shadow: 0px 3px 4px #373737;
+    box-shadow: 0px 3px 4px #252525;
 
 }
 
@@ -54,7 +57,6 @@ h3 {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 210px;
     margin: 0px 10px 0px 10px;
     padding-top: 20px;
     background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
