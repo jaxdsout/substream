@@ -2,10 +2,10 @@ import imdbLogo from "../../logos/imdblogo.png"
 import letterLogo from "../../logos/letterboxdlogo.png"
 import "./Reviews.css"
 
-function Reviews ({ resultDetails }) {
-    let imdbURL = `https://www.imdb.com/title/${resultDetails.imdb_id}/`
+function Reviews ({ choice }) {
+    let imdbURL = `https://www.imdb.com/title/${choice.imdb_id}/`
     
-    const letterboxd = resultDetails.title.toLowerCase().replace(/ /g,"-").replace(/[:().!,?'"]/g, '')
+    const letterboxd = choice.title.toLowerCase().replace(/ /g,"-").replace(/[:().!,?'"]/g, '')
     let letterURL = `https://letterboxd.com/film/${letterboxd}/`
 
     return (
@@ -17,7 +17,7 @@ function Reviews ({ resultDetails }) {
                     alt={`IMDB Logo`}
                 />
             </a>
-            {resultDetails.type === "movie" && (
+            {choice.type === "movie" && (
                 <a href={letterURL} target="_blank" rel="noopener noreferrer">
                     <img
                         className="sourceLogo"

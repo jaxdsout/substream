@@ -21,44 +21,39 @@ import FreeveeLogo from "../../logos/freeveelogo.png"
 import AppleTVLogo from "../../logos/appletvlogo.png"
 import RokuLogo from "../../logos/rokulogo.png"
 
-function Sources ({ resultDetails }) {
-    
+function Sources ({ choice }) {
+  const region = "US"
+  
   function filterUniqueSources(sources) {
     const subSources = [];
-    const sourceNames = new Set();
+    const sourceNames = new Set();  
 
     for (const source of sources) {
-      let { name, type, web_url } = source;
+      let { name, type, web_url, image_url } = source;
       const sourceKey = `${name}-${type}`;
+      console.log("Checking source:", source);
 
-      if (name==="Showtime") {
-        name = "Paramount+";
-        web_url = `https://www.paramountplus.com/`
-      }
-
-      if ((type==="sub" || type==="free") && !sourceNames.has(sourceKey) && 
-      (!name.includes("(Via") && !name.includes("(via") && !name.includes("with")
-        && !name.includes("fubo") && !name.includes("Hoopla") 
-        && !name.includes("On Demand") && !name.includes("Discovery GO")
-        && !name.includes("Adult Swim"))) {
-        subSources.push({...source, name, web_url})
-        sourceNames.add(sourceKey);
-      }
+      if ((type==="sub") && !sourceNames.has(sourceKey) 
+        && (!name.includes("(Via") && !name.includes("(via") && !name.includes("with") && !name.includes("On Demand"))){
+          subSources.push({...source, name, web_url, image_url})
+          sourceNames.add(sourceKey);
+        }
     }
+
     return subSources;
   }
 
-  const sources = filterUniqueSources(resultDetails.sources);
+  const sources = filterUniqueSources(choice.sources);
 
   function getLogo(name) {        
     switch (name) {
-      case "Max":
+      case "MAX":
           return MaxLogo;
       case "Netflix":
           return NetflixLogo;
       case "Hulu":
           return HuluLogo;
-      case "Paramount+":
+      case "Paramount Plus":
         return ParamountLogo;
       case "Disney+":
         return DisneyLogo;
@@ -113,7 +108,7 @@ function Sources ({ resultDetails }) {
         </Fragment>
       ) : (
         <div className="no-sources">
-          <p>This content is currently not streaming on any platforms.</p>
+          <p>This content is currently not streaming on any {region} platforms.</p>
         </div>
       )}
     </div>
