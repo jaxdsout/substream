@@ -3,11 +3,7 @@ import "./Choice.css"
 import Sources from "./Sources"
 import Reviews from "./Reviews"
 
-function Choice ({handleBack, choice}) {
-    
-    if (!choice) {
-      return <div>Loading...</div>;
-    }
+function Choice ({handleBack, choice, getChoice}) {
 
     return (
         <div className="choice">

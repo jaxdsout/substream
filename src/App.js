@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { Route, Routes, useNavigate, Navigate, useParams } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 
 import SearchBar from './components/Search/SearchBar';
@@ -78,7 +78,7 @@ function App () {
 
     function getChoice () {
       const result_id = localStorage.getItem("result_id")
-      const url = `${searchOptions.url}title/${result_id}/details/?apiKey=${searchOptions.key}&append_to_response=sources`;
+      const url = `${searchOptions.url}title/${result_id}/details/?apiKey=${searchOptions.key}&append_to_response=sources&regions=${searchOptions.region}`;
       axios
         .get(url)
         .then((res) => {
@@ -96,21 +96,6 @@ function App () {
         getMovies(searchString)
       }
     }
-
-
-    useEffect(() => {
-      const storedSearchString = localStorage.getItem('lastSearchString');
-      const storedResultId = localStorage.getItem('result_id');
-      
-      if (storedResultId) {
-        getChoice();
-      } else if (storedSearchString) {
-        setSearchString(storedSearchString);
-        getMovies(storedSearchString);
-      } else {
-        navigate('/substream');
-      }
-    }, [navigate]);
 
 
     return (
@@ -138,7 +123,7 @@ function App () {
                 />
               }/>
               <Route path="/substream/detail/:id" element={
-                <Choice handleBack={handleBack} choice={choice} />
+                <Choice handleBack={handleBack} choice={choice} getChoice={getChoice}/>
               }/>
             </Routes>
           </div> ) : (
