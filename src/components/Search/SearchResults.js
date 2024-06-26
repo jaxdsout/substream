@@ -1,34 +1,20 @@
 import "./SearchResults.css"
 import Result from "./Result"
-import { Fragment, useEffect, Loader } from "react";
-import { useParams } from "react-router-dom";
+import { Fragment } from "react";
 
-function SearchResults({ results, onResultClick, lastSearchString, getMovie }) {
-  const { userSearch } = useParams()
-  const reloadString = encodeURIComponent(userSearch)
+function SearchResults({ results, onResultClick }) {
 
-  useEffect(() => {
-    if (!lastSearchString) {
-      getMovie(reloadString);
-    }
-  }, [reloadString, lastSearchString])
-
-  if (!results) {
-    return <div className="results">
-      <Loader active inline='centered' />
-    </div>
-  }
-  else {
     return (
       <div className="results">
         <Fragment>
           {results.map((result, index) => (
+              result.image_url !== "https://cdn.watchmode.com/posters/blank.gif" ? (
                 <Result key={index} result={result} onResultClick={onResultClick} />
+              ) : null
               ))}
         </Fragment>
       </div>
     )
-  }
 }
 
 export default SearchResults;
