@@ -95,15 +95,6 @@ function App () {
       }
     }
 
-    useEffect(() => {
-      const lastSearch = localStorage.getItem('lastSearchString')
-      if (lastSearch) {
-        getMovies(lastSearch)
-        setSearchString(lastSearch)
-        console.log("reload")
-      } 
-    }, [])
-
     return (
       <div className='mainBox'>
         <div className='top'>
