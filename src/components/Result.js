@@ -1,4 +1,3 @@
-import './Result.css'
 
 function Result ({ result, onResultClick }) {
     const handleClick = () => {
@@ -13,8 +12,8 @@ function Result ({ result, onResultClick }) {
           onClick={handleClick}
         />
         <p className='title'>
-            {result.name.length > 50
-              ? result.name.substring(0, 46) + '...'
+            {result.name.length > 34
+              ? result.name.substring(0, 30) + '...'
               : result.name}
         </p>
       </div>
