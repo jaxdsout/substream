@@ -1,10 +1,12 @@
 import { Button, Icon } from "semantic-ui-react"
 import Sources from "./Sources"
 import Reviews from "./Reviews"
+import { Fragment } from "react"
 
-function Choice ({handleBack, choice, getChoice}) {
+function Choice ({handleBack, choice}) {
 
     return (
+        <Fragment>
         <div className="choice">
             <div className="description">
                 <img className="poster" src={choice.poster} alt={choice.title} />
@@ -34,6 +36,7 @@ function Choice ({handleBack, choice, getChoice}) {
             </div>    
             </div>  
         </div>
+        </Fragment>
     )
 }
 
