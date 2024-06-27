@@ -12,8 +12,8 @@ function Result ({ result, onResultClick }) {
           onClick={handleClick}
         />
         <p className='title'>
-            {result.name.length > 34
-              ? result.name.substring(0, 30) + '...'
+            {result.name.length > 40
+              ? result.name.substring(0, 37) + '...'
               : result.name}
         </p>
       </div>
