@@ -32,7 +32,6 @@ function Sources ({ choice }) {
     for (const source of sources) {
       let { name, type, web_url, image_url } = source;
       const sourceKey = `${name}-${type}`;
-      console.log("Checking source:", source);
 
       if ((type==="sub") && !sourceNames.has(sourceKey) 
         && (!name.includes("(Via") && !name.includes("(via") && !name.includes("with") && !name.includes("On Demand"))){

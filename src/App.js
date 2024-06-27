@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
@@ -29,7 +29,8 @@ function App () {
 
     function handleResultClick(result) {
       localStorage.setItem('result_id', result.id);
-      getChoice();
+      setChoice(result)
+      getChoice(result.id);
     }
 
     function handleHeaderClick(event) {
@@ -74,14 +75,13 @@ function App () {
         });
     };
 
-    function getChoice () {
-      const result_id = localStorage.getItem("result_id")
-      const url = `${searchOptions.url}title/${result_id}/details/?apiKey=${searchOptions.key}&append_to_response=sources&regions=${searchOptions.region}`;
+    function getChoice (choice_id) {
+      const url = `${searchOptions.url}title/${choice_id}/details/?apiKey=${searchOptions.key}&append_to_response=sources&regions=${searchOptions.region}`;
       axios
         .get(url)
         .then((res) => {
           setChoice(res.data);
-          navigate(`/substream/detail/${result_id}`);
+          navigate(`/substream/detail/${choice_id}`);
         })
         .catch((error) => {
           console.error('Error fetching details:', error);
@@ -95,12 +95,17 @@ function App () {
       }
     }
 
+    useEffect(() => {
+      const lastSearch = localStorage.getItem('lastSearchString')
+      if (lastSearch) {
+        getMovies(lastSearch)
+        setSearchString(lastSearch)
+        console.log("reload")
+      } 
+    }, [])
 
     return (
       <div className='mainBox'>
-        <Routes>
-          <Route path="/" element={<Navigate to="/substream" />} />
-        </Routes>
         <div className='top'>
           <div className='header'>
               <h1 className='logo' onClick={handleHeaderClick}>SUBSTREAM</h1>
@@ -117,13 +122,14 @@ function App () {
         {results ? (
         <div className='bottom ui container'>
             <Routes>
+            <Route path="/" element={<Navigate to="/substream" />} />
               <Route path="/substream/search/:userSearch" element={
                 <SearchResults
                   results={results}
                   onResultClick={handleResultClick}
                 />
               }/>
-              <Route path="/substream/detail/:id" element={
+              <Route path="/substream/detail/:choice_id" element={
                 <Choice handleBack={handleBack} choice={choice}/>
               }/>
             </Routes>
