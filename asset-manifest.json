@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/substream/static/css/main.29925d1b.css",
-    "main.js": "/substream/static/js/main.e921719c.js",
+    "main.css": "/substream/static/css/main.a59a1c12.css",
+    "main.js": "/substream/static/js/main.200baea0.js",
     "static/js/787.4ff63c6f.chunk.js": "/substream/static/js/787.4ff63c6f.chunk.js",
     "static/media/brand-icons.svg": "/substream/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/substream/static/media/icons.62d9dae4e0040e81c980.svg",
@@ -39,15 +39,16 @@
     "static/media/outline-icons.woff": "/substream/static/media/outline-icons.ddae9b1ba9b0b42f5880.woff",
     "static/media/freeveelogo.png": "/substream/static/media/freeveelogo.94f9543ac38cac771026.png",
     "static/media/imdblogo.png": "/substream/static/media/imdblogo.8f3f7a4983cc3a231b10.png",
+    "static/media/usa.png": "/substream/static/media/usa.9b98ef584780746742fd.png",
     "static/media/kanopy.png": "/substream/static/media/kanopy.d3c2bdb5fb7e5931cf85.png",
     "static/media/outline-icons.woff2": "/substream/static/media/outline-icons.687a4990ea22bb1a49d4.woff2",
     "index.html": "/substream/index.html",
-    "main.29925d1b.css.map": "/substream/static/css/main.29925d1b.css.map",
-    "main.e921719c.js.map": "/substream/static/js/main.e921719c.js.map",
+    "main.a59a1c12.css.map": "/substream/static/css/main.a59a1c12.css.map",
+    "main.200baea0.js.map": "/substream/static/js/main.200baea0.js.map",
     "787.4ff63c6f.chunk.js.map": "/substream/static/js/787.4ff63c6f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.29925d1b.css",
-    "static/js/main.e921719c.js"
+    "static/css/main.a59a1c12.css",
+    "static/js/main.200baea0.js"
   ]
 }
