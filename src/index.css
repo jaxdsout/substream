@@ -112,6 +112,10 @@ h3 {
 }
 
 .noResults {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
   padding-top: 3rem;
   padding-bottom: 3rem;
   border-radius: 2% 2% 2% 2%;
@@ -122,6 +126,7 @@ h3 {
 .result {
   margin: .5rem .75rem 0rem .7rem;
   text-align: center;
+  line-break: break-all;
 }
 
 .title {
@@ -185,8 +190,8 @@ h3 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 0rem .75rem 0rem .75rem;
-  padding-top: 2rem;
+  margin: 0rem 1rem 0rem 1rem;
+  padding: 2rem 1rem 0rem 1rem;
   background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
   border-radius: 2% 2% 2% 2%;
 }
@@ -243,7 +248,15 @@ h3 {
   animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
 }
 
+.footer {
+  display: flex;
+  justify-content: center;
 
+}
+
+.region-logo {
+  width: 2rem
+}
 
 
 
@@ -257,10 +270,17 @@ h3 {
 }
 
 @media only screen and (max-width: 767px) {
+  .mainBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 1rem 4rem 1rem;   
+  }
+
   .logo {
     font-family: 'Bungee', sans-serif;
     color: #e0e1e2;
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-style: italic;
     text-align: center;
     cursor: pointer;
@@ -288,7 +308,8 @@ h3 {
     height: 80rem;
     padding: 2rem 1rem 1rem 1rem;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
+  
    
   }
 
@@ -312,7 +333,7 @@ h3 {
   }
 
   .thumbnail {
-    width: 8rem;
+    width: 7rem;
   }
 
   .choice {

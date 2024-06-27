@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
+import usLogo from "./logos/usa.png"
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Choice from './components/Choice';
