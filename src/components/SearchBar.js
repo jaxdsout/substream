@@ -1,5 +1,3 @@
-import "./SearchBar.css"
-import "semantic-ui-css/semantic.min.css";
 import { useState } from "react";
 import { Icon, Dropdown } from "semantic-ui-react";
 
@@ -13,14 +11,14 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
     }
     
     return (
-           <div className="ui action input buster">
+           <div className="search-box ui container action input buster">
                 <input 
                     type="search"
                     placeholder="search..."
                     onChange={handleChange}
                     onKeyDown={handleSubmit}
                     value={searchString}
-                    className="searchBox"
+                    className="input_field"
                     spellCheck
                 />
                 <button className="ui button search" onClick={handleSubmit}>
@@ -37,6 +35,8 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
                 >
                 </Dropdown>
             </div>
+
+            
   )
 }
 

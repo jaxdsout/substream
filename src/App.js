@@ -1,12 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
-import './App.css';
 
-import SearchBar from './components/Search/SearchBar';
-import Header from './components/Header';
-import SearchResults from './components/Search/SearchResults';
-import Choice from './components/Specific/Choice';
+import SearchBar from './components/SearchBar';
+import SearchResults from './components/SearchResults';
+import Choice from './components/Choice';
 
 function App () {
     const [searchString, setSearchString] = useState('')
@@ -100,10 +98,13 @@ function App () {
 
     return (
       <div className='mainBox'>
+        <Routes>
+          <Route path="/" element={<Navigate to="/substream" />} />
+        </Routes>
         <div className='top'>
-          <Header 
-            onClick={handleHeaderClick}
-          />  
+          <div className='header'>
+              <h1 className='logo' onClick={handleHeaderClick}>SUBSTREAM</h1>
+          </div>
           <SearchBar 
             handleChange={handleSearch}
             handleSubmit={handleSubmit}
@@ -112,10 +113,10 @@ function App () {
             handleFilter={handleFilter}
             filters={filterOptions}
           />
+        </div>
         {results ? (
-          <div className='middle'>
+        <div className='bottom ui container'>
             <Routes>
-              <Route path="/" element={<Navigate to="/substream" />} />
               <Route path="/substream/search/:userSearch" element={
                 <SearchResults
                   results={results}
@@ -123,13 +124,13 @@ function App () {
                 />
               }/>
               <Route path="/substream/detail/:id" element={
-                <Choice handleBack={handleBack} choice={choice} getChoice={getChoice}/>
+                <Choice handleBack={handleBack} choice={choice}/>
               }/>
             </Routes>
-          </div> ) : (
-            <></>
-          )}
         </div>
+        ) : (
+          <></>
+        )}
       </div>
     )
 }

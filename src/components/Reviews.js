@@ -1,6 +1,5 @@
-import imdbLogo from "../../logos/imdblogo.png"
-import letterLogo from "../../logos/letterboxdlogo.png"
-import "./Reviews.css"
+import imdbLogo from "../logos/imdblogo.png"
+import letterLogo from "../logos/letterboxdlogo.png"
 
 function Reviews ({ choice }) {
     let imdbURL = `https://www.imdb.com/title/${choice.imdb_id}/`
