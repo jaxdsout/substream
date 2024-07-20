@@ -80,10 +80,6 @@ h3 {
   flex-direction: row;
 }
 
-.ui.container {
-  margin-left: 0;
-  margin-right: 0;
-}
 
 .ui.button.dropdown {
   background-color: rgb(224, 225, 226) !important;
@@ -222,7 +218,6 @@ h3 {
   align-items: center;
   justify-items: center;
   padding: 0rem 1rem 0rem 1rem;
-  background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
 }
 
 .sources {
@@ -329,15 +324,15 @@ h3 {
     align-content: center;
   }
   .results {
-    flex-direction: column;
-    flex-flow: wrap;
-    overflow-x: hidden ; 
+    display: flex;
+    overflow-x: visible;
     overflow-y: auto;
     overflow-wrap: break-word;
     height: 80rem;
-    padding: 2rem 1rem 1rem 1rem;
-    justify-content: center;
-    align-items: baseline;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 28rem;
+    align-content: flex-start;
   
    
   }
@@ -357,6 +352,11 @@ h3 {
     font-size: .6rem;
   }
 
+  .ui.container {
+    margin-left: 0em !important;
+    margin-right: 0em !important;
+  }
+
   .result {
     margin: .25rem .75rem 0rem .45rem;
   }
@@ -372,7 +372,8 @@ h3 {
     justify-content: center;
     padding: 1rem 1rem 1rem 1rem !important;
     margin-bottom: 1rem;
-  
+    margin-top: 0rem;
+    width: 28rem;
   }
 
   .description {
@@ -394,6 +395,13 @@ h3 {
 
   .top {
     margin-bottom: 1rem;
+  }
+
+
+  .tiered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
 }
