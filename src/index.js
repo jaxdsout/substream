@@ -4,16 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-    <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Hairline&display=swap" rel="stylesheet"></link>
+  <React.StrictMode>
+  <HashRouter>
     <App />
-  </Router>
+  </HashRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

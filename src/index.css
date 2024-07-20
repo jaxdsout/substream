@@ -19,10 +19,10 @@ h3 {
 }
 
 .mainBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   padding: 3rem 0rem 4rem 0rem;   
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
 }
 
 .top {
@@ -31,6 +31,13 @@ h3 {
   margin-top: 2rem;
   border-radius: 3% 3% 3% 3%;
   text-align: center;
+}
+
+.logo-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .logo {
@@ -61,6 +68,17 @@ h3 {
   font: 'Bungee Hairline', sans-serif;
 }
 
+.top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+}
 
 .ui.container {
   margin-left: 0;
@@ -95,6 +113,10 @@ h3 {
   background-color: none;
   margin-top: 1rem;
   padding: .5rem 0rem .5rem 0rem;
+}
+
+.faq { 
+  color: white;
 }
 
 .results {
@@ -154,20 +176,23 @@ h3 {
 
 .choice {
   display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
-  padding: 1rem 1rem 1rem 1rem !important;
-  margin-bottom: 1rem;
+  padding: 2rem 1rem 1rem 1rem !important;
+  margin-bottom: 1rem;  
+  align-items:center;
+  border-radius: 2% 2% 2% 2%;
+  overflow-x: auto;
+  overflow-y: hidden;   
+  margin-top: 1rem;
+  background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
 
 }
 
 .description {
   text-wrap: wrap;
   padding: 1rem 2rem 1rem 2rem;
-  background-image: #49494a !important;
-  border: 5px solid #e0e1e2;
-  border-radius: 2% 2% 2% 2%;
-  color: #e0e1e2;
 }
 
 .poster {
@@ -181,27 +206,29 @@ h3 {
 
 .smallTitle {
   text-transform: uppercase;
-  color: #e0e1e2;
   font-size: 1.2rem;
   text-wrap: wrap;
+}
+
+.boxy {
+  display: flex;
+  flex-direction: column;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 0rem 1rem 0rem 1rem;
-  padding: 2rem 1rem 0rem 1rem;
+  align-items: center;
+  justify-items: center;
+  padding: 0rem 1rem 0rem 1rem;
   background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
-  border-radius: 2% 2% 2% 2%;
 }
 
 .sources {
   display: flex;
-  flex-direction: row;
-  text-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  padding: 1rem 1rem 1rem 1rem;
 }
 
 .sourceLogo {
@@ -226,16 +253,12 @@ h3 {
 
 .reviews {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 }
 
 .backButtonBox {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-.backButton {
-  margin-top: 2rem;
+  display: flex;
 }
 
 .backButton:hover{
@@ -246,6 +269,12 @@ h3 {
   background-color: #e0e1e2;
   -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
   animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
+}
+
+.tiered {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .footer {
@@ -363,7 +392,7 @@ h3 {
     overflow-wrap: break-word;
   }
 
-  .header {
+  .top {
     margin-bottom: 1rem;
   }
   

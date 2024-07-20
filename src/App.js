@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Button, Modal, Icon } from "semantic-ui-react";
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
-
-import usLogo from "./logos/usa.png"
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Choice from './components/Choice';
@@ -12,6 +11,7 @@ function App () {
     const [results, setResults] = useState(null)    
     const [filters, setFilters] = useState('2')
     const [choice, setChoice] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const navigate = useNavigate()
 
@@ -39,14 +39,14 @@ function App () {
       setSearchString('')
       localStorage.removeItem('lastSearchString')
       localStorage.removeItem('result_id')
-      navigate("/substream")
+      navigate("/")
     }
 
     function handleBack (event) {
       event.preventDefault();
       localStorage.removeItem('result_id')
       const userSearch = localStorage.getItem('lastSearchString')
-      navigate(`/substream/search/${userSearch}`)
+      navigate(`/search/${userSearch}`)
     }
 
     const filterOptions = [
@@ -69,7 +69,7 @@ function App () {
         .get(url)
         .then((res) => {
           setResults(res.data.results);
-          navigate(`/substream/search/${userSearch.toLowerCase()}`);
+          navigate(`/search/${userSearch.toLowerCase()}`);
         })
         .catch((error) => {
           console.error('Error fetching search results:', error);
@@ -82,7 +82,7 @@ function App () {
         .get(url)
         .then((res) => {
           setChoice(res.data);
-          navigate(`/substream/detail/${choice_id}`);
+          navigate(`/detail/${choice_id}`);
         })
         .catch((error) => {
           console.error('Error fetching details:', error);
@@ -96,39 +96,61 @@ function App () {
       }
     }
 
+    const handleInfoClick = () => {
+      setShowModal(true);
+    };
+  
+    const handleCloseModal = () => {
+      setShowModal(false);
+    };
+  
+
     return (
-      <div className='mainBox'>
-        <div className='top'>
-          <div className='header'>
+      <div className='mainBox ui container'>
+          <div className='top ui container'>
+            <div className='logo-box'> 
               <h1 className='logo' onClick={handleHeaderClick}>SUBSTREAM</h1>
+              <Icon name="info circle" className="faq" onClick={handleInfoClick} />
+            </div>
+            <SearchBar 
+              handleChange={handleSearch}
+              handleSubmit={handleSubmit}
+              searchString={searchString}
+              handleClear={handleClear}
+              handleFilter={handleFilter}
+              filters={filterOptions}
+            />
           </div>
-          <SearchBar 
-            handleChange={handleSearch}
-            handleSubmit={handleSubmit}
-            searchString={searchString}
-            handleClear={handleClear}
-            handleFilter={handleFilter}
-            filters={filterOptions}
-          />
-        </div>
-        {results ? (
-        <div className='bottom ui container'>
+          {results ? (
+          <div className='bottom ui container'>
             <Routes>
-            <Route path="/" element={<Navigate to="/substream" />} />
-              <Route path="/substream/search/:userSearch" element={
+              <Route path="/" element={<Navigate to="/" />} />
+              <Route path="/search/:userSearch" element={
                 <SearchResults
+                  searchString={searchString}
                   results={results}
                   onResultClick={handleResultClick}
                 />
               }/>
-              <Route path="/substream/detail/:choice_id" element={
+              <Route path="/detail/:choice_id" element={
                 <Choice handleBack={handleBack} choice={choice}/>
               }/>
             </Routes>
-        </div>
-        ) : (
-          <></>
-        )}
+          </div>
+          ) : (
+            <></>
+          )}
+          <Modal open={showModal} onClose={handleCloseModal}>
+            <Modal.Header>Substream</Modal.Header>
+            <Modal.Content>
+              <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
+              <p>Currently only serves the U.S. market.</p>
+              <p>Made possible by the <a href='https://api.watchmode.com/' target='_blank'>Watchmode API</a></p>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button onClick={handleCloseModal}>Close</Button>
+            </Modal.Actions>
+          </Modal>
       </div>
     )
 }
