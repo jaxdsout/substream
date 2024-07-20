@@ -11,7 +11,7 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
     }
     
     return (
-           <div className="search-box ui container action input buster">
+           <div className="search-box ui container action input">
                 <input 
                     type="search"
                     placeholder="search..."
