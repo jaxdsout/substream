@@ -1,11 +1,15 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-image: radial-gradient(black 20%, rgb(21, 21, 21)) !important;
-  background-size: 180% 180% !important;
-  background-repeat: no-repeat !important;
+  background-color: #252525;
+}
+
+.shell {
+  background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
 }
 
 code {
@@ -18,31 +22,22 @@ h3 {
   color: #49494a;
 }
 
-.mainBox {
-  padding: 3rem 0rem 4rem 0rem;   
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-}
-
 .top {
-  display: flex;    
-  flex-direction: column;
-  margin-top: 2rem;
   border-radius: 3% 3% 3% 3%;
-  text-align: center;
 }
 
-.logo-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: baseline;
+.bi-search {
+  font-size: 2rem;
+  color: blue;
+}
+
+.bottom {
+  border-radius: 2% 2% 2% 2%;
 }
 
 .logo {
   font-family: 'Bungee', sans-serif;
-  color: #e0e1e2;
+  color: #ff8742;
   font-size: 9.5rem;
   font-style: italic;
   text-align: center;
@@ -53,111 +48,60 @@ h3 {
 }
 
 .logo:hover{
-      color: white;
+      color: #e4793b;
 }
 
 .logo:active {
-      color: #e0e1e2;
+      color: #c46833;
       -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.70, 0.450, 0.940) reverse both;
       animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
 }
 
-
-.input_field {
+.input {
   font-size: 1.5rem !important;
   font: 'Bungee Hairline', sans-serif;
 }
 
-.top {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
-}
-
-.banner {
-  display: flex;
-  flex-direction: row;
-}
-
-
-.ui.button.dropdown {
-  background-color: rgb(224, 225, 226) !important;
-  border: none !important;
-  color: rgb(73, 73, 74) !important;
-  text-transform: uppercase;
-}
-
-
-.ui.dropdown .menu>.header {
-  text-wrap: wrap;
-  font-size: 1rem;
-}
-
-.ui.action.input {
-  padding: 1.9rem auto !important;
-}
-
-.ui.button.dropdown:hover {
-  background-color: rgb(202, 203, 205) !important;
-}
-
-.bottom {
-  display: flex;
-  flex-direction: row;
-  border-radius: 2% 2% 2% 2%;
-  background-color: none;
-  margin-top: 1rem;
-  padding: .5rem 0rem .5rem 0rem;
-}
-
-.faq { 
-  color: white;
-}
 
 .results {
-  display: flex;
-  padding: 2rem 1rem 1rem 1rem;
-  flex-direction: row;
-  align-items:start;
-  justify-content: start; 
-  border-radius: 2% 2% 2% 2%;
-  overflow-x: auto;
-  overflow-y: hidden;   
-  overflow-wrap: break-word;
-  margin-top: 1rem;
   background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
+  scrollbar-color: #49494a, rgba(0, 0, 0, 0);
+}
+
+.results::-webkit-scrollbar {
+  width: 12px;
+}
+
+.results::-webkit-scrollbar-track {
+  background: rgba(224, 225, 226, 0);
+}
+
+.results::-webkit-scrollbar-thumb {
+  background-color: #49494a; 
+  border-radius: 2rem;
+  border: 3px solid rgb(224, 225, 226);
+}
+
+.results::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(50, 50, 50);
 }
 
 .noResults {
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content: center;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
   border-radius: 2% 2% 2% 2%;
   background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
 
 }
 
-.result {
-  margin: .5rem .75rem 0rem .7rem;
-  text-align: center;
-  line-break: break-all;
-}
-
 .title {
-  margin-top: .75rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #49494a;
-  padding-bottom: 1rem;
 }
 
 .thumbnail {
   width: 10rem;
-  box-shadow: 0px 7px 4px #66696c;
+  box-shadow: 0px 5px 4px #66696c;
 }
 
 .thumbnail:hover {
@@ -171,60 +115,24 @@ h3 {
 /* CHOICES */
 
 .choice {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  padding: 2rem 1rem 1rem 1rem !important;
-  margin-bottom: 1rem;  
-  align-items:center;
-  border-radius: 2% 2% 2% 2%;
-  overflow-x: auto;
-  overflow-y: hidden;   
-  margin-top: 1rem;
+  border-radius: 2% 2% 2% 2%;  
   background-image: radial-gradient(#d8d8d8, #e0e1e2 50%);
-
 }
 
-.description {
-  text-wrap: wrap;
-  padding: 1rem 2rem 1rem 2rem;
-}
 
 .poster {
   width:12rem;
-  margin-bottom: 1rem;
   box-shadow: 0px 3px 4px #252525;
-
 }
 
 
 
-.smallTitle {
+.small_h3 {
   text-transform: uppercase;
   font-size: 1.2rem;
-  text-wrap: wrap;
 }
 
-.boxy {
-  display: flex;
-  flex-direction: column;
-}
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-items: center;
-  padding: 0rem 1rem 0rem 1rem;
-}
-
-.sources {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .sourceLogo {
   width: 5.5rem;
@@ -246,15 +154,7 @@ h3 {
   animation: shadow-pop-tr-logo 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
 }
 
-.reviews {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
-.backButtonBox {
-  display: flex;
-}
 
 .backButton:hover{
   -webkit-animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
@@ -266,145 +166,14 @@ h3 {
   animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
 }
 
-.tiered {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
 
-.footer {
-  display: flex;
-  justify-content: center;
 
-}
-
-.region-logo {
-  width: 2rem
-}
 
 
 
 /* RESPONSIVENESS */
 
-@media only screen and (max-width: 992px) {
-  .logo {
-    font-size: 7rem;
-  }
 
-}
-
-@media only screen and (max-width: 767px) {
-  .mainBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 3rem 1rem 4rem 1rem;   
-  }
-
-  .logo {
-    font-family: 'Bungee', sans-serif;
-    color: #e0e1e2;
-    font-size: 4.5rem;
-    font-style: italic;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.70, 0.450, 0.940) both;
-    animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  }
-
-  .input_field {
-    font-size: 1rem !important;
-    font: 'Bungee Hairline', sans-serif;
-  }
-
-  .bottom {
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-  }
-  .results {
-    display: flex;
-    overflow-x: visible;
-    overflow-y: auto;
-    overflow-wrap: break-word;
-    height: 80rem;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 28rem;
-    align-content: flex-start;
-  
-   
-  }
-
-  .title {
-    margin-top: .75rem;
-    font-size: 0.6rem;
-    font-weight: 600;
-    color: #49494a;
-    padding-bottom: 1rem;
-    word-wrap: break-word; 
-    word-break: break-all;
-    white-space: normal;
-  }
-
-  .ui.button.dropdown {
-    font-size: .6rem;
-  }
-
-  .ui.container {
-    margin-left: 0em !important;
-    margin-right: 0em !important;
-  }
-
-  .result {
-    margin: .25rem .75rem 0rem .45rem;
-  }
-
-  .thumbnail {
-    width: 7rem;
-  }
-
-  .choice {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    padding: 1rem 1rem 1rem 1rem !important;
-    margin-bottom: 1rem;
-    margin-top: 0rem;
-    width: 28rem;
-  }
-
-  .description {
-    margin-bottom: 2rem;
-  }
-
-  .backButtonBox {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .sources {
-    flex-direction: column;
-    flex-flow: wrap;
-    overflow-x: hidden ; 
-    overflow-y: auto;
-    overflow-wrap: break-word;
-  }
-
-  .top {
-    margin-bottom: 1rem;
-  }
-
-
-  .tiered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-}
 
 
 

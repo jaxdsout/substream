@@ -5,13 +5,13 @@ function Result ({ result, onResultClick }) {
     };
   
     return (
-      <div className="result">
+      <div className="me-2 ms-2 p-2">
         <img className="thumbnail" 
           src={result.image_url} 
           alt={result.name}
           onClick={handleClick}
         />
-        <p className='title'>
+        <p className='title mt-2 p-1'>
             {result.name.length > 40
               ? result.name.substring(0, 37) + '...'
               : result.name}
