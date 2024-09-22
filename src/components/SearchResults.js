@@ -7,7 +7,7 @@ function SearchResults({ results, onResultClick, searchString }) {
       <Fragment>
         {results.length > 0 ? (
           <>
-            <div className="results">
+            <div className="results container mt-4 d-flex flex-column flex-sm-row overflow-x-auto">
               {results.map((result, index) => (
                 result.image_url !== "https://cdn.watchmode.com/posters/blank.gif" ? (
                   <Result key={result.id || index} result={result} onResultClick={onResultClick} />

@@ -1,4 +1,3 @@
-import { Button, Icon } from "semantic-ui-react"
 import Sources from "./Sources"
 import Reviews from "./Reviews"
 import { Fragment } from "react"
@@ -7,11 +6,17 @@ function Choice ({handleBack, choice}) {
 
     return (
         <Fragment> 
-        <div className="choice">
-            <div className="tiered">
+        <div className="choice mt-3 p-3 d-flex flex-column">
+            <div className="backButtonBox">
+                <button icon onClick={handleBack}  className="backButton">
+                <i class="bi bi-skip-backward-btn-fill"></i>
+                <span> BACK TO RESULTS </span>
+                </button>
+            </div>
+            <div className="d-flex flex-row align-items-baseline">
                 <img className="poster" src={choice.poster} alt={choice.title} />
-                <div className="description">
-                    <h3 className="smallTitle"> {choice.title}</h3> 
+                <div className="text-wrap p-3 align-items-baseline">
+                    <h3 className="small_h3 text-wrap"> {choice.title}</h3> 
                     <p>{choice.us_rating}</p>
                     <p> <b>Release Date:</b> {choice.release_date} </p>
                     <p> <b>Genre:</b>{' '}
@@ -22,21 +27,15 @@ function Choice ({handleBack, choice}) {
                         ))}
                     </p>
                 </div>
-                <div className="buttons">
-                    <h3>SOURCES:</h3>
+                <div className="ps-2 pe-2">
+                    <h3 className="small_h3 text-center">SOURCES:</h3>
                     <Sources choice={choice}/>
                 </div>
-                <div className="buttons">
-                    <h3>REVIEWS:</h3>
+                <div className="ps-2 pe-2">
+                    <h3 className="small_h3 text-center">REVIEWS:</h3>
                     <Reviews choice={choice}/>
                 </div> 
             </div> 
-            <div className="backButtonBox">
-                <Button icon onClick={handleBack}  className="backButton">
-                    <Icon name='fast backward' /> 
-                    <span> BACK TO RESULTS </span>
-                </Button>
-            </div>
         </div> 
         </Fragment>
     )
