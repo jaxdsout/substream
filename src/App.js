@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Button, Modal, Icon } from "semantic-ui-react";
 import axios from 'axios';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
@@ -105,21 +106,23 @@ function App () {
   
 
     return (
-      <div className='shell container d-flex flex-column align-items-center justify-content-center p-5 mt-5'>
-          <div className='d-flex flex-row'> 
-            <h1 className='logo' onClick={handleHeaderClick}>SUBSTREAM</h1>
-            <i class="bi bi-info-circle" className="faq" onClick={handleInfoClick}></i>
+      <div className='mainBox ui container'>
+          <div className='top ui container'>
+            <div className='logo-box'> 
+              <h1 className='logo' onClick={handleHeaderClick}>SUBSTREAM</h1>
+              <Icon name="info circle" className="faq" onClick={handleInfoClick} />
+            </div>
+            <SearchBar 
+              handleChange={handleSearch}
+              handleSubmit={handleSubmit}
+              searchString={searchString}
+              handleClear={handleClear}
+              handleFilter={handleFilter}
+              filters={filterOptions}
+            />
           </div>
-          <SearchBar 
-            handleChange={handleSearch}
-            handleSubmit={handleSubmit}
-            searchString={searchString}
-            handleClear={handleClear}
-            handleFilter={handleFilter}
-            filters={filterOptions}
-          />
           {results ? (
-          <div className='bottom'>
+          <div className='bottom ui container'>
             <Routes>
               <Route path="/" element={<Navigate to="/" />} />
               <Route path="/search/:userSearch" element={
@@ -137,7 +140,7 @@ function App () {
           ) : (
             <></>
           )}
-          {/* <Modal open={showModal} onClose={handleCloseModal}>
+          <Modal open={showModal} onClose={handleCloseModal}>
             <Modal.Header>Substream</Modal.Header>
             <Modal.Content>
               <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
@@ -145,9 +148,9 @@ function App () {
               <p>Made possible by the <a href='https://api.watchmode.com/' target='_blank'>Watchmode API</a></p>
             </Modal.Content>
             <Modal.Actions>
-              <button onClick={handleCloseModal}>Close</button>
+              <Button onClick={handleCloseModal}>Close</Button>
             </Modal.Actions>
-          </Modal> */}
+          </Modal>
       </div>
     )
 }
