@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Icon, Dropdown } from "semantic-ui-react";
 
 function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, handleFilter, filters }) {
     
@@ -11,54 +11,29 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
     }
     
     return (
-           <div className="input-group">
+           <div className="search-box ui container action input">
                 <input 
                     type="search"
                     placeholder="search..."
                     onChange={handleChange}
                     onKeyDown={handleSubmit}
                     value={searchString}
-                    className="form-control input"
+                    className="input_field"
                     spellCheck
                 />
-                <button className="btn btn-outline-secondary" onClick={handleSubmit}>
-                    <i class="bi-search"></i>               
+                <button className="ui button search" onClick={handleSubmit}>
+                    <Icon name="search" text="Search" />
                 </button>
-                <button className="btn btn-outline-secondary" onClick={handleClear}>
-                    <i class="bi-eraser-fill"></i>
+                <button className="ui button clear" onClick={handleClear}>
+                    <Icon name="eraser" text="Clear" />
                 </button>
-                <div className="dropdown">
-                    <button
-                        className="btn btn-outline-secondary dropdown-toggle"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        <i class="bi bi-filter"></i>
-                    </button>
-                    <ul className="dropdown-menu">
-                        {filters.map((filter, index) => (
-                            <li key={index}>
-                                <a
-                                    className="dropdown-item"
-                                    href="/"
-                                    onClick={() => handleFilterChange(filter)}
-                                >
-                                    {filter.label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-
-                {/* <Dropdown className=""
+                <Dropdown className="ui button dropdown"
                     options={filters}
                     value={selectedFilter}
                     onChange={handleFilterChange}
                     header="CONTENT SELECTION"
                 >
-                </Dropdown> */}
+                </Dropdown>
             </div>
 
             
