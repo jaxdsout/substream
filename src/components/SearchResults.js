@@ -1,20 +1,32 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-function SearchResults({ results, onResultClick, searchString, getMovies }) {
+function SearchResults({ results, onResultClick, getMovies }) {
   const { id } = useParams();
-  
+  const navigate = useNavigate();
+
   const handleClick = (result) => {
     onResultClick(result);
   };
 
-   useEffect(() => {
-          if (!results) {
-              console.log(id)
-              getMovies(id)
-              console.log("getting movies again")
-          }
-      }, [results, id, getMovies])
+  useEffect(() => {
+      let extractedId = id;
+
+      if (!extractedId) {
+          const parts = window.location.pathname.split("/");
+          extractedId = parts[parts.length - 1]; 
+      }
+
+      if (!results && extractedId) {
+          getMovies(extractedId);
+          console.log("Fetching choice with ID:", extractedId);
+      }
+
+      if (!extractedId) {
+          navigate("/");
+      }
+
+  }, [results, id, getMovies, navigate]);
 
   return (
     <>

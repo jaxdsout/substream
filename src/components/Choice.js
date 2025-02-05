@@ -2,18 +2,30 @@ import { Icon } from "semantic-ui-react"
 import Sources from "./Sources"
 import Reviews from "./Reviews"
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 function Choice ({handleBack, choice, getChoice}) {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (!choice) {
-            console.log(id)
-            getChoice(id)
-            console.log("getting choice")
+        let extractedId = id;
+
+        if (!extractedId) {
+            const parts = window.location.pathname.split("/");
+            extractedId = parts[parts.length - 1]; 
         }
-    }, [choice, id, getChoice])
+
+        if (!choice && extractedId) {
+            getChoice(extractedId);
+            console.log("Fetching choice with ID:", extractedId);
+        }
+
+        if (!extractedId) {
+            navigate("/");
+        }
+
+    }, [choice, id, getChoice, navigate]);
     
     return (
         <div className="min-w-[349px] max-w-[350px] md:min-w-[599px] md:max-w-[600px] min-h-[250px] flex flex-col items-center justify-center mt-8 bg-[#e0e1e2] p-5 rounded-lg">
