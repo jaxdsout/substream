@@ -19,7 +19,6 @@ function SearchResults({ results, onResultClick, getMovies }) {
 
       if (!results && extractedId) {
           getMovies(extractedId);
-          console.log("Fetching choice with ID:", extractedId);
       }
 
       if (!extractedId) {
@@ -31,7 +30,7 @@ function SearchResults({ results, onResultClick, getMovies }) {
   return (
     <>
       {results?.length > 0 ? (
-        <div className="min-w-[349px] max-w-[350px] md:max-w-[600px] min-h-[250px] max-h-[900px] md:max-h-[500px] mt-5 mb-10 bg-[#e0e1e2] p-3 rounded-lg grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-scroll">
+        <div className="results-scrollbar min-w-[349px] max-w-[350px] md:max-w-[600px] min-h-[250px] max-h-[900px] md:max-h-[500px] mt-5 mb-10 bg-[#e0e1e2] p-3 rounded-lg grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-scroll">
           {results.map((result, index) => (
             result.image_url !== "https://cdn.watchmode.com/posters/blank.gif" ? (
               <div className="p-2 mt-1">

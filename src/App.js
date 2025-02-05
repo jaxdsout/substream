@@ -19,9 +19,10 @@ function App () {
       setSearchString(event.target.value)
     }
 
-    function handleClear (event) {
-      event.preventDefault();
+    function handleClear () {
       setSearchString('')
+      localStorage.removeItem('lastSearchString');
+      localStorage.removeItem('result_id');
     }
 
     function handleFilter (filter) {
@@ -30,23 +31,13 @@ function App () {
 
     function handleResultClick(result) {
       localStorage.setItem('result_id', result.id);
-      setChoice(result)
+      setChoice(result);
       getChoice(result.id);
     }
 
-    function handleHeaderClick(event) {
-      event.preventDefault()
-      setSearchString('')
-      localStorage.removeItem('lastSearchString')
-      localStorage.removeItem('result_id')
-      navigate("/")
-    }
-
-    function handleBack (event) {
-      event.preventDefault();
-      localStorage.removeItem('result_id')
-      const id = localStorage.getItem('lastSearchString')
-      navigate(`/search/${id}`)
+    function handleHeaderClick() {
+      handleClear();
+      navigate("/");
     }
 
     const filterOptions = [
@@ -106,9 +97,8 @@ function App () {
   
 
     return (
-      <div className='flex flex-col items-center justify-between h-screen w-full'>
-
-        <div className='flex flex-col items-center justify-between'>
+      <div className='flex flex-col items-center justify-between h-screen'>
+        <div className='flex flex-col items-center justify-center'>
           <SearchBar 
             handleChange={handleSearch}
             handleSubmit={handleSubmit}
@@ -129,13 +119,13 @@ function App () {
                 />
               }/>
               <Route path="/detail/:id" element={
-                <Choice handleBack={handleBack} choice={choice} getChoice={getChoice}/>
+                <Choice choice={choice} getChoice={getChoice}/>
               }/>
           </Routes>
         </div>  
         
-        <div className='mb-10'>
-          <Icon name="info circle" className="text-white mb-3 cursor-pointer" onClick={handleInfoClick} />
+        <div className=''>
+          <Icon name="info circle" className="mt-10 !mb-10 text-white mb-3 cursor-pointer" onClick={handleInfoClick} />
         </div>
           
         <Modal open={showModal} onClose={handleCloseModal}>
