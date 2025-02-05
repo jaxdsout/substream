@@ -1,30 +1,30 @@
-import { Fragment } from "react";
-
-import MaxLogo from "../logos/maxlogo.png"
-import NetflixLogo from "../logos/netflixlogo.png"
-import HuluLogo from "../logos/hululogo.png"
-import ParamountLogo from "../logos/paramountlogo.png"
-import DisneyLogo from "../logos/disneylogo.png"
-import StarzLogo from "../logos/starzlogo.png"
-import TubiLogo from "../logos/tubilogo.png"
-import PrimeLogo from "../logos/primevideologo.png"
-import PeacockLogo from "../logos/peacocklogo.png"
-import PlutoLogo from "../logos/plutologo.png"
-import MGMLogo from "../logos/mgmlogo.png"
-import ShudderLogo from "../logos/shudderlogo.png"
-import AMCLogo from "../logos/amclogo.png"
-import CWLogo from "../logos/thecwlogo.png"
-import DiscoveryLogo from "../logos/discoverylogo.png"
-import CrackleLogo from "../logos/cracklelogo.png"
-import FreeveeLogo from "../logos/freeveelogo.png"
-import AppleTVLogo from "../logos/appletvlogo.png"
-import FuboLogo from "../logos/fubo.png"
-import KanopyLogo from "../logos/kanopy.png"
-import RokuLogo from "../logos/rokulogo.png"
+import MaxLogo from "./logos/maxlogo.png"
+import NetflixLogo from "./logos/netflixlogo.png"
+import HuluLogo from "./logos/hululogo.png"
+import ParamountLogo from "./logos/paramountlogo.png"
+import DisneyLogo from "./logos/disneylogo.png"
+import StarzLogo from "./logos/starzlogo.png"
+import TubiLogo from "./logos/tubilogo.png"
+import PrimeLogo from "./logos/primevideologo.png"
+import PeacockLogo from "./logos/peacocklogo.png"
+import PlutoLogo from "./logos/plutologo.png"
+import MGMLogo from "./logos/mgmlogo.png"
+import ShudderLogo from "./logos/shudderlogo.png"
+import AMCLogo from "./logos/amclogo.png"
+import CWLogo from "./logos/thecwlogo.png"
+import DiscoveryLogo from "./logos/discoverylogo.png"
+import CrackleLogo from "./logos/cracklelogo.png"
+import FreeveeLogo from "./logos/freeveelogo.png"
+import AppleTVLogo from "./logos/appletvlogo.png"
+import FuboLogo from "./logos/fubo.png"
+import KanopyLogo from "./logos/kanopy.png"
+import RokuLogo from "./logos/rokulogo.png"
+import { useEffect, useState } from "react"
 
 function Sources ({ choice }) {
   const region = "US"
-  
+  const [filteredSources, setFilteredSources] = useState([]);
+
   function filterUniqueSources(sources) {
     const subSources = [];
     const sourceNames = new Set();  
@@ -43,7 +43,13 @@ function Sources ({ choice }) {
     return subSources;
   }
 
-  const sources = filterUniqueSources(choice.sources);
+  useEffect(() => {
+    if (choice?.sources) {
+      setFilteredSources(filterUniqueSources(choice.sources));
+    } else {
+      setFilteredSources([]);
+    }
+  }, [choice]);
 
   function getLogo(name) {        
     switch (name) {
@@ -95,27 +101,31 @@ function Sources ({ choice }) {
   }
 
   return (
-      <div className="sources">
-        {sources.length > 0 ? (
-          <Fragment>
-            {sources.map((source, index) => (
-              <Fragment key={index}>
+    <>
+      <h3>Sources:</h3>
+      {filteredSources.length > 0 ? (
+        <div className="flex flex-row flex-wrap">
+          {filteredSources.map((source, index) => {
+            const logo = getLogo(source.name);
+            return logo ? (
+              <div key={index}>
                 <a href={source.web_url} target="_blank" rel="noopener noreferrer">
                   <img
-                    className="sourceLogo"
-                    src={getLogo(source.name)}
-                    alt={`${source.name} Logo`}
+                    className="h-20 w-20 sourceLogo rounded-lg m-0.5"
+                    src={logo}
+                    alt={`${source.name}`}
                   />
                 </a>
-              </Fragment>
-            ))}
-          </Fragment>
-        ) : (
-          <div className="no-sources">
-            <p>This content is currently not streaming on any {region} platforms.</p>
-          </div>
-        )}
-    </div>
+              </div>
+            ) : null; 
+          })}
+        </div>
+      ) : (
+        <div className="">
+          <p>This content is currently not streaming on any {region} platforms.</p>
+        </div>
+      )}
+    </>
   )
 }
 

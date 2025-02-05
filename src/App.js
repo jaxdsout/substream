@@ -45,8 +45,8 @@ function App () {
     function handleBack (event) {
       event.preventDefault();
       localStorage.removeItem('result_id')
-      const userSearch = localStorage.getItem('lastSearchString')
-      navigate(`/search/${userSearch}`)
+      const id = localStorage.getItem('lastSearchString')
+      navigate(`/search/${id}`)
     }
 
     const filterOptions = [
@@ -63,13 +63,13 @@ function App () {
     }
 
     function getMovies (searchString) {
-      const userSearch = encodeURIComponent(searchString);
-      const url = `${searchOptions.url}autocomplete-search/?apiKey=${searchOptions.key}&search_value=${userSearch}&search_type=${searchOptions.filter}&region=${searchOptions.region}}`;
+      const id = encodeURIComponent(searchString);
+      const url = `${searchOptions.url}autocomplete-search/?apiKey=${searchOptions.key}&search_value=${id}&search_type=${searchOptions.filter}&region=${searchOptions.region}}`;
       axios
         .get(url)
         .then((res) => {
           setResults(res.data.results);
-          navigate(`/search/${userSearch.toLowerCase()}`);
+          navigate(`/search/${id.toLowerCase()}`);
         })
         .catch((error) => {
           console.error('Error fetching search results:', error);
@@ -106,51 +106,50 @@ function App () {
   
 
     return (
-      <div className='mainBox ui container'>
-          <div className='top ui container'>
-            <div className='logo-box'> 
-              <h1 className='logo' onClick={handleHeaderClick}>SUBSTREAM</h1>
-              <Icon name="info circle" className="faq" onClick={handleInfoClick} />
-            </div>
-            <SearchBar 
-              handleChange={handleSearch}
-              handleSubmit={handleSubmit}
-              searchString={searchString}
-              handleClear={handleClear}
-              handleFilter={handleFilter}
-              filters={filterOptions}
-            />
-          </div>
-          {results ? (
-          <div className='bottom ui container'>
-            <Routes>
-              <Route path="/" element={<Navigate to="/" />} />
-              <Route path="/search/:userSearch" element={
+      <div className='flex flex-col items-center justify-between h-screen w-full'>
+
+        <div className='flex flex-col items-center justify-between'>
+          <SearchBar 
+            handleChange={handleSearch}
+            handleSubmit={handleSubmit}
+            searchString={searchString}
+            handleClear={handleClear}
+            handleFilter={handleFilter}
+            filters={filterOptions}
+            handleHeaderClick={handleHeaderClick}
+          />
+          <Routes>
+              <Route index path="/" />
+              <Route path="/search/:id" element={
                 <SearchResults
                   searchString={searchString}
                   results={results}
                   onResultClick={handleResultClick}
+                  getMovies={getMovies}
                 />
               }/>
-              <Route path="/detail/:choice_id" element={
-                <Choice handleBack={handleBack} choice={choice}/>
+              <Route path="/detail/:id" element={
+                <Choice handleBack={handleBack} choice={choice} getChoice={getChoice}/>
               }/>
-            </Routes>
-          </div>
-          ) : (
-            <></>
-          )}
-          <Modal open={showModal} onClose={handleCloseModal}>
-            <Modal.Header>Substream</Modal.Header>
-            <Modal.Content>
-              <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
-              <p>Currently only serves the U.S. market.</p>
-              <p>Made possible by the <a href='https://api.watchmode.com/' target='_blank'>Watchmode API</a></p>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button onClick={handleCloseModal}>Close</Button>
-            </Modal.Actions>
-          </Modal>
+          </Routes>
+        </div>  
+        
+
+        <div className='mb-10'>
+          <Icon name="info circle" className="text-white mb-3 cursor-pointer" onClick={handleInfoClick} />
+        </div>
+          
+        <Modal open={showModal} onClose={handleCloseModal}>
+          <Modal.Header>Substream</Modal.Header>
+          <Modal.Content>
+            <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
+            <p>Currently only serves the U.S. market.</p>
+            <p>Made possible by the <a href='https://api.watchmode.com/' target='_blank'>Watchmode API</a></p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button onClick={handleCloseModal}>Close</Button>
+          </Modal.Actions>
+        </Modal>
       </div>
     )
 }
