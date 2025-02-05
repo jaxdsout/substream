@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button, Modal, Icon } from "semantic-ui-react";
 import axios from 'axios';
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Choice from './components/Choice';
@@ -134,7 +134,6 @@ function App () {
           </Routes>
         </div>  
         
-
         <div className='mb-10'>
           <Icon name="info circle" className="text-white mb-3 cursor-pointer" onClick={handleInfoClick} />
         </div>
@@ -144,7 +143,7 @@ function App () {
           <Modal.Content>
             <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
             <p>Currently only serves the U.S. market.</p>
-            <p>Made possible by the <a href='https://api.watchmode.com/' target='_blank'>Watchmode API</a></p>
+            <p>Made possible by the <a href='https://api.watchmode.com/' target='_blank' rel="noreferrer" >Watchmode API</a></p>
           </Modal.Content>
           <Modal.Actions>
             <Button onClick={handleCloseModal}>Close</Button>
