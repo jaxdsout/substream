@@ -52,33 +52,23 @@ code {
   animation: shadow-pop-tr 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
 }
 
+
 .results-scrollbar::-webkit-scrollbar-track {
   background: none;
   border-radius: 10px;
 }
 
 .results-scrollbar::-webkit-scrollbar-thumb {
-  background: #3b383f; /* Scrollbar thumb color */
+  background: #3b383f;
   border-radius: 10px;
 }
 
 .results-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #a5d294; /* Thumb color on hover */
+  background: #a5d294;
 }
 
 /* KEY FRAMES */
 
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 @keyframes text-pop-up-top {
   0% {
@@ -116,14 +106,14 @@ code {
 
 @-webkit-keyframes shadow-pop-tr-logo {
   0% {
-    -webkit-box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
-            box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
+    -webkit-box-shadow: 0 0 #000000, 0 0 #000000, 0 0 #000000, 0 0 #000000;
+            box-shadow: 0 0 #000000, 0 0 #000000, 0 0 #000000, 0 0 #000000;
     -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
   }
   100% {
-    -webkit-box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
-            box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
+    -webkit-box-shadow: 1px -1px #000000, 2px -2px #000000, 3px -3px #000000;
+            box-shadow: 1px -1px #000000, 2px -2px #000000, 3px -3px #000000;
     -webkit-transform: translateX(-3px) translateY(3px);
             transform: translateX(-3px) translateY(3px);
   }
@@ -131,14 +121,14 @@ code {
 
 @keyframes shadow-pop-tr-logo {
   0% {
-    -webkit-box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
-            box-shadow: 0 0 #49494a, 0 0 #49494a, 0 0 #49494a, 0 0 #49494a;
+    -webkit-box-shadow: 0 0 #000000, 0 0 #000000, 0 0 #000000, 0 0 #000000;
+            box-shadow: 0 0 #000000, 0 0 #000000, 0 0 #000000, 0 0 #000000;
     -webkit-transform: translateX(0) translateY(0);
             transform: translateX(0) translateY(0);
   }
   100% {
-    -webkit-box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
-            box-shadow: 1px -1px #49494a, 2px -2px #49494a, 3px -3px #49494a;
+    -webkit-box-shadow: 1px -1px #000000, 2px -2px #000000, 3px -3px #000000;
+            box-shadow: 1px -1px #000000, 2px -2px #000000, 3px -3px #000000;
     -webkit-transform: translateX(-3px) translateY(3px);
             transform: translateX(-3px) translateY(3px);
   }

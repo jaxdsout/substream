@@ -11,16 +11,16 @@ function SearchBar ({ handleSubmit, handleChange, searchString, handleClear, han
     }
     
     return (
-        <div className='min-w-[349px] max-w-[350px] md:max-w-[600px] flex flex-col items-center justify-center mt-10'>
+        <div className='min-w-[349px] max-w-[350px] md:max-w-[600px] flex flex-col items-center justify-center mt-10 z-20'>
             <h1 className='logo text-[#a5d294] text-[3.8rem] md:text-[6.7rem] italic select-none cursor-pointer hover:text-[#e0e1e2] -mb-1' 
                 onClick={handleHeaderClick}
             >
                 SUBSTREAM
             </h1>
-            <div className="w-full flex flex-row items-center justify-center bg-[#e0e1e2] p-4 rounded-lg">
+            <div className="w-full flex flex-row items-center justify-center bg-[#e0e1e2] p-4 rounded-lg shadow-inner drop-shadow-md">
                 <input 
                     type="search"
-                    placeholder="search..."
+                    placeholder="Search..."
                     onChange={handleChange}
                     onKeyDown={handleSubmit}
                     value={searchString}

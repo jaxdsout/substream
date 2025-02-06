@@ -9,7 +9,7 @@ function Reviews ({ choice }) {
 
     return (
         <>
-            <h3>Reviews:</h3>
+            <h3 className="text-sm uppercase mb-1">Reviews:</h3>
             <div className="flex flex-row mb-4">
                 <a href={imdbURL} target="_blank" rel="noopener noreferrer">
                     <img
