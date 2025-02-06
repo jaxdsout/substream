@@ -83,11 +83,11 @@ function App () {
       });
   };
 
-  async function handleSubmit (event) { 
+  function handleSubmit (event) { 
     if (event.key === 'Enter' || event.type === 'click') {
       setLoading(true);
       localStorage.setItem('lastSearchString', searchString);
-      await getMovies(searchString);
+      getMovies(searchString);
       setLoading(false);
     }
   }
