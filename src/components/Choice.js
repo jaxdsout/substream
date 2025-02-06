@@ -2,38 +2,36 @@ import Sources from "./Sources"
 import Reviews from "./Reviews"
 import { useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import { back_to_results, load_choice } from "../store/actions/search"
+import { connect } from "react-redux"
 
-function Choice ({choice, getChoice}) {
+
+function Choice ({back_to_results, load_choice, choice, searchString, region}) {
     const { id } = useParams();
     const navigate = useNavigate();
 
-
-    function handleBack (event) {
-        localStorage.removeItem('result_id')
-        const id = localStorage.getItem('lastSearchString')
-        navigate(`/search/${id}`)
+    const handleBack = async () => {
+        if (!searchString) {
+            navigate("/");
+        } else {
+            await back_to_results();
+            navigate(`/search/${searchString}`)
+        }
     }
 
     useEffect(() => {
-        let extractedId = id;
-
-        if (!extractedId) {
-            const parts = window.location.pathname.split("/");
-            extractedId = parts[parts.length - 1]; 
+        if (!choice) {
+            load_choice(id, region);
         }
 
-        if (!choice && extractedId) {
-            getChoice(extractedId);
-        }
-
-        if (!extractedId) {
+        if (!id) {
             navigate("/");
         }
 
-    }, [choice, id, getChoice, navigate]);
+    }, [choice, id, load_choice, region, navigate]);
     
     return (
-        <div className="min-w-[349px] max-w-[350px] md:min-w-[599px] md:max-w-[600px] min-h-[250px] flex flex-col items-center justify-center mt-8 bg-[#e0e1e2] p-5 rounded-lg drop-shadow-md shadow-inner">
+        <div className="flex flex-col items-center justify-center drop-shadow-md min-w-[349px] max-w-[350px] md:max-w-[600px] md:min-w-[599px] mt-10 mb-10 p-3 bg-[#e0e1e2] rounded-lg border-t-8 border-b-8 border-[#e0e1e2]">
             <div className="flex flex-col items-center md:items-start justify-center  md:flex-row">
                 
                 <img className="mr-0 md:mr-3 rounded-md drop-shadow-md mb-5 md:mb-0 shadow-inner" src={choice?.poster} alt={choice?.title} />
@@ -54,8 +52,8 @@ function Choice ({choice, getChoice}) {
                         </div> 
                     
                         <div className="w-full flex flex-col items-start justify-center mt-5 mb-5 bg-black/5 p-3 rounded-md shadow-inner">
-                            <Sources choice={choice}/>
-                            <Reviews choice={choice}/>
+                            <Sources />
+                            <Reviews />
                         </div>
 
                         <button 
@@ -73,4 +71,10 @@ function Choice ({choice, getChoice}) {
     )
 }
 
-export default Choice
+const mapStateToProps = state => ({
+    choice: state.choice,
+    searchString: state.searchString,
+    region: state.region
+})
+ 
+ export default connect(mapStateToProps, { back_to_results, load_choice })(Choice);

@@ -20,6 +20,7 @@ import FuboLogo from "./logos/fubo.png"
 import KanopyLogo from "./logos/kanopy.png"
 import RokuLogo from "./logos/rokulogo.png"
 import { useEffect, useState } from "react"
+import { connect } from "react-redux"
 
 function Sources ({ choice }) {
   const region = "US"
@@ -129,4 +130,8 @@ function Sources ({ choice }) {
   )
 }
 
-export default Sources
+const mapStateToProps = state => ({
+  choice: state.choice
+})
+
+export default connect(mapStateToProps, {  })(Sources);

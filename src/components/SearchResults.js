@@ -1,73 +1,63 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Loader } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { load_choice, auto_search } from "../store/actions/search";
 
-function SearchResults({ results, onResultClick, getMovies, isLoading }) {
+function SearchResults({ results, load_choice, auto_search, filter, region }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const handleClick = (result) => {
-    onResultClick(result);
-  };
+
+  const handleResultClick = async (result) => {
+    console.log(result.id, region)
+    await load_choice(result.id, region);
+    navigate(`/detail/${result.id}`);
+  }
 
   useEffect(() => {
-      let extractedId = id;
+    if (!id) {
+        navigate("/");
+        return;
+    }
 
-      if (!extractedId) {
-          const parts = window.location.pathname.split("/");
-          extractedId = parts[parts.length - 1]; 
-      }
-
-      if (!results && extractedId) {
-          getMovies(extractedId);
-      }
-
-      if (!extractedId) {
-          navigate("/");
-      }
-
-  }, [results, id, getMovies, navigate]);
-
+    if (results.length === 0) {
+        console.log(id, filter, region);
+        auto_search(id, filter, region);
+    }
+  }, [id, auto_search, filter, region, results, navigate]); 
+  
   return (
-    <>
-      {isLoading ? (
-        <>
-          <Loader active inverted />
-        </>
+    <>             
+      {results.length > 0 ? (
+        <div className="results-scrollbar grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-scroll drop-shadow-md min-w-[349px] max-w-[350px] min-h-[250px] max-h-[900px] md:max-h-[500px] md:max-w-[600px] md:min-w-[599px] mt-10 mb-10 p-3 bg-[#e0e1e2] rounded-lg border-t-8 border-b-8 border-[#e0e1e2]">
+          {results.map((result, index) => (
+            <div className="p-2 mt-1">
+              <img 
+                className="thumbnail drop-shadow-md rounded-md cursor-pointer" 
+                src={!result.image_url ? 'https://cdn.watchmode.com/posters/blank.gif' : result.image_url} 
+                alt={result.name} 
+                onClick={() => handleResultClick(result)} 
+              />
+              <p className='text-xs text-center mt-2 font-bold'>
+                  {result.name.length > 40 ? result.name.substring(0, 37) + '...' : result.name}
+              </p>
+            </div>
+          ))}          
+        </div>
       ) : (
-        <>
-          {results ? (
-            <div 
-              className=" relativedrop-shadow-md results-scrollbar min-w-[349px] max-w-[350px] md:max-w-[600px] min-h-[250px] max-h-[900px] md:max-h-[500px] mt-10 mb-10 bg-[#e0e1e2] p-3 rounded-lg grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-scroll border-t-8 border-b-8 border-[#e0e1e2]"
-            >
-              <>
-                {results.map((result, index) => (
-                  <>
-                    {result.image_url !== 'https://cdn.watchmode.com/posters/blank.gif' ? (
-                      <div className="p-2 mt-1">
-                        <img className="thumbnail drop-shadow-md rounded-md cursor-pointer" src={result.image_url} alt={result.name} onClick={() => handleClick(result)} />
-                        <p className='text-xs text-center mt-2 font-bold'>
-                            {result.name.length > 40 ? result.name.substring(0, 37) + '...' : result.name}
-                        </p>
-                      </div>
-                    ) : (
-                      <>
-                      </>
-                    )}
-                  </>
-                ))}          
-              </>
-            </div>
-          ) : (
-            <div className="w-1/2 max-w-[600px] flex flex-row items-center justify-center mt-8 bg-[#e0e1e2] p-3 rounded-lg">
-              <p>No results for that query</p>
-            </div>
-          )}
-        </>
+        <div className="w-full text-black text-center p-3 text-sm text-nowrap flex flex-col items-center bg-[#e0e1e2] rounded-lg border-t-8 border-b-8 border-[#e0e1e2] drop-shadow-md mt-10 mb-10 p-3">
+          <p>No results for that query</p>
+        </div>
       )}
-      
     </> 
   );
 }
 
-export default SearchResults;
+const mapStateToProps = state => ({
+  results: state.results,
+  filter: state.filter,
+  region: state.region
+
+})
+
+export default connect(mapStateToProps, { load_choice, auto_search })(SearchResults);

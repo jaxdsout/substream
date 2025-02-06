@@ -1,5 +1,6 @@
 import imdbLogo from "./logos/imdblogo.png"
 import letterLogo from "./logos/letterboxdlogo.png"
+import { connect } from "react-redux"
 
 function Reviews ({ choice }) {
     let imdbURL = `https://www.imdb.com/title/${choice?.imdb_id}/`
@@ -33,4 +34,8 @@ function Reviews ({ choice }) {
     )
 }
 
-export default Reviews
+const mapStateToProps = state => ({
+    choice: state.choice
+})
+ 
+export default connect(mapStateToProps, {  })(Reviews);
