@@ -122,8 +122,8 @@ function Sources ({ choice }) {
           })}
         </div>
       ) : (
-        <div className="">
-          <p className="text-sm">This content is currently not streaming on any {region} platforms.</p>
+        <div className="text-center">
+          <p className="text-xs">This content is currently not streaming on any {region} platforms.</p>
         </div>
       )}
     </>
