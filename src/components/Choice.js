@@ -27,7 +27,6 @@ function Choice ({back_to_results, load_choice, choice, searchString, region}) {
         if (!id) {
             navigate("/");
         }
-
     }, [choice, id, load_choice, region, navigate]);
     
     return (

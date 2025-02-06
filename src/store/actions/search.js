@@ -12,7 +12,6 @@ import {
 
 import axios from 'axios';
 
-
 export const auto_search = (searchString, filter, region) => async (dispatch) => {
     try {
         const string = encodeURIComponent(searchString);
@@ -25,7 +24,6 @@ export const auto_search = (searchString, filter, region) => async (dispatch) =>
     }
 };
 
-
 export const load_choice = (choice_id, region) => async (dispatch) => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/title/${choice_id}/details/?apiKey=${process.env.REACT_APP_KEY}&append_to_response=sources&regions=${region}`);
@@ -34,7 +32,6 @@ export const load_choice = (choice_id, region) => async (dispatch) => {
         dispatch({ type: LOAD_CHOICE_FAIL });
     }
 };
-
 
 export const clear_search = () => dispatch => {
     dispatch({

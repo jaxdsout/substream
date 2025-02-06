@@ -5,9 +5,8 @@ import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import Choice from './components/Choice';
 import Header from './components/Header'
-import { connect } from 'react-redux';
 
-function App ({ results, choice }) {
+function App () {
   const [showModal, setShowModal] = useState(false);
   
   return (
@@ -24,8 +23,8 @@ function App ({ results, choice }) {
         </Routes>    
       </div>  
       
-      <div className='mt-10 mb-10'>
-        <i className="info circle icon cursor-pointer text-[#a5d294] hover:text-white" onClick={() => setShowModal(true)} />
+      <div>
+        <i className="mt-10 !mb-10 info circle icon cursor-pointer text-[#a5d294] hover:text-white" onClick={() => setShowModal(true)} />
       </div>
         
       <Modal open={showModal} onClose={() => setShowModal(false)}>
@@ -43,9 +42,4 @@ function App ({ results, choice }) {
   )
 }
 
-const mapStateToProps = state => ({
-  choice: state.choice,
-  results: state.results
-})
-
-export default connect(mapStateToProps, {  })(App);
+export default App;

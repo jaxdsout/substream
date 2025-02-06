@@ -8,8 +8,7 @@ function Header ({ clear_search }) {
     function handleHeaderClick() {
         clear_search();
         navigate("/");
-      }
-
+    }
 
     return (
         <>
