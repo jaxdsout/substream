@@ -30,13 +30,13 @@ function Choice ({back_to_results, load_choice, choice, searchString, region}) {
     }, [choice, id, load_choice, region, navigate]);
     
     return (
-        <div className="flex flex-col items-center justify-center drop-shadow-md min-w-[349px] max-w-[350px] md:max-w-[600px] md:min-w-[599px] mt-10 mb-10 p-3 bg-[#e0e1e2] rounded-lg border-t-8 border-b-8 border-[#e0e1e2]">
+        <div className="text-[#ededed] flex flex-col items-center justify-center drop-shadow-md min-w-[349px] max-w-[350px] md:max-w-[600px] md:min-w-[599px] mt-10 mb-10 p-3 bg-[#3b383f] bg-opacity-70 rounded-lg border-t-8 border-b-8 border-[#3b383f] border-opacity-70">
             <div className="flex flex-col items-center md:items-start justify-center  md:flex-row">
                 
                 <img className="mr-0 md:mr-3 rounded-md drop-shadow-md mb-5 md:mb-0 shadow-inner" src={choice?.poster} alt={choice?.title} />
                 
-                <div className="bg-[#49494a] flex flex-col items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg">
-                    <div className="w-full flex flex-col items-center p-5 text-white ">
+                <div className="bg-[#3b383f] flex flex-col items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg">
+                    <div className="w-full flex flex-col items-center p-5 text-[#ededed] ">
                         <h3 className="text-base text-wrap w-[200px] text-center drop-shadow-sm"> {choice?.title.toUpperCase()}</h3>
                         <div className="flex flex-col items-start justify-center text-xs">
                             <p className="drop-shadow-sm"><b>Rating:</b> {choice?.us_rating}</p>
@@ -57,7 +57,7 @@ function Choice ({back_to_results, load_choice, choice, searchString, region}) {
 
                         <button 
                             onClick={handleBack}  
-                            className="flex flex-row justify-center items-center bg-[#6c6b71] text-white hover:bg-[#e0e1e2] hover:text-[#49494a] backButton font-semibold p-3 rounded-lg shadow-inner drop-shadow-md"
+                            className="flex flex-row justify-center items-center bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-[#49494a] backButton font-semibold p-3 rounded-lg shadow-inner drop-shadow-md"
                         >
                             <i className='fast backward icon'></i> 
                             <span className="text-xs mt-0.5"> BACK </span>

@@ -30,7 +30,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, clear_se
     }
 
     return (
-        <div className="w-full flex flex-row items-center justify-center bg-[#e0e1e2] p-4 rounded-lg shadow-inner drop-shadow-md">
+        <div className="w-full flex flex-row items-center justify-center bg-[#3b383f] bg-opacity-70 p-4 rounded-lg shadow-inner drop-shadow-md">
             <input 
                 type="search"
                 placeholder="Search..."
@@ -38,14 +38,14 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, clear_se
                 onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                 value={searchString}
                 onDoubleClick={handleClear}
-                className="h-[40px] w-[340px] rounded-md mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset"
+                className="text-[#8e8e8e] bg-[#1e1e1e] h-[40px] w-[340px] rounded-md mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset"
                 spellCheck
             />
-            <Button onClick={handleSubmit} className="h-[40px]">
+            <button onClick={handleSubmit} className="h-[40px] bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-black p-4 rounded-lg mr-1">
                 <Icon name="search" text="Search" className="!-mr-0"/>
-            </Button>
+            </button>
             <Dropdown 
-                className="h-[40px] w-[150px] text-white bg-[#49494a] font-semibold !flex !items-center !justify-center rounded-lg text-nowrap p-2 text-[0.6rem] md:text-base !inset-shadow !border-2"
+                className="h-[40px] w-[150px] text-[#8e8e8e] bg-[#1e1e1e] hover:bg-[#a5d294] hover:text-black font-semibold !flex !items-center !justify-center rounded-lg text-nowrap p-2 text-[0.6rem] md:text-base !inset-shadow"
                 options={filters}
                 value={filter}
                 onChange={handleFilterChange}

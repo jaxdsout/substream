@@ -7,7 +7,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: #6c6b71 !important;
+  background-color: #000000 !important;
 }
 
 code {
@@ -66,6 +66,55 @@ code {
 .results-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #a5d294;
 }
+
+.menu {
+  background: #1e1e1e !important;
+}
+
+.item {
+  color: #8e8e8e !important;
+}
+
+.item:hover {
+  background: rgba(59, 56, 63, .7) !important;
+}
+
+.active.item {
+  background: rgba(59, 56, 63, .7) !important;
+  color: #a5d294 !important;
+}
+
+.header {
+  color: #ededed !important
+}
+
+
+.glitchy {
+  position: relative;
+}
+
+.glitchy:before,
+.glitchy:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.glitchy:hover::before {
+  animation: glitch 500ms infinite;
+  clip-path: polygon(0 0%, 100% 0, 100% 0%, 0 70%);
+  transform: translate(-0.025em, -0.0125em);
+  color: #90b482;
+}
+
+.glitchy:hover::after {
+  animation: glitch 450ms infinite;
+  clip-path: polygon(0 25%, 100% , 100% 100%, 0 70%);
+  transform: translate(0.0125em, 0.025em);
+}
+
 
 /* KEY FRAMES */
 
@@ -153,5 +202,36 @@ code {
   100% {
     -webkit-transform: scale(0.95);
             transform: scale(0.95);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 #272727, -0.025em -0.05em 0 #0b0b0b,
+      0.025em 0.05em 0 #a5d294;
+  }
+  14% {
+    text-shadow: 0.05em 0 0 #272727, -0.025em -0.05em 0 #0b0b0b,
+      0.025em 0.05em 0 #8e8e8e;
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 #272727, 0.025em -0.025em 0 #0b0b0b,
+      -0.05em -0.05em 0 #a5d294;
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 #272727, 0.025em -0.025em 0 #0b0b0b,
+      -0.05em -0.05em 0 #8e8e8e;
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 #272727, -0.025em 0.05em 0 #0b0b0b,
+      0 -0.05em 0 #a5d294;
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 #272727, -0.025em 0.05em 0 #0b0b0b,
+      0 -0.05em 0 #8e8e8e;
+  }
+  100% {
+    text-shadow: -0.025em 0 0 #272727, -0.025em -0.025em 0 #0b0b0b,
+      -0.025em -0.05em 0 #a5d294;
   }
 }

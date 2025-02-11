@@ -12,10 +12,12 @@ function Header ({ clear_search }) {
 
     return (
         <>
-            <h1 className='logo text-[#a5d294] text-[3.8rem] md:text-[6.7rem] italic select-none cursor-pointer hover:text-[#e0e1e2] -mb-1' 
+            <h1 
+                data-text='SUBSTREAM'
+                className='glitchy logo text-[#a5d294] text-[3.8rem] md:text-[6.7rem] italic select-none cursor-pointer -mb-1' 
                 onClick={handleHeaderClick}
             >
-                SUBSTREAM
+                <span>SUBSTREAM</span>
             </h1>
         </>
     )

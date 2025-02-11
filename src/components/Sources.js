@@ -103,7 +103,7 @@ function Sources ({ choice }) {
 
   return (
     <>
-      <h3 className="text-sm uppercase mb-1">SOURCES:</h3>
+      <h3 className="text-sm uppercase mb-1 text-[#ededed]">SOURCES:</h3>
       {filteredSources.length > 0 ? (
         <div className="flex flex-row flex-wrap max-w-[250px]">
           {filteredSources.map((source, index) => {

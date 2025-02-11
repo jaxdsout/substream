@@ -27,7 +27,7 @@ function App () {
         <i className="mt-10 !mb-10 info circle icon cursor-pointer text-[#a5d294] hover:text-white" onClick={() => setShowModal(true)} />
       </div>
         
-      <Modal open={showModal} onClose={() => setShowModal(false)}>
+      <Modal open={showModal} onClose={() => setShowModal(false)} className='!max-w-[500px]'>
         <Modal.Header>Substream</Modal.Header>
         <Modal.Content>
           <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
