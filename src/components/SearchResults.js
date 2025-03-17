@@ -32,21 +32,22 @@ function SearchResults({ results, load_choice, auto_search, filter, region }) {
         <div className="bg-[#3b383f] bg-opacity-70 p-4 mt-10 mb-10 rounded-lg shadow-inner drop-shadow-md results-scrollbar grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-scroll drop-shadow-md min-w-[349px] max-w-[350px] min-h-[250px] max-h-[900px] md:max-h-[500px] md:max-w-[600px] md:min-w-[599px] border-t-8 border-b-8 border-[#3b383f] border-opacity-70">
           {results.map((result, index) => (
             <>
-              {result.image_url === 'https://cdn.watchmode.com/posters/blank.gif'? (
-                <>
-                </>
-              ) : (
-                <div className="p-2 mt-1">
+              {result.image_url === 'https://cdn.watchmode.com/posters/blank.gif'? null : (
+                <div className="p-2 mt-1 relative">
+                <div className="relative thumbnail">
                   <img 
-                    className="thumbnail drop-shadow-md rounded-md cursor-pointer" 
+                    className="drop-shadow-md rounded-md cursor-pointer w-full" 
                     src={result.image_url} 
                     alt={result.name} 
                     onClick={() => handleResultClick(result)} 
                   />
-                  <p className='text-xs text-center mt-2 font-bold text-[#ededed]'>
-                      {result.name.length > 40 ? result.name.substring(0, 37) + '...' : result.name}
-                  </p>
+                  <div className="bg-black/70 absolute bottom-0 left-0 w-full rounded-bl-md rounded-br-md px-4 py-1">
+                    <p className='text-xs text-center font-bold text-[#ededed] w-full'>
+                      {result.name.length > 36 ? result.name.substring(0, 33) + '...' : result.name}
+                    </p>
+                  </div>
                 </div>
+              </div>
               ) }
             </>
           ))}          

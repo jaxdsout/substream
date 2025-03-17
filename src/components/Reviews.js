@@ -1,5 +1,4 @@
-import imdbLogo from "./logos/imdblogo.png"
-import letterLogo from "./logos/letterboxdlogo.png"
+import logos from "../constants/logos"
 import { connect } from "react-redux"
 
 function Reviews ({ choice }) {
@@ -10,20 +9,19 @@ function Reviews ({ choice }) {
 
     return (
         <>
-            <h3 className="text-sm uppercase mb-1 text-[#ededed]">Reviews:</h3>
-            <div className="flex flex-row mb-4">
+            <div className="flex flex-row items-center justify-center mb-4 mt-4">
                 <a href={imdbURL} target="_blank" rel="noopener noreferrer">
                     <img
-                        className="h-20 w-20 sourceLogo rounded-lg m-0.5"
-                        src={imdbLogo}
+                        className="h-12 w-12 sourceLogo rounded-lg m-0.5"
+                        src={logos.imdbLogo}
                         alt={`IMDB Logo`}
                     />
                 </a>
                 {choice?.type === "movie" && (
                     <a href={letterURL} target="_blank" rel="noopener noreferrer">
                         <img
-                            className="h-20 w-20 sourceLogo rounded-lg m-0.5"
-                            src={letterLogo}
+                            className="h-12 w-12 sourceLogo rounded-lg m-0.5"
+                            src={logos.letterLogo}
                             alt={`Letterbox'd Logo`}
                         />
                     </a>

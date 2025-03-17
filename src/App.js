@@ -28,7 +28,7 @@ function App () {
       </div>
         
       <Modal open={showModal} onClose={() => setShowModal(false)} className='!max-w-[500px]'>
-        <Modal.Header>Substream</Modal.Header>
+        <Modal.Header><p className='text-black'>Substream</p></Modal.Header>
         <Modal.Content>
           <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
           <p>Currently only serves the U.S. market.</p>

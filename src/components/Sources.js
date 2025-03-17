@@ -1,137 +1,107 @@
-import MaxLogo from "./logos/maxlogo.png"
-import NetflixLogo from "./logos/netflixlogo.png"
-import HuluLogo from "./logos/hululogo.png"
-import ParamountLogo from "./logos/paramountlogo.png"
-import DisneyLogo from "./logos/disneylogo.png"
-import StarzLogo from "./logos/starzlogo.png"
-import TubiLogo from "./logos/tubilogo.png"
-import PrimeLogo from "./logos/primevideologo.png"
-import PeacockLogo from "./logos/peacocklogo.png"
-import PlutoLogo from "./logos/plutologo.png"
-import MGMLogo from "./logos/mgmlogo.png"
-import ShudderLogo from "./logos/shudderlogo.png"
-import AMCLogo from "./logos/amclogo.png"
-import CWLogo from "./logos/thecwlogo.png"
-import DiscoveryLogo from "./logos/discoverylogo.png"
-import CrackleLogo from "./logos/cracklelogo.png"
-import FreeveeLogo from "./logos/freeveelogo.png"
-import AppleTVLogo from "./logos/appletvlogo.png"
-import FuboLogo from "./logos/fubo.png"
-import KanopyLogo from "./logos/kanopy.png"
-import RokuLogo from "./logos/rokulogo.png"
+import logos from "../constants/logos";
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 
-function Sources ({ choice }) {
-  const region = "US"
+const logoMap = {
+  "MAX": logos.MaxLogo,
+  "Netflix": logos.NetflixLogo,
+  "Hulu": logos.HuluLogo,
+  "Paramount+": logos.ParamountLogo,
+  "Disney+": logos.DisneyLogo,
+  "STARZ": logos.StarzLogo,
+  "Tubi TV": logos.TubiLogo,
+  "Prime Video": logos.PrimeLogo,
+  "Peacock": logos.PeacockLogo,
+  "Pluto TV": logos.PlutoLogo,
+  "MGM+": logos.MGMLogo,
+  "Shudder": logos.ShudderLogo,
+  "AMC+": logos.AMCLogo,
+  "The CW": logos.CWLogo,
+  "Amazon Freevee": logos.FreeveeLogo,
+  "Discovery+": logos.DiscoveryLogo,
+  "Crackle": logos.CrackleLogo,
+  "AppleTV+": logos.AppleTVLogo,
+  "The Roku Channel": logos.RokuLogo,
+  "fuboTV": logos.FuboLogo,
+  "Kanopy": logos.KanopyLogo,
+  "truTV": logos.trutvLogo,
+  "TNT": logos.tntLogo,
+  "TBS": logos.tbsLogo,
+};
+
+function Sources ({ choice, region }) {
   const [filteredSources, setFilteredSources] = useState([]);
 
   function filterUniqueSources(sources) {
-    const subSources = [];
-    const sourceNames = new Set();  
+    const subSources = new Map();
+  
+    function normalizeName(name) {
+      if (name === "Paramount+ with Showtime" || name === "Paramount Plus") {
+        return "Paramount+";
+      }
+      
+      if (name === "Peacock Premium") {
+        return "Peacock";
+      }
 
-    for (const source of sources) {
-      let { name, type, web_url, image_url } = source;
-      const sourceKey = `${name}-${type}`;
-
-      if ((type==="sub") && !sourceNames.has(sourceKey) 
-        && (!name.includes("(Via") && !name.includes("(via") && !name.includes("with") && !name.includes("On Demand"))){
-          subSources.push({...source, name, web_url, image_url})
-          sourceNames.add(sourceKey);
-        }
+      return name;
     }
-
-    return subSources;
+  
+    for (const source of sources) {
+      let { name, type, web_url } = source;
+      const normalizedName = normalizeName(name);
+      const sourceKey = `${normalizedName}`;
+      const logo = logoMap[normalizedName] || null;
+      
+      if ((type === "sub" || type === "free") && !/(?:\(Via|\(via|On Demand)/.test(name)) {
+        if (!subSources.has(normalizedName)) {
+          subSources.set(sourceKey, { ...source, name: normalizedName, web_url, logo });
+        }
+      }
+    }
+    
+    return Array.from(subSources.values());
   }
 
+  
   useEffect(() => {
-    if (choice?.sources) {
-      setFilteredSources(filterUniqueSources(choice.sources));
-    } else {
-      setFilteredSources([]);
-    }
+      if (choice?.sources) {
+        setFilteredSources(filterUniqueSources(choice.sources));
+      }
   }, [choice]);
 
-  function getLogo(name) {        
-    switch (name) {
-      case "MAX":
-          return MaxLogo;
-      case "Netflix":
-          return NetflixLogo;
-      case "Hulu":
-          return HuluLogo;
-      case "Paramount Plus":
-        return ParamountLogo;
-      case "Disney+":
-        return DisneyLogo;
-      case "STARZ":
-        return StarzLogo;
-      case "Tubi TV":
-        return TubiLogo;
-      case "Prime Video":
-        return PrimeLogo
-      case "Peacock Premium":
-        return PeacockLogo
-      case "Pluto TV":
-        return PlutoLogo
-      case "MGM+":
-        return MGMLogo
-      case "Shudder":
-        return ShudderLogo
-      case "AMC+":
-        return AMCLogo
-      case "The CW":
-        return CWLogo
-      case "Discovery+":
-        return DiscoveryLogo
-      case "Crackle":
-        return CrackleLogo
-      case "Amazon Freevee":
-        return FreeveeLogo
-      case "AppleTV+":
-        return AppleTVLogo
-      case "The Roku Channel":
-        return RokuLogo
-      case "fuboTV":
-        return FuboLogo
-      case "Kanopy":
-        return KanopyLogo
-      default:
-          return ``;
-    }
-  }
-
-  return (
-    <>
+  if (filteredSources.length > 0) return (
+    <div className="flex flex-col items-center justify-center bg-black/5 p-3 rounded-md shadow-inner">
       <h3 className="text-sm uppercase mb-1 text-[#ededed]">SOURCES:</h3>
-      {filteredSources.length > 0 ? (
-        <div className="flex flex-row flex-wrap max-w-[250px]">
+        <div className="flex flex-row flex-wrap items-center justify-center max-w-[250px]">
           {filteredSources.map((source, index) => {
-            const logo = getLogo(source.name);
-            return logo ? (
+            return (
               <div key={index}>
                 <a href={source.web_url} target="_blank" rel="noopener noreferrer">
                   <img
                     className="h-20 w-20 sourceLogo rounded-lg m-0.5"
-                    src={logo}
+                    src={source.logo}
                     alt={`${source.name}`}
                   />
                 </a>
               </div>
-            ) : null; 
+            )
           })}
         </div>
-      ) : (
-        <div className="text-center">
-          <p className="text-xs">This content is currently not streaming on any {region} platforms.</p>
-        </div>
-      )}
-    </>
+    </div>
+  ) 
+  
+  if (filteredSources.length === 0) return (
+    <div className="text-center">
+      <p className="text-xs">This content is currently not streaming on any {region} platforms.</p>
+    </div>
   )
+  
 }
 
 const mapStateToProps = state => ({
-  choice: state.choice
+  choice: state.choice,
+  region: state.region
 })
 
 export default connect(mapStateToProps, {  })(Sources);
