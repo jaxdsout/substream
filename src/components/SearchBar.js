@@ -1,9 +1,9 @@
-import { Icon, Dropdown, Button } from "semantic-ui-react";
+import { Icon, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { auto_search, back_to_results, change_filter, clear_search, set_search_string } from "../store/actions/search";
+import { auto_search, reset_choice, change_filter, set_search_string } from "../store/actions/search";
 import { useNavigate } from "react-router-dom";
 
-function SearchBar ({ auto_search, filter, change_filter, searchString, clear_search, region, set_search_string, back_to_results, choice }) {
+function SearchBar ({ auto_search, filter, change_filter, searchString, region, set_search_string, reset_choice, choice }) {
     const navigate = useNavigate();
 
     const filters = [
@@ -13,7 +13,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, clear_se
     ]
     
     const handleClear = () => {
-        clear_search();
+        set_search_string('');
     }
 
     const handleSubmit = async () => {
@@ -31,14 +31,13 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, clear_se
 
     const handleBack = () => {
         if (searchString === '' ) {
+            reset_choice();
             navigate("/");
         } else {
-            back_to_results();
+            reset_choice();
             navigate(`/search/${searchString}`)
         }
     }
-
-    console.log(choice)
     
     return (
         <div className="w-full flex flex-row items-center justify-center bg-[#3b383f] bg-opacity-70 p-4 rounded-lg shadow-inner drop-shadow-md">
@@ -48,30 +47,40 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, clear_se
                     className="h-[40px] bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-black p-4 rounded-lg mr-1 flex flex-row items-center justify-center"
                 >
                     <i className='fast backward icon'></i> 
-                    <span className="text-xs mt-0.5 font-semibold"> BACK </span>
+                    <span className="text-[0.6rem] mt-0.5 font-semibold"> BACK </span>
                 </button>
             )}
-         
-            <input 
-                type="search"
-                placeholder="Search..."
-                onChange={handleSearchChange}
-                onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-                value={searchString}
-                onDoubleClick={handleClear}
-                className="text-[#8e8e8e] bg-[#1e1e1e] h-[40px] w-[340px] rounded-md mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset"
-                spellCheck
-            />
-            <button onClick={handleSubmit} className="h-[40px] bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-black p-4 rounded-lg mr-1">
-                <Icon name="search" text="Search" className="!-mr-0"/>
+            <div className="relative flex flex-row items-center justify-center">
+                <input 
+                    type="search"
+                    placeholder="Search..."
+                    onChange={handleSearchChange}
+                    onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+                    value={searchString}
+                    onDoubleClick={handleClear}
+                    className="text-[#8e8e8e] bg-[#1e1e1e] h-[40px] sm:w-[12rem] md:w-[18rem] rounded-md mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset relative"
+                    spellCheck
+                />
+                { searchString ? (
+                    <button onClick={handleClear} className="h-[40px] text-[#8e8e8e] hover:text-[#a5d294] p-2 rounded-lg mr-1 absolute right-0 z-30">
+                        <Icon name="window close"/>
+                    </button>
+                ) : null }
+           
+            </div>
+          
+            <button onClick={handleSubmit} className="h-[40px] bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-black p-2 rounded-lg mr-1">
+                <Icon name="search" className="!mb-1 !ml-1"/>
             </button>
+
             <Dropdown 
-                className="h-[40px] w-[80px] text-[#8e8e8e] bg-[#1e1e1e] hover:bg-[#a5d294] hover:text-black font-semibold rounded-lg text-nowrap p-4 text-[0.6rem] md:text-base !inset-shadow"
+                className="h-[40px] p-2 text-[#8e8e8e] bg-[#1e1e1e] hover:bg-[#a5d294] hover:text-black font-semibold rounded-lg !inset-shadow"
                 options={filters}
                 value={filter}
+                icon={null}
                 onChange={handleFilterChange}
                 header={<p className="text-xs text-[#8e8e8e] p-3 pointer-events-none select-none">CONTENT SELECTION</p>}
-                trigger={<Icon className="filter " />}
+                trigger={<Icon className="filter !mt-1 !ml-1" />}
             >
             </Dropdown>
         </div>
@@ -85,4 +94,4 @@ const mapStateToProps = state => ({
    choice: state.choice
 })
 
-export default connect(mapStateToProps, { auto_search, change_filter, clear_search, set_search_string, back_to_results })(SearchBar);
+export default connect(mapStateToProps, { auto_search, change_filter, set_search_string, reset_choice })(SearchBar);

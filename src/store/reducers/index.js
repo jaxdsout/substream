@@ -3,8 +3,8 @@ import {
     LOAD_CHOICE_SUCCESS,
     SEARCH_FAIL,
     SEARCH_SUCCESS,
-    CLEAR_SEARCH,
-    BACK_TO_RESULTS,
+    CLEAR_STREAM,
+    RESET_CHOICE,
     CHANGE_FILTER,
     SET_SEARCH_STRING
 
@@ -15,7 +15,7 @@ const initialState = {
     choice: null,
     searchString: '',
     filter: 2,
-    isLoading: false,
+    isLoaded: false,
     region: 'US'
 
 };
@@ -26,19 +26,24 @@ export default function rootReducer(state = initialState, action) {
         case SEARCH_SUCCESS:
             return {
                 ...state,
-                results: payload
+                results: payload,
+                isLoaded: true
             }
         case SEARCH_FAIL:
             return {
                 ...state,
-                results: []
+                results: [],
+                isLoaded: false
             }
-        case CLEAR_SEARCH:
+        case CLEAR_STREAM:
             return {
                 ...state,
-                searchString: '',
+                results: [],
                 choice: null,
-                results: []
+                searchString: '',
+                filter: 2,
+                isLoaded: false,
+                region: 'US'
             }
         case LOAD_CHOICE_SUCCESS:
             return {
@@ -49,7 +54,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state
             }
-        case BACK_TO_RESULTS:
+        case RESET_CHOICE:
             return {
                 ...state,
                 choice: null

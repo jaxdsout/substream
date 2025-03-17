@@ -1,8 +1,8 @@
-import Sources from "./Sources"
-import Reviews from "./Reviews"
+import Sources from "../components/Sources"
+import Reviews from "../components/Reviews"
 import { useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { back_to_results, load_choice } from "../store/actions/search"
+import { load_choice } from "../store/actions/search"
 import { connect } from "react-redux"
 import { Icon } from "semantic-ui-react"
 
@@ -23,8 +23,8 @@ function Choice ({ load_choice, choice, region}) {
     return (
         <div className="text-[#ededed] flex flex-col items-center justify-center drop-shadow-md min-w-[349px] max-w-[350px] md:max-w-[600px] md:min-w-[599px] mt-10 mb-10 p-3 bg-[#3b383f] bg-opacity-70 rounded-lg border-t-8 border-b-8 border-[#3b383f] border-opacity-70">
             <div className="flex flex-col items-center justify-center ">
-                <div className="bg-[#3b383f] p-4 flex flex-col md:flex-row items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg mb-5">
-                    <img className="mr-0 md:mr-3 rounded-md drop-shadow-md mb-5 md:mb-0 shadow-inner" src={choice?.poster} alt={choice?.title} />
+                <div className="bg-[#3b383f] p-4 flex flex-col md:flex-row items-center md:items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg mb-5">
+                    <img className="select-none pointer-events-none mr-0 md:mr-3 rounded-md drop-shadow-md mb-5 md:mb-0 shadow-inner h-84 w-48" src={choice?.posterLarge} alt={choice?.title} />
                     <div className="w-full flex flex-col items-star px-4 py-2 text-[#ededed] ">
                         <h3 className="text-base text-wrap text-center drop-shadow-sm"> {choice?.title.toUpperCase()}</h3>
                         <div className="flex flex-col items-start justify-center text-xs">
@@ -32,9 +32,8 @@ function Choice ({ load_choice, choice, region}) {
                                 <Icon className="star icon"/>
                                 <p className="drop-shadow-sm">  {choice?.user_rating} / 10 </p>
                             </div>
-                            <p className="drop-shadow-sm"> <b>Release Year: </b> {choice?.year} </p>
+                            <p className="drop-shadow-sm"><b>Release Year: </b> {choice?.year} </p>
                             <p className="drop-shadow-sm"><b>Rating:</b> {choice?.rating ? (choice?.us_rating) : "NR"}</p>
-                            <p className="drop-shadow-sm"> <b>Release Year: </b> {choice?.year} </p>
                             <p className="drop-shadow-sm"> <b>Runtime: </b> {choice?.runtime_minutes} minutes </p>
                             <p className="drop-shadow-sm"> <b>Genre: </b>
                                 {choice?.genre_names?.join(', ')}
@@ -54,4 +53,4 @@ const mapStateToProps = state => ({
     region: state.region
 })
  
- export default connect(mapStateToProps, { back_to_results, load_choice })(Choice);
+export default connect(mapStateToProps, { load_choice })(Choice);

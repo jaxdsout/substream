@@ -3,8 +3,8 @@ import {
     LOAD_CHOICE_SUCCESS,
     SEARCH_FAIL,
     SEARCH_SUCCESS,
-    CLEAR_SEARCH,
-    BACK_TO_RESULTS,
+    CLEAR_STREAM,
+    RESET_CHOICE,
     CHANGE_FILTER,
     SET_SEARCH_STRING
 
@@ -15,10 +15,8 @@ import axios from 'axios';
 export const auto_search = (searchString, filter, region) => async (dispatch) => {
     try {
         const string = encodeURIComponent(searchString);
-        console.log(`${process.env.REACT_APP_API_URL}/autocomplete-search/?apiKey=${process.env.REACT_APP_KEY}&search_value=${string}&search_type=${filter}&region=${region}}`)
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/autocomplete-search/?apiKey=${process.env.REACT_APP_KEY}&search_value=${string}&search_type=${filter}&region=${region}}`);
         dispatch({ type: SEARCH_SUCCESS, payload: res.data.results });
-        console.log(res.data.results)
     } catch (err) {
         dispatch({ type: SEARCH_FAIL });
     }
@@ -33,16 +31,16 @@ export const load_choice = (choice_id, region) => async (dispatch) => {
     }
 };
 
-export const clear_search = () => dispatch => {
+export const clear_stream = () => dispatch => {
     dispatch({
-        type: CLEAR_SEARCH
+        type: CLEAR_STREAM
     });
     return Promise.resolve();
 };
 
-export const back_to_results = () => dispatch => {
+export const reset_choice = () => dispatch => {
     dispatch({
-        type: BACK_TO_RESULTS
+        type: RESET_CHOICE
     });
     return Promise.resolve();
 }

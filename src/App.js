@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Button, Modal } from "semantic-ui-react";
 import { Route, Routes } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
-import SearchResults from './components/SearchResults';
-import Choice from './components/Choice';
+import SearchResults from './pages/SearchResults';
+import Choice from './pages/Choice';
 import Header from './components/Header'
 
 function App () {
