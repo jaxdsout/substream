@@ -12,12 +12,11 @@ function Header ({ clear_stream, isLoaded }) {
     }
 
     return (
-        // <h1 data-text='SUBSTREAM' className='logo text-[#a5d294] text-[3.8rem] md:text-[6.7rem] italic select-none cursor-pointer -mb-1' 
-        //     onClick={handleHeaderClick}
-        // >
-        //     <span>SUBSTREAM</span>
-        // </h1>
-        <h1 className="logo text-[#a5d294] !text-[10rem] md:text-[6.7rem] italic select-none cursor-pointer -mb-1">S</h1>
+        <h1 data-text='SUBSTREAM' className='logo text-[#a5d294] text-[3.8rem] md:text-[6.7rem] italic select-none cursor-pointer -mb-1' 
+            onClick={handleHeaderClick}
+        >
+            <span>SUBSTREAM</span>
+        </h1>
     )
 }
 

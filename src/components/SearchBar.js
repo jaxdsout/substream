@@ -18,6 +18,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
 
     const handleSubmit = () => {
         auto_search(searchString, filter, region);
+        reset_choice();
         navigate(`/search/${searchString.toLowerCase()}`);
     }
 
