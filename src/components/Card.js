@@ -17,7 +17,7 @@ function Card({ result, region, load_choice, isLoaded }) {
         navigate(`/detail/${result.id}`);
     }
 
-    return (
+    if (isLoaded) return (
         <div className="relative thumbnail">
             <img 
             className="drop-shadow-md rounded-md cursor-pointer w-full" 

@@ -12,7 +12,7 @@ import {
 
 const initialState = {
     results: [],
-    choice: null,
+    choice: {},
     searchString: '',
     filter: 2,
     isLoaded: false,
@@ -39,7 +39,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 results: [],
-                choice: null,
+                choice: {},
                 searchString: '',
                 filter: 2,
                 isLoaded: false,
@@ -57,7 +57,7 @@ export default function rootReducer(state = initialState, action) {
         case RESET_CHOICE:
             return {
                 ...state,
-                choice: null
+                choice: {}
             }
         case CHANGE_FILTER:
             return {

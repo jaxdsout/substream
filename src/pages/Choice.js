@@ -1,6 +1,6 @@
 import Sources from "../components/Sources"
 import Reviews from "../components/Reviews"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { load_choice } from "../store/actions/search"
 import { connect } from "react-redux"
@@ -9,14 +9,17 @@ import { Icon } from "semantic-ui-react"
 function Choice ({ load_choice, choice, region}) {
     const { id } = useParams();
     const navigate = useNavigate();
+    // const prevChoice = useRef(null)
 
     useEffect(() => {
-        if (!choice) {
+        if (Object.keys(choice).length === 0) {
+            console.log("running load choice", id, region)
             load_choice(id, region);
         }
 
         if (!id) {
             navigate("/");
+            return;
         }
     }, [choice, id, load_choice, region, navigate]);
     
