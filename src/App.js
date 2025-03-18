@@ -14,7 +14,7 @@ function App () {
       <div className='flex flex-col items-center justify-center'>
         <div className='min-w-[349px] max-w-[350px] md:max-w-[600px] flex flex-col items-center justify-center mt-10 z-20'>
           <Header />
-          <SearchBar />
+          {/* <SearchBar /> */}
         </div>
         <Routes>
             <Route index path="/" />

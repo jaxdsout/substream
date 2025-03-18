@@ -41,7 +41,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
     
     return (
         <div className="w-full flex flex-row items-center justify-center bg-[#3b383f] bg-opacity-70 p-4 rounded-lg shadow-inner drop-shadow-md">
-            {choice ? (
+            {choice?.id ? (
                 <button 
                     onClick={handleBack}  
                     className="h-[40px] bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-black p-4 rounded-lg mr-1 flex flex-row items-center justify-center"

@@ -12,9 +12,10 @@ function Choice ({ load_choice, choice, region}) {
     // const prevChoice = useRef(null)
 
     useEffect(() => {
-        if (Object.keys(choice).length === 0) {
+        if (!choice && id) {
             console.log("running load choice", id, region)
             load_choice(id, region);
+            console.log(choice)
         }
 
         if (!id) {

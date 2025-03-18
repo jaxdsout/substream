@@ -12,7 +12,7 @@ import {
 
 const initialState = {
     results: [],
-    choice: {},
+    choice: null,
     searchString: '',
     filter: 2,
     isLoaded: false,

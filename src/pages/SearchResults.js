@@ -14,7 +14,7 @@ function SearchResults({ results, isLoaded, auto_search, filter, region, searchS
       navigate("/");
     }
 
-    if (results.length === 0) {
+    if (results.length === 0 && id) {
       auto_search(id, filter, region);
     }
   }, [id, auto_search, filter, region, results, navigate]); 
