@@ -57,29 +57,31 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
                     onChange={handleSearchChange}
                     onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                     value={searchString}
+                    enterKeyHint="search"
                     onDoubleClick={handleClear}
-                    className="text-[#8e8e8e] bg-[#1e1e1e] h-[40px] sm:w-[12rem] md:w-[18rem] rounded-md mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset relative"
+                    className="text-[#a5d294] placeholder-[#a5d294] bg-[#1e1e1e] h-[40px] sm:w-[12rem] md:w-[18rem] rounded-md ml-1 mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset relative"
                     spellCheck
                 />
                 { searchString ? (
-                    <button onClick={handleClear} className="h-[40px] text-[#8e8e8e] hover:text-[#a5d294] p-2 rounded-lg mr-1 absolute right-0 z-30">
+                    <button onClick={handleClear} className="h-[40px] text-[#8e8e8e] hover:text-[#a5d294] p-2 rounded-lg mr-1 ml-1 absolute right-0 z-30">
                         <Icon name="window close"/>
                     </button>
                 ) : null }
            
             </div>
           
-            <button onClick={handleSubmit} className="h-[40px] bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-black p-2 rounded-lg mr-1">
+            <button onClick={handleSubmit} className="h-[40px] bg-[#1e1e1e] text-[#8e8e8e] hover:bg-[#a5d294] hover:text-black p-2 rounded-lg mr-1 ml-1">
                 <Icon name="search" className="!mb-1 !ml-1"/>
             </button>
 
             <Dropdown 
-                className="h-[40px] p-2 text-[#8e8e8e] bg-[#1e1e1e] hover:bg-[#a5d294] hover:text-black font-semibold rounded-lg !inset-shadow"
+                className="h-[40px] p-2 text-[#8e8e8e] bg-[#1e1e1e] hover:bg-[#a5d294] hover:text-black font-semibold rounded-lg !inset-shadow ml-1"
                 options={filters}
                 value={filter}
                 icon={null}
                 onChange={handleFilterChange}
-                header={<p className="text-xs text-[#8e8e8e] p-3 pointer-events-none select-none">CONTENT SELECTION</p>}
+                direction={"left"}
+                header={<p className="text-xs text-[#8e8e8e] p-3 mt-3 pointer-events-none select-none">CONTENT SELECTION</p>}
                 trigger={<Icon className="filter !mt-1 !ml-1" />}
             >
             </Dropdown>

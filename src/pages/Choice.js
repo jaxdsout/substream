@@ -21,7 +21,7 @@ function Choice ({ load_choice, choice, region}) {
     }, [choice, id, load_choice, region, navigate]);
     
     return (
-        <div className="text-[#ededed] flex flex-col items-center justify-center drop-shadow-md min-w-[349px] max-w-[350px] md:max-w-[600px] md:min-w-[599px] mt-10 mb-10 p-3 bg-[#3b383f] bg-opacity-70 rounded-lg border-t-8 border-b-8 border-[#3b383f] border-opacity-70">
+        <div className="text-[#ededed] flex flex-col items-center justify-center drop-shadow-md min-w-[349px] max-w-[350px] md:max-w-[600px] md:min-w-[599px] mt-10 mb-10 p-3 bg-[#3b383f] bg-opacity-70 rounded-lg border-t-8 border-b-8 border-[#3b383f] border-opacity-0">
             <div className="flex flex-col items-center justify-center ">
                 <div className="bg-[#3b383f] p-4 flex flex-col md:flex-row items-center md:items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg mb-5">
                     <img className="select-none pointer-events-none mr-0 md:mr-3 rounded-md drop-shadow-md mb-5 md:mb-0 shadow-inner h-84 w-48" src={choice?.posterLarge} alt={choice?.title} />

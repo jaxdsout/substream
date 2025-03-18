@@ -22,7 +22,7 @@ function SearchResults({ results, isLoaded, auto_search, filter, region, searchS
 
   
   if (results.length > 0 && isLoaded) return (
-        <div className="bg-[#3b383f] bg-opacity-70 p-4 mt-10 mb-10 rounded-lg shadow-inner drop-shadow-md results-scrollbar grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-scroll drop-shadow-md min-w-[349px] max-w-[350px] min-h-[250px] max-h-[900px] md:max-h-[500px] md:max-w-[600px] md:min-w-[599px] border-t-8 border-b-8 border-[#3b383f] border-opacity-70">
+        <div className="bg-[#3b383f] bg-opacity-70 p-4 mt-10 mb-10 rounded-lg shadow-inner drop-shadow-md results-scrollbar grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-scroll drop-shadow-md min-w-[349px] max-w-[350px] min-h-[250px] max-h-[900px] md:max-h-[500px] md:max-w-[600px] md:min-w-[599px] border-t-8 border-b-8 border-[#3b383f] border-opacity-0">
           {results.map((result, index) => (
             <Card result={result} />
           ))}          
