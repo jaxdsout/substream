@@ -26,9 +26,9 @@ function Choice ({ load_choice, choice, region}) {
     
     return (
         <div
-            className="grid grid-cols-1 mt-7 mb-10 p-4 
+            className="w-full flex flex-col items-center justify-center mt-7 mb-10 p-9 
             text-[#ededed] bg-[#3b383f] bg-opacity-70 rounded-lg drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0 
-            transition-all transition-discrete duration-300 ease-in-out w-11/12 sm:w-full"
+            transition-all transition-discrete duration-300 ease-in-out"
         >
             <div className="flex flex-col items-center justify-center ">
                 <div className="bg-[#3b383f] p-4 flex flex-col md:flex-row items-center md:items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg mb-5">

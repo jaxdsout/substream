@@ -12,7 +12,7 @@ function App ({ results, choice }) {
   
   return (
     <div className='flex flex-col items-center justify-between h-screen'>
-      <div className='h-screen flex flex-col items-center justify-center mt-4'>
+      <div className='h-screen flex flex-col items-center justify-center mt-4 w-11/12 md:w-1/2'>
         <Header />
         <SearchBar />
         <Routes>
