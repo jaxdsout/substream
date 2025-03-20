@@ -11,11 +11,9 @@ function App () {
   
   return (
     <div className='flex flex-col items-center justify-between h-screen'>
-      <div className='flex flex-col items-center justify-center'>
-        <div className='min-w-[349px] max-w-[350px] md:max-w-[600px] flex flex-col items-center justify-center mt-10 z-20'>
-          <Header />
-          <SearchBar />
-        </div>
+      <div className='h-full flex flex-col items-center justify-center min-w-[349px] max-w-[350px] md:max-w-[600px] mt-4'>
+        <Header />
+        <SearchBar />
         <Routes>
             <Route index path="/" />
             <Route path="/search/:id" element={ <SearchResults /> }/>

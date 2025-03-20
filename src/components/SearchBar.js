@@ -41,7 +41,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
     }
     
     return (
-        <div className="w-full flex flex-row items-center justify-center bg-[#3b383f] bg-opacity-70 p-4 rounded-lg shadow-inner drop-shadow-md">
+        <div className="w-full flex flex-row items-center justify-center bg-[#3b383f] bg-opacity-70 p-4 rounded-lg shadow-inner drop-shadow-md z-30 transition-all transition-discrete duration-300 ease-in-out">
             {choice?.id ? (
                 <button 
                     onClick={handleBack}  
@@ -60,7 +60,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
                     value={searchString}
                     enterKeyHint="search"
                     onDoubleClick={handleClear}
-                    className="text-[#a5d294] placeholder-[#a5d294] bg-[#1e1e1e] h-[40px] sm:w-[12rem] md:w-[18rem] rounded-md ml-1 mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset relative"
+                    className="text-[#a5d294] text-[16px] placeholder-[#a5d294] bg-[#1e1e1e] h-[40px] sm:w-[12rem] md:w-[18rem] rounded-md ml-1 mr-1 indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset relative"
                     spellCheck
                 />
                 { searchString ? (
