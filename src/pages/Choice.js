@@ -26,8 +26,8 @@ function Choice ({ load_choice, choice, region}) {
     
     return (
         <div
-            className="w-full flex flex-col items-center justify-center mt-7 mb-10 p-9 
-            text-[#ededed] bg-[#3b383f] bg-opacity-70 rounded-lg drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0 
+            className="flex flex-col items-center justify-center  p-9 
+            text-[#ededed]  
             transition-all transition-discrete duration-300 ease-in-out"
         >
             <div className="flex flex-col items-center justify-center ">

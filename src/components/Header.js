@@ -13,11 +13,11 @@ function Header ({ clear_stream, isLoaded }) {
     }
 
     return (
-        <div className="text-center">
+        <div className="text-center flex flex-col items-center mb-2 sm:mb-0">
             <h1 
                 data-text='SUBSTREAM' 
-                className={`logo text-[#a5d294] italic select-none cursor-pointer mb-2 sm:mb-0 transition-all transition-discrete duration-300 ease-in-out ${
-                location.pathname === '/' ? 'text-[6.3rem]' : ''
+                className={`logo text-[#a5d294] italic select-none cursor-pointer transition-all transition-discrete duration-300 ease-in-out ${
+                location.pathname === '/' ? 'text-[3.3rem] md:text-[6.3rem]' : 'text-4xl'
                 }`}
                 onClick={handleHeaderClick}
             >

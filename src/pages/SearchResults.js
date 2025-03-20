@@ -22,10 +22,7 @@ function SearchResults({ results, isLoaded, auto_search, filter, region, searchS
   
   if (results.length > 0 && isLoaded) return (
     <div
-      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4 mt-7 mb-10
-      bg-[#3b383f] bg-opacity-70 rounded-lg shadow-inner drop-shadow-md overflow-y-scroll results-scrollbar 
-      border-t-8 border-b-8 border-[#3b383f] border-opacity-0 
-      transition-all transition-discrete duration-300 ease-in-out"
+      className="p-4 grid grid-cols-2 sm:grid-cols-3 gap-4 overflow-y-scroll results-scrollbar transition-all transition-discrete duration-300 ease-in-out max-h-[50rem] my-5"
     >
       {results.map((result) => (
         <Card result={result} />
@@ -33,9 +30,9 @@ function SearchResults({ results, isLoaded, auto_search, filter, region, searchS
     </div>
   ) 
 
-  if (results.length < 1 && isLoaded) return (
-    <div className="w-full text-[#ededed] text-center p-5 text-sm text-nowrap flex flex-col items-center bg-[#3b383f] bg-opacity-70 rounded-lg drop-shadow-md mt-7 mb-10 p-3 transition-all transition-discrete duration-300 ease-in-out">
-      <p>No results for that {searchString} on any {region} platforms.</p>
+  if (results.length === 0 && isLoaded) return (
+    <div className="text-[#ededed] text-center p-5 text-sm text-nowrap flex flex-col items-center transition-all transition-discrete duration-300 ease-in-out">
+      <p>No results for '{searchString}' on any {region} platforms.</p>
     </div>
   )
 }
