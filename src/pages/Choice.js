@@ -9,11 +9,9 @@ import { Icon } from "semantic-ui-react"
 function Choice ({ load_choice, choice, region}) {
     const { id } = useParams();
     const navigate = useNavigate();
-    // const prevChoice = useRef(null)
 
     useEffect(() => {
         if (!choice && id) {
-            console.log("running load choice", id, region)
             load_choice(id, region);
             console.log(choice)
         }

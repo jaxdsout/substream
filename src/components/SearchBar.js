@@ -53,8 +53,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
                 </button>
                 ) : null}
 
-                {/* Search Input with Clear Button Inside */}
-                <div className="relative flex flex-row items-center w-1/2 md:w-3/4">
+                <div className="relative flex flex-row items-center w-full mr-1">
                 <input
                     type="search"
                     placeholder="Search..."
@@ -63,7 +62,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
                     value={searchString}
                     enterKeyHint="search"
                     onDoubleClick={handleClear}
-                    className="text-[#a5d294] text-[16px] placeholder-[#a5d294] bg-[#1e1e1e] h-[40px] rounded-md indent-3 w-full focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset"
+                    className="text-[#a5d294] text-[16px] placeholder-[#a5d294] bg-[#1e1e1e] h-[40px] rounded-md indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset w-[14rem] md:w-[20rem]"
                     spellCheck
                 />
                 {searchString && (
