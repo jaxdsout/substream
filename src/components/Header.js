@@ -13,7 +13,7 @@ function Header ({ clear_stream, isLoaded }) {
     }
 
     return (
-        <div className="text-center flex flex-col items-center mb-2 sm:mb-0">
+        <div className="text-center flex flex-col items-center mb-2">
             <h1 
                 data-text='SUBSTREAM' 
                 className={`logo text-[#a5d294] italic select-none cursor-pointer transition-all transition-discrete duration-300 ease-in-out ${

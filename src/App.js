@@ -15,20 +15,17 @@ function App () {
   
   return (
     <div className='flex flex-col items-center justify-between h-screen'>
-      <div className='flex flex-col items-center justify-center mt-4 w-11/12 md:w-1/2 h-screen'>
+      <div className='flex flex-col items-center justify-center mt-7 w-11/12 md:w-1/2 h-11/12'>
         <div className='flex flex-col items-center justify-center w-full'>
           <Header />
           <SearchBar />
         </div>
-        
-        <Routes>
-          <Route index path="/" />
-        </Routes>
         {(isSearchPage || isDetailPage) ? (
           <div className='w-full mt-5 mb-10 bg-[#3b383f] bg-opacity-70 rounded-lg shadow-inner drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0'>
             <Routes>
-                <Route path="/search/:id" element={ <SearchResults /> }/>
-                <Route path="/detail/:id" element={ <Choice /> }/>
+              <Route index path="/" />
+              <Route path="/search/:id" element={ <SearchResults /> }/>
+              <Route path="/detail/:id" element={ <Choice /> }/>
             </Routes>
           </div>
         ) : (
@@ -38,15 +35,11 @@ function App () {
         )}  
       </div>  
       <Modal open={showModal} onClose={() => setShowModal(false)} className='!max-w-[500px]'>
-        <Modal.Header><p className='text-black'>Substream</p></Modal.Header>
-        <Modal.Content>
+        <Modal.Content className='!bg-[#3b383f] text-[#a5d294] text-center'>
           <p>This app was built to help make sense of the modern media landscape where streamers constantly pass around content like a hot potato.</p>
           <p>Currently only serves the U.S. market.</p>
-          <p>Made possible by the <a href='https://api.watchmode.com/' target='_blank' rel="noreferrer" >Watchmode API</a></p>
+          <p>Made possible by <a href='https://api.watchmode.com/' target='_blank' rel="noreferrer" >Watchmode</a></p>
         </Modal.Content>
-        <Modal.Actions>
-          <Button onClick={() => setShowModal(false)}>Close</Button>
-        </Modal.Actions>
       </Modal>
     </div>
   )
