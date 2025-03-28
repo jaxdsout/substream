@@ -5,8 +5,9 @@ import SearchBar from './components/SearchBar';
 import SearchResults from './pages/SearchResults';
 import Choice from './pages/Choice';
 import Header from './components/Header'
+import { connect } from 'react-redux';
 
-function App () {
+function App ({ isLoaded }) {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
 
@@ -16,7 +17,7 @@ function App () {
   return (
     <div className='flex flex-col items-center justify-between h-screen'>
       <div className='flex flex-col items-center justify-center mt-7 w-11/12 md:w-1/2 h-11/12'>
-        <div className='flex flex-col items-center justify-center w-full'>
+        <div className={`flex flex-col items-center justify-center w-full ${isLoaded ? "" : "h-screen"}`}>
           <Header />
           <SearchBar />
         </div>
@@ -44,5 +45,9 @@ function App () {
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  isLoaded: state.isLoaded
+})
  
-export default App;
+export default connect(mapStateToProps, {})(App);
