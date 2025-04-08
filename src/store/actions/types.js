@@ -6,3 +6,4 @@ export const RESET_CHOICE = 'RESET_CHOICE';
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 export const SET_SEARCH_STRING = 'SET_SEARCH_STRING';
 export const CLEAR_STREAM = 'CLEAR_STREAM';
+export const RESET_FAIL = 'RESET_FAIL';

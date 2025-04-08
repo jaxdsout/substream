@@ -1,9 +1,9 @@
 import { Icon, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { auto_search, reset_choice, change_filter, set_search_string } from "../store/actions/search";
+import { auto_search, reset_choice, change_filter, set_search_string, clear_stream } from "../store/actions/search";
 import { useNavigate } from "react-router-dom";
 
-function SearchBar ({ auto_search, filter, change_filter, searchString, region, set_search_string, reset_choice, choice }) {
+function SearchBar ({ auto_search, filter, change_filter, searchString, region, set_search_string, reset_choice, choice, isLoaded, clear_stream, results }) {
     const navigate = useNavigate();
 
     const filters = [
@@ -23,6 +23,10 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
     }
 
     const handleSearchChange = (e) => {
+        if (isLoaded && results.length === 0) {
+            clear_stream();
+            navigate("/");
+        }
         set_search_string(e.target.value)
     }
 
@@ -62,7 +66,7 @@ function SearchBar ({ auto_search, filter, change_filter, searchString, region, 
                     value={searchString}
                     enterKeyHint="search"
                     onDoubleClick={handleClear}
-                    className="text-[#a5d294] text-[16px] placeholder-[#a5d294] bg-[#1e1e1e] h-[40px] rounded-md indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset w-[14rem] md:w-[20rem]"
+                    className="text-[#a5d294] text-[16px] placeholder-[#a5d294] bg-[#1e1e1e] h-[40px] rounded-md indent-3 focus:outline-none focus:ring-2 focus:ring-[#a5d294] focus:ring-inset w-[12rem] md:w-[20rem]"
                     spellCheck
                 />
                 {searchString && (
@@ -106,7 +110,9 @@ const mapStateToProps = state => ({
    filter: state.filter,
    searchString: state.searchString,
    region: state.region,
-   choice: state.choice
+   choice: state.choice,
+   isLoaded: state.isLoaded,
+   results: state.results
 })
 
-export default connect(mapStateToProps, { auto_search, change_filter, set_search_string, reset_choice })(SearchBar);
+export default connect(mapStateToProps, { auto_search, change_filter, set_search_string, reset_choice, clear_stream })(SearchBar);

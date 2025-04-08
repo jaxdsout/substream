@@ -1,26 +1,19 @@
 import Sources from "../components/Sources"
 import Reviews from "../components/Reviews"
-import { useEffect, useRef } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
+import { useParams } from "react-router-dom"
 import { load_choice } from "../store/actions/search"
 import { connect } from "react-redux"
 import { Icon } from "semantic-ui-react"
 
 function Choice ({ load_choice, choice, region}) {
     const { id } = useParams();
-    const navigate = useNavigate();
-
+    
     useEffect(() => {
         if (!choice && id) {
             load_choice(id, region);
-            console.log(choice)
         }
-
-        if (!id) {
-            navigate("/");
-            return;
-        }
-    }, [choice, id, load_choice, region, navigate]);
+    }, [choice, id, region]);
     
     return (
         <div

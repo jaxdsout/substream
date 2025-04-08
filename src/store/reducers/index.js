@@ -6,8 +6,8 @@ import {
     CLEAR_STREAM,
     RESET_CHOICE,
     CHANGE_FILTER,
-    SET_SEARCH_STRING
-
+    SET_SEARCH_STRING,
+    RESET_FAIL
 } from '../actions/types'
 
 const initialState = {
@@ -16,7 +16,8 @@ const initialState = {
     searchString: '',
     filter: 2,
     isLoaded: false,
-    region: 'US'
+    region: 'US',
+    searchFail: false,
 
 };
 
@@ -33,7 +34,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 results: [],
-                isLoaded: false
+                searchFail: true
             }
         case CLEAR_STREAM:
             return {
@@ -43,7 +44,8 @@ export default function rootReducer(state = initialState, action) {
                 searchString: '',
                 filter: 2,
                 isLoaded: false,
-                region: 'US'
+                region: 'US',
+                searchFail: false
             }
         case LOAD_CHOICE_SUCCESS:
             return {
@@ -68,6 +70,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 searchString: payload
+            }
+        case RESET_FAIL:
+            return {
+                ...state,
+                searchFail: false
             }
         default:
             return state

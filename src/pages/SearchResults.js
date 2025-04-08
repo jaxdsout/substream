@@ -1,24 +1,17 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { auto_search } from "../store/actions/search";
 import Card from "../components/Card";
-import { Loader } from "semantic-ui-react";
 
 function SearchResults({ results, isLoaded, auto_search, filter, region, searchString }) {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!id) {
-      navigate("/");
-    }
-
-    if (results.length === 0 && id) {
+    if (results.length === 0 && id && !isLoaded) {
       auto_search(id, filter, region);
     }
-  }, [id, auto_search, filter, region, results, navigate]); 
-
+  }, [id, filter, region, results, isLoaded]); 
   
   if (results.length > 0 && isLoaded) return (
     <div

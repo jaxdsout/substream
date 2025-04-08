@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Modal } from "semantic-ui-react";
+import { Modal } from "semantic-ui-react";
 import { matchPath, Route, Routes, useLocation } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import SearchResults from './pages/SearchResults';
@@ -15,24 +15,20 @@ function App ({ isLoaded }) {
   const isDetailPage = matchPath("/detail/:id", location.pathname);  
   
   return (
-    <div className='flex flex-col items-center justify-between h-screen'>
-      <div className='flex flex-col items-center justify-center mt-7 w-11/12 md:w-1/2 h-11/12'>
+    <div className='flex flex-col items-center justify-center h-screen'>
+      <div className='flex flex-col items-center justify-center w-11/12 md:w-1/2 h-11/12'>
         <div className={`flex flex-col items-center justify-center w-full ${isLoaded ? "" : "h-screen"}`}>
           <Header />
           <SearchBar />
         </div>
-        {(isSearchPage || isDetailPage) ? (
-          <div className='w-full mt-5 mb-10 bg-[#3b383f] bg-opacity-70 rounded-lg shadow-inner drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0'>
+        {(isSearchPage || isDetailPage) && (
+          <div className='w-full mt-5 bg-[#3b383f] bg-opacity-70 rounded-lg shadow-inner drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0'>
             <Routes>
               <Route index path="/" />
               <Route path="/search/:id" element={ <SearchResults /> }/>
               <Route path="/detail/:id" element={ <Choice /> }/>
             </Routes>
           </div>
-        ) : (
-          <div className='mt-10 mb-10'>
-            <i className="info circle icon cursor-pointer text-[#a5d294] hover:text-white" onClick={() => setShowModal(true)} />
-          </div> 
         )}  
       </div>  
       <Modal open={showModal} onClose={() => setShowModal(false)} className='!max-w-[500px]'>

@@ -6,7 +6,8 @@ import {
     CLEAR_STREAM,
     RESET_CHOICE,
     CHANGE_FILTER,
-    SET_SEARCH_STRING
+    SET_SEARCH_STRING,
+    RESET_FAIL
 
 } from '../actions/types'
 
@@ -69,6 +70,17 @@ export const set_search_string = (value) => dispatch => {
     try {
         dispatch({
             type: SET_SEARCH_STRING, payload: value
+        });
+    } catch(err) {
+        console.error(err)
+    }
+  
+}
+
+export const reset_fail = () => dispatch => {
+    try {
+        dispatch({
+            type: RESET_FAIL
         });
     } catch(err) {
         console.error(err)

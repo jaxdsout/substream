@@ -65,7 +65,7 @@ function Sources ({ choice, region }) {
 
   
   useEffect(() => {
-      if (choice?.sources) {
+      if (choice?.sources.length > 0) {
         setFilteredSources(filterUniqueSources(choice.sources));
       }
   }, [choice]);
