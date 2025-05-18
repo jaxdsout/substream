@@ -16,15 +16,11 @@ function Choice ({ load_choice, choice, region}) {
     }, [choice, id, region]);
     
     return (
-        <div
-            className="flex flex-col items-center justify-center  p-9 
-            text-[#ededed]  
-            transition-all transition-discrete duration-300 ease-in-out"
-        >
-            <div className="flex flex-col items-center justify-center ">
-                <div className="bg-[#3b383f] p-4 flex flex-col md:flex-row items-center md:items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg mb-5">
+        <div className="w-11/12 bg-[#3b383f] bg-opacity-70 rounded-lg shadow-inner drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0 my-5">
+            <div className="p-4 grid grid-cols-1 lg:grid-cols-2 gap-4 text-[#ededed] transition-all transition-discrete duration-300 ease-in-out">
+                <div className="bg-[#3b383f] p-4 flex flex-col md:flex-row items-center md:items-start justify-center ml-0 md:ml-5 drop-shadow-md shadow-inner rounded-lg">
                     <img className="select-none pointer-events-none mr-0 md:mr-3 rounded-md drop-shadow-md mb-5 md:mb-0 shadow-inner h-84 w-48" src={choice?.posterLarge} alt={choice?.title} />
-                    <div className="w-full flex flex-col items-star px-4 py-2 text-[#ededed] ">
+                    <div className="w-full flex flex-col items-start px-4 py-2 text-[#ededed] ">
                         <h3 className="text-base text-wrap text-center drop-shadow-sm"> {choice?.title.toUpperCase()}</h3>
                         <div className="flex flex-col items-start justify-center text-xs">
                             <div className="flex flex-row mb-2">
@@ -43,7 +39,8 @@ function Choice ({ load_choice, choice, region}) {
                 </div>
                 <Sources />
             </div> 
-        </div> 
+        </div>
+
     )
 }
 

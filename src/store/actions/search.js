@@ -25,10 +25,8 @@ export const auto_search = (searchString, filter, region) => async (dispatch) =>
 
 export const load_choice = (choice_id, region) => async (dispatch) => {
     try {
-        console.log(`${process.env.REACT_APP_API_URL}/title/${choice_id}/details/?apiKey=${process.env.REACT_APP_KEY}&append_to_response=sources&regions=${region}`)
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/title/${choice_id}/details/?apiKey=${process.env.REACT_APP_KEY}&append_to_response=sources&regions=${region}`);
         dispatch({ type: LOAD_CHOICE_SUCCESS, payload: res.data });
-        console.log("res data", res.data)
     } catch (err) {
         dispatch({ type: LOAD_CHOICE_FAIL });
     }

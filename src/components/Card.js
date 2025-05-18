@@ -13,7 +13,6 @@ function Card({ result, region, load_choice, isLoaded }) {
     const posterLarge = result.image_url.replace('w185', 'w780');
 
     const handleResultClick = async (result) => {
-        console.log("result clicked, triggering load choice")
         await load_choice(result.id, region);
         navigate(`/detail/${result.id}`);
     }

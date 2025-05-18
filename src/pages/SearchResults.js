@@ -14,18 +14,23 @@ function SearchResults({ results, isLoaded, auto_search, filter, region, searchS
   }, [id, filter, region, results, isLoaded]); 
   
   if (results.length > 0 && isLoaded) return (
-    <div
-      className="p-4 grid grid-cols-2 sm:grid-cols-3 gap-4 overflow-y-scroll results-scrollbar transition-all transition-discrete duration-300 ease-in-out max-h-[50rem] my-5"
-    >
-      {results.map((result) => (
-        <Card result={result} />
-      ))}          
+    <div className="w-11/12 bg-[#3b383f] bg-opacity-70 rounded-lg shadow-inner drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0 my-5">
+      <div
+        className="p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 overflow-y-scroll results-scrollbar transition-all transition-discrete duration-300 ease-in-out max-h-[50rem]"
+      >
+        {results.map((result) => (
+          <Card result={result} />
+        ))}          
+      </div>
     </div>
+  
   ) 
 
   if (results.length === 0 && isLoaded) return (
-    <div className="text-[#ededed] text-center p-5 text-sm text-nowrap flex flex-col items-center transition-all transition-discrete duration-300 ease-in-out">
-      <p>No results for '{searchString}' on any {region} platforms.</p>
+    <div className="bg-[#3b383f] bg-opacity-70 rounded-lg shadow-inner drop-shadow-md border-t-8 border-b-8 border-[#3b383f] border-opacity-0 my-5">
+      <div className="text-[#ededed] text-center p-5 text-sm text-nowrap flex flex-col items-center transition-all transition-discrete duration-300 ease-in-out">
+        <p>No results for '{searchString}' on any {region} platforms.</p>
+      </div>
     </div>
   )
 }

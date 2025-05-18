@@ -71,28 +71,28 @@ function Sources ({ choice, region }) {
   }, [choice]);
 
   if (filteredSources.length > 0) return (
-    <div className="flex flex-col items-center justify-center bg-black/5 p-3 rounded-md shadow-inner">
-      <h3 className="text-sm uppercase mb-1 text-[#ededed]">SOURCES:</h3>
-        <div className="flex flex-row flex-wrap items-center justify-center max-w-[250px]">
-          {filteredSources.map((source, index) => {
-            return (
-              <div key={index}>
-                <a href={source.web_url} target="_blank" rel="noopener noreferrer">
-                  <img
-                    className="h-20 w-20 sourceLogo rounded-lg m-0.5"
-                    src={source.logo}
-                    alt={`${source.name}`}
-                  />
-                </a>
-              </div>
-            )
-          })}
-        </div>
+    <div className="flex flex-col items-center justify-start bg-black/5 p-3 rounded-md shadow-inner">
+      <h3 className="text-sm uppercase mb-1 text-[#ededed] tracking-wider">SERVICES:</h3>
+      <div className="flex flex-row flex-wrap items-center justify-center max-w-[250px]">
+        {filteredSources.map((source, index) => {
+          return (
+            <div key={index}>
+              <a href={source.web_url} target="_blank" rel="noopener noreferrer">
+                <img
+                  className="h-20 w-20 sourceLogo rounded-lg m-0.5"
+                  src={source.logo}
+                  alt={`${source.name}`}
+                />
+              </a>
+            </div>
+          )
+        })}
+      </div>
     </div>
   ) 
   
   if (filteredSources.length === 0) return (
-    <div className="text-center">
+    <div className="flex flex-col items-center justify-center">
       <p className="text-xs">This content is currently not streaming on any {region} platforms.</p>
     </div>
   )
