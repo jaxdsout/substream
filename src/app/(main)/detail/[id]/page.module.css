@@ -1,0 +1,150 @@
+.loading {
+  min-height: 200px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  text-align: left;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+}
+
+.poster {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid rgba(232, 145, 42, 0.15);
+  box-shadow:
+    0 0 0 1px rgba(232, 145, 42, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-bungee), Bungee, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+}
+
+.metaRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  color: rgba(255, 236, 205, 0.6);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.83rem;
+  letter-spacing: 0.04em;
+}
+
+.label {
+  color: var(--color-gold);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  flex-shrink: 0;
+  text-shadow: var(--neon-glow-gold);
+}
+
+.rating {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.ratingValue {
+  font-family: var(--font-bungee), Bungee, sans-serif;
+  font-size: 2.4rem;
+  color: var(--color-accent);
+  text-shadow: var(--neon-glow);
+  line-height: 1;
+}
+
+.ratingMax {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(232, 145, 42, 0.25) 30%,
+    rgba(232, 145, 42, 0.25) 70%,
+    transparent
+  );
+}
+
+.sourcesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.servicesHeading {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--color-teal);
+  letter-spacing: 0.18em;
+  text-shadow: var(--neon-glow-teal);
+}
+
+@media (min-width: 640px) {
+  .layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+
+  .left {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+
+  .poster {
+    max-width: 240px;
+  }
+
+  .right {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .poster {
+    max-width: 280px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}

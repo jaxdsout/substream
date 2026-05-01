@@ -1,0 +1,49 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 76px);
+  gap: 0.5rem;
+}
+
+.logoLink {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(232, 145, 42, 0.08);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.logoLink:hover {
+  border-color: rgba(232, 145, 42, 0.6);
+  box-shadow:
+    0 0 10px rgba(232, 145, 42, 0.25),
+    0 0 22px rgba(232, 145, 42, 0.1);
+  transform: scale(1.06);
+}
+
+.logo {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.empty {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 400px) {
+  .grid {
+    grid-template-columns: repeat(4, 76px);
+  }
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(5, 76px);
+    gap: 0.6rem;
+  }
+}

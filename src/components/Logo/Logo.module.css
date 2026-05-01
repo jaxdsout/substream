@@ -1,0 +1,80 @@
+/* Same element stays mounted across routes — font-size transitions automatically */
+.logo {
+  font-family: var(--font-bungee), Bungee, sans-serif;
+  font-size: 66px;
+  font-style: italic;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  padding-right: 0.2em;
+
+  /* Gradient text: gold core → amber → rust — text-shadow doesn't work on gradient text */
+  background: linear-gradient(135deg, #c8980c 0%, #e8891a 45%, #a82408 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  filter:
+    drop-shadow(0 0 8px rgba(255, 200, 50, 0.9))
+    drop-shadow(0 0 20px rgba(168, 36, 8, 0.55))
+    drop-shadow(0 0 40px rgba(220, 110, 20, 0.3));
+
+  transition:
+    font-size 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease;
+  animation: logo-flicker 1.4s ease-out both;
+}
+
+.logo:hover {
+  filter:
+    drop-shadow(0 0 10px rgba(255, 210, 40, 1))
+    drop-shadow(0 0 22px rgba(232, 137, 26, 0.9))
+    drop-shadow(0 0 44px rgba(168, 36, 8, 0.65))
+    drop-shadow(0 0 80px rgba(220, 110, 20, 0.35));
+}
+
+.logo:active {
+  animation: text-pop-up-top 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+.logoSmall {
+  font-family: var(--font-bungee), Bungee, sans-serif;
+  font-size: 26px;
+  font-style: italic;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  padding-right: 0.2em;
+
+  background: linear-gradient(135deg, #c8980c 0%, #e8891a 45%, #a82408 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  filter:
+    drop-shadow(0 0 4px rgba(255, 200, 50, 0.85))
+    drop-shadow(0 0 10px rgba(232, 135, 25, 0.6))
+    drop-shadow(0 0 20px rgba(168, 36, 8, 0.3));
+
+  transition:
+    font-size 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s ease,
+    opacity 0.15s;
+}
+
+.logoSmall:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 640px) {
+  .logo {
+    font-size: 92px;
+  }
+
+  .logoSmall {
+    font-size: 34px;
+  }
+}

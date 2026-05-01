@@ -1,0 +1,30 @@
+.row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(232, 145, 42, 0.08);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.link:hover {
+  border-color: rgba(232, 145, 42, 0.6);
+  box-shadow:
+    0 0 10px rgba(232, 145, 42, 0.25),
+    0 0 22px rgba(232, 145, 42, 0.1);
+  transform: scale(1.06);
+}
+
+.logo {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
