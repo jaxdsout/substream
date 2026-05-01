@@ -6,7 +6,7 @@
 
 .empty {
   text-align: center;
-  color: var(--color-text-muted);
+  color: var(--color-deep);
   margin-top: 3rem;
   font-size: 1rem;
 }

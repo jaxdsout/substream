@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Logo from '@/components/Logo/Logo'
 import SearchBar from '@/components/SearchBar/SearchBar'
+import InfoModal from '@/components/InfoModal/InfoModal'
 import styles from './AppShell.module.css'
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -24,6 +25,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </header>
 
       <main className={styles.main}>{children}</main>
+      <InfoModal />
     </div>
   )
 }

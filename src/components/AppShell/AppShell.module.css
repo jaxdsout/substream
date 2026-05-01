@@ -6,10 +6,10 @@
   padding: 1.5rem 1rem 3rem;
   position: relative;
   background:
-    radial-gradient(ellipse 130% 50% at 50% -10%, rgba(232, 145, 42, 0.13) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 95% 85%, rgba(168, 36, 8, 0.09) 0%, transparent 50%),
-    radial-gradient(ellipse 45% 35% at 5% 90%, rgba(30, 122, 149, 0.1) 0%, transparent 55%),
-    #050608;
+    radial-gradient(ellipse 130% 50% at 50% -10%, rgba(var(--color-main-rgb), 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 95% 85%, rgba(var(--color-deep-rgb), 0.09) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 35% at 5% 90%, rgba(var(--color-secondary-rgb), 0.1) 0%, transparent 55%),
+    var(--color-bg);
 }
 
 /* CRT scanlines overlay */

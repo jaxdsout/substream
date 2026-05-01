@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -8,56 +10,28 @@
   --color-bg: #050608;
   --color-surface: #0b0c0e;
   --color-surface-raised: #111317;
+  --color-deep: #00b400;
+  --color-main: #00f900;
+  --color-secondary: #4cff4d;
+  --color-tertiary: #6de567;
 
-  /* BR2049 palette */
-  --color-amber:  #e8891a;
-  --color-gold:   #c8980c;
-  --color-rust:   #a82408;
-  --color-teal:   #1e7a95;
+  --color-main-rgb: 0, 249, 0;
+  --color-deep-rgb: 0, 180, 0;
+  --color-secondary-rgb: 76, 255, 77;
+  --color-tertiary-rgb: 109, 229, 103;
 
-  /* UI roles */
-  --color-accent:       var(--color-amber);
-  --color-accent-hover: #f5a030;
-  --color-accent-dim:   rgba(232, 137, 26, 0.55);
-  --color-border:       rgba(200, 152, 12, 0.16);
-  --color-border-bright: rgba(232, 137, 26, 0.6);
-  --color-text:         rgba(255, 236, 205, 0.92);
-  --color-text-muted:   rgba(200, 152, 12, 0.45);
-
-  --radius: 2px;
-
-  /* Multi-tone glow: bright gold core → amber → rust outer */
-  --neon-glow:
-    0 0 5px  rgba(255, 200, 50,  0.95),
-    0 0 12px rgba(232, 135, 25,  0.8),
-    0 0 24px rgba(168, 36,  8,   0.55),
-    0 0 50px rgba(220, 110, 20,  0.28),
-    0 0 90px rgba(128, 22,  4,   0.12);
-
-  --neon-glow-sm:
-    0 0 4px  rgba(255, 200, 50,  0.85),
-    0 0 10px rgba(232, 135, 25,  0.6),
-    0 0 20px rgba(168, 36,  8,   0.3);
-
-  --neon-glow-teal:
-    0 0 5px  rgba(30,  180, 220, 0.85),
-    0 0 14px rgba(30,  122, 149, 0.6),
-    0 0 28px rgba(10,  80,  110, 0.3);
-
-  --neon-glow-gold:
-    0 0 5px  rgba(255, 210, 40,  0.9),
-    0 0 12px rgba(200, 152, 12,  0.65),
-    0 0 24px rgba(150, 110, 5,   0.3);
-
-  --neon-box:
-    0 0 8px  rgba(232, 137, 26, 0.5),
-    0 0 20px rgba(168, 36,  8,  0.25),
-    inset 0 0 8px rgba(232, 137, 26, 0.05);
+  --radius: 6px;
+  --neon-glow: 0 0 6px rgba(var(--color-main-rgb), 0.8), 0 0 20px rgba(var(--color-main-rgb), 0.4);
+  --neon-glow-sm: 0 0 4px rgba(var(--color-main-rgb), 0.6), 0 0 10px rgba(var(--color-main-rgb), 0.25);
+  --neon-glow-gold: 0 0 6px rgba(var(--color-tertiary-rgb), 0.8), 0 0 16px rgba(var(--color-tertiary-rgb), 0.4);
+  --neon-glow-teal: 0 0 6px rgba(var(--color-tertiary-rgb), 0.7), 0 0 14px rgba(var(--color-tertiary-rgb), 0.35);
+  --neon-box: 0 0 8px rgba(var(--color-main-rgb), 0.35), 0 0 20px rgba(var(--color-main-rgb), 0.15);
 }
 
-html, body {
+html,
+body {
   background-color: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-main);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -80,18 +54,11 @@ img {
 }
 
 @keyframes text-pop-up-top {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
-}
+  0% {
+    transform: translateY(0);
+  }
 
-/* Filter-based flicker for gradient text logo */
-@keyframes logo-flicker {
-  0%   { opacity: 0.08; filter: drop-shadow(0 0 0px rgba(240, 155, 30, 0)); }
-  12%  { opacity: 0.9;  filter: drop-shadow(0 0 6px rgba(255, 200, 50, 0.8)) drop-shadow(0 0 14px rgba(168, 36, 8, 0.5)); }
-  22%  { opacity: 0.2;  filter: drop-shadow(0 0 0px rgba(240, 155, 30, 0)); }
-  40%  { opacity: 0.85; filter: drop-shadow(0 0 6px rgba(255, 200, 50, 0.8)); }
-  48%  { opacity: 0.5;  filter: drop-shadow(0 0 2px rgba(240, 155, 30, 0.4)); }
-  64%  { opacity: 1;    filter: drop-shadow(0 0 8px rgba(255, 200, 50, 0.9)) drop-shadow(0 0 20px rgba(168, 36, 8, 0.55)); }
-  76%  { opacity: 0.7;  filter: drop-shadow(0 0 5px rgba(240, 155, 30, 0.6)); }
-  100% { opacity: 1;    filter: drop-shadow(0 0 8px rgba(255, 200, 50, 0.9)) drop-shadow(0 0 20px rgba(168, 36, 8, 0.55)) drop-shadow(0 0 40px rgba(220, 110, 20, 0.3)); }
+  100% {
+    transform: translateY(-5px);
+  }
 }
