@@ -39,6 +39,12 @@
   display: none;
 }
 
+.input:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-main);
+  box-shadow: var(--neon-box);
+}
+
 .input:focus {
   border-color: var(--color-main);
   box-shadow:
@@ -89,7 +95,7 @@
 
 .searchBtn:hover {
   background: var(--color-secondary);
-  box-shadow: 0 0 20px rgba(var(--color-main-rgb), 0.7), 0 0 40px rgba(var(--color-main-rgb), 0.3);
+  box-shadow: 0 0 5px rgba(var(--color-main-rgb), 0.7), 0 0 40px rgba(var(--color-main-rgb), 0.3);
 }
 
 .filterBtn {

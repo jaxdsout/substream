@@ -21,7 +21,7 @@
 
 .logo:hover {
   filter:
-    drop-shadow(0 0 2px var(--color-main)) drop-shadow(0 0 20px var(--color-deep));
+    drop-shadow(0 0 2px var(--color-main)) drop-shadow(0 0 10px var(--color-deep));
 }
 
 .logo:active {

@@ -25,7 +25,7 @@ export default function SearchPage() {
   }
 
   return (
-    <div className={styles.grid}>
+    <div className={`${styles.grid}${results.length < 5 ? ` ${styles.centered}` : ''}`}>
       {results.map((result) => (
         <Card key={result.id} result={result} />
       ))}

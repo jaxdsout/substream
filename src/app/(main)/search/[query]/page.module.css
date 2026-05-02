@@ -29,4 +29,14 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 1.25rem;
   }
+
+  .grid.centered {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .grid.centered > * {
+    flex: 0 0 calc(20% - 1rem);
+  }
 }

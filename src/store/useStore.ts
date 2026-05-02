@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import type { ResultData, ChoiceData } from '@/lib/types'
 
 interface SubstreamStore {
@@ -29,39 +30,54 @@ const initialState = {
   searchFail: false,
 }
 
-export const useStore = create<SubstreamStore>((set) => ({
-  ...initialState,
+export const useStore = create<SubstreamStore>()(
+  persist(
+    (set) => ({
+      ...initialState,
 
-  setSearchString: (searchString) => set({ searchString }),
-  setFilter: (filter) => set({ filter }),
-  clearStream: () => set(initialState),
-  resetChoice: () => set({ choice: null }),
-  resetFail: () => set({ searchFail: false }),
+      setSearchString: (searchString) => set({ searchString }),
+      setFilter: (filter) => set({ filter }),
+      clearStream: () => set(initialState),
+      resetChoice: () => set({ choice: null }),
+      resetFail: () => set({ searchFail: false }),
 
-  autoSearch: async (query, filter, region) => {
-    try {
-      const params = new URLSearchParams({
-        q: query,
-        filter: String(filter),
-        region,
-      })
-      const res = await fetch(`/api/search?${params}`)
-      if (!res.ok) throw new Error('Search failed')
-      const data = await res.json()
-      set({ results: data.results ?? [], isLoaded: true })
-    } catch {
-      set({ results: [], searchFail: true })
+      autoSearch: async (query, filter, region) => {
+        try {
+          const params = new URLSearchParams({
+            q: query,
+            filter: String(filter),
+            region,
+          })
+          const res = await fetch(`/api/search?${params}`)
+          if (!res.ok) throw new Error('Search failed')
+          const data = await res.json()
+          set({ results: data.results ?? [], isLoaded: true })
+        } catch {
+          set({ results: [], searchFail: true })
+        }
+      },
+
+      loadChoice: async (id, region) => {
+        try {
+          const res = await fetch(`/api/title/${id}?region=${region}`)
+          if (!res.ok) throw new Error('Failed to load title')
+          const data = await res.json()
+          set({ choice: data })
+        } catch {
+          set({ choice: null })
+        }
+      },
+    }),
+    {
+      name: 'substream-session',
+      storage: createJSONStorage(() => sessionStorage),
+      partialize: (state) => ({
+        searchString: state.searchString,
+        filter: state.filter,
+        region: state.region,
+        results: state.results,
+        isLoaded: state.isLoaded,
+      }),
     }
-  },
-
-  loadChoice: async (id, region) => {
-    try {
-      const res = await fetch(`/api/title/${id}?region=${region}`)
-      if (!res.ok) throw new Error('Failed to load title')
-      const data = await res.json()
-      set({ choice: data })
-    } catch {
-      set({ choice: null })
-    }
-  },
-}))
+  )
+)

@@ -1,7 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import { useStore } from '@/store/useStore'
+import Image from 'next/image'
 import styles from './Reviews.module.css'
 
 export default function Reviews() {
@@ -22,7 +22,7 @@ export default function Reviews() {
         <a href={imdbUrl} target="_blank" rel="noopener noreferrer" className={styles.link} aria-label="View on IMDb">
           <Image
             className={styles.logo}
-            src="/logos/imdblogo.png"
+            src="/logos/reviews/imdb.png"
             alt="IMDb"
             width={80}
             height={80}
@@ -33,7 +33,7 @@ export default function Reviews() {
         <a href={letterboxdUrl} target="_blank" rel="noopener noreferrer" className={styles.link} aria-label="View on Letterboxd">
           <Image
             className={styles.logo}
-            src="/logos/letterboxdlogo.png"
+            src="/logos/reviews/letterboxd.png"
             alt="Letterboxd"
             width={80}
             height={80}

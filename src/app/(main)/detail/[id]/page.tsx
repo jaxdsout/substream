@@ -1,7 +1,7 @@
 'use client'
 
+import Platforms from '@/components/Platforms/Platforms'
 import Reviews from '@/components/Reviews/Reviews'
-import Sources from '@/components/Sources/Sources'
 import { useStore } from '@/store/useStore'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
@@ -13,10 +13,12 @@ export default function DetailPage() {
   const { choice, region, loadChoice } = useStore()
 
   useEffect(() => {
-    if (!choice?.id && id) {
+    if (id && choice?.id !== id) {
       loadChoice(id, region)
     }
-  }, [choice, id, region, loadChoice])
+    // intentionally excludes choice — re-running when choice is cleared (e.g. back nav) would re-load and leak into the search page
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, region])
 
   if (!choice?.id) {
     return <div className={styles.loading} aria-busy="true" />
@@ -78,7 +80,7 @@ export default function DetailPage() {
 
         <div className={styles.sourcesSection}>
           <h3 className={styles.servicesHeading}>// SERVICES</h3>
-          <Sources />
+          <Platforms />
         </div>
       </div>
     </div>

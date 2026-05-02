@@ -3,9 +3,9 @@
 import { useMemo } from 'react'
 import Image from 'next/image'
 import { useStore } from '@/store/useStore'
-import { findLogo } from '@/lib/logos'
+import { findPlatformImage } from '@/lib/platforms'
 import type { SourceData } from '@/lib/types'
-import styles from './Sources.module.css'
+import styles from './Platforms.module.css'
 
 function filterUniqueSources(sources: SourceData[]): SourceData[] {
   const seen = new Map<string, SourceData>()
@@ -16,9 +16,9 @@ function filterUniqueSources(sources: SourceData[]): SourceData[] {
       (source.type === 'sub' || source.type === 'free') &&
       !/\(via|\(Via|On Demand/i.test(name)
     ) {
-      const logoPath = findLogo(name)
-      if (logoPath && !seen.has(name)) {
-        seen.set(name, { ...source, logo: logoPath })
+      const imagePath = findPlatformImage(name)
+      if (imagePath && !seen.has(name)) {
+        seen.set(name, { ...source, logo: imagePath })
       }
     }
   }
@@ -26,7 +26,7 @@ function filterUniqueSources(sources: SourceData[]): SourceData[] {
   return Array.from(seen.values())
 }
 
-export default function Sources() {
+export default function Platforms() {
   const { choice, region } = useStore()
 
   const filteredSources = useMemo(
