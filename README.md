@@ -1,75 +1,66 @@
-# React + TypeScript + Vite
+# Substream
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Search any movie or TV show and instantly see where it's streaming. Built with a neo-cyberpunk aesthetic — neon green on near-black, CRT scanline overlay, Blade Runner vibes.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Next.js 15** (App Router)
+- **React 19**
+- **Zustand** — global state
+- **CSS Modules** — no Tailwind
+- **TypeScript**
+- **Watchmode API** — streaming availability data
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Autocomplete title search via Watchmode
+- Streaming platform availability by region (subscription & free only)
+- IMDb and Letterboxd review links
+- Direct deep-links to each platform
+- Region switching
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Create a `.env.local` at the project root:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+WATCHMODE_API_KEY=your_key_here
+```
+
+Get a free API key at [api.watchmode.com](https://api.watchmode.com).
+
+## Project Structure
+
+```
+src/
+  app/
+    api/
+      search/       # Autocomplete search route (server-side, keeps API key hidden)
+      title/[id]/   # Title details + streaming sources route
+    (main)/
+      search/[query]/  # Search results page
+  components/
+    AppShell/       # Layout shell — handles home→results centering animation
+    Card/           # Search result card
+    Platforms/      # Streaming platform logo grid
+    Reviews/        # IMDb / Letterboxd links
+    InfoModal/      # Title detail modal
+  lib/
+    platforms.ts    # Platform name → logo lookup table
+    types.ts        # Shared TypeScript interfaces
+  store/
+    useStore.ts     # Zustand store (search results, selected title, region)
+public/
+  logos/
+    platforms/      # Streaming service logos (19 active platforms)
+    reviews/        # IMDb and Letterboxd logos
+```
+
+## Deployment
+
+Deployed on Vercel. Set `WATCHMODE_API_KEY` in your Vercel environment variables.
