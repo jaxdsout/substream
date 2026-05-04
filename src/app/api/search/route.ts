@@ -11,7 +11,6 @@ function buildUrl(q: string, filter: string, region: string): string {
   return url.toString()
 }
 
-// Score how well a result name matches the query — used to surface article-variant matches
 function relevance(name: string, query: string): number {
   const n = name.toLowerCase()
   const q = query.toLowerCase()
@@ -29,20 +28,18 @@ export async function GET(req: NextRequest) {
   const filter = searchParams.get('filter') ?? '2'
   const region = searchParams.get('region') ?? 'US'
 
-  // Fire the main query first (1 call)
+  // Fire the main query first
   const mainRes = await fetch(buildUrl(q, filter, region))
   const mainData = mainRes.ok ? await mainRes.json() : { results: [] }
   const mainResults: any[] = mainData.results ?? []
 
   // If any result contains all the query words, we have a strong match — return early.
-  // This keeps the common case at 1 API call.
   const hasStrongMatch = mainResults.some((r) => relevance(r.name, q) >= 1)
   if (hasStrongMatch) {
     return NextResponse.json({ results: mainResults })
   }
 
-  // Weak or no results — fire article-prefix variants to catch titles like
-  // "An American Tail" when the user searched "american tail".
+  // Weak or no results — fire article-prefix variants to catch titles like titles
   const stripped = q.replace(/^(the|a|an)\s+/i, '')
   const variants = ARTICLE_PREFIXES
     .filter((p) => !q.toLowerCase().startsWith(p))
