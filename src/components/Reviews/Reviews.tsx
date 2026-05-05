@@ -19,7 +19,7 @@ export default function Reviews() {
   return (
     <div className={styles.row}>
       {choice.imdb_id && (
-        <a href={imdbUrl} target="_blank" rel="noopener noreferrer" className={styles.link} aria-label="View on IMDb">
+        <a href={imdbUrl} target="_blank" rel="noopener noreferrer" className={styles.logoLink} aria-label="View on IMDb">
           <Image
             className={styles.logo}
             src="/logos/reviews/imdb.png"
@@ -30,7 +30,7 @@ export default function Reviews() {
         </a>
       )}
       {choice.type === 'movie' && letterboxdSlug && (
-        <a href={letterboxdUrl} target="_blank" rel="noopener noreferrer" className={styles.link} aria-label="View on Letterboxd">
+        <a href={letterboxdUrl} target="_blank" rel="noopener noreferrer" className={styles.logoLink} aria-label="View on Letterboxd">
           <Image
             className={styles.logo}
             src="/logos/reviews/letterboxd.png"

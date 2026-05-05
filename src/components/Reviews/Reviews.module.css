@@ -5,7 +5,15 @@
   flex-wrap: wrap;
 }
 
-.link {
+.logo {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.logoLink {
   display: block;
   border-radius: var(--radius);
   overflow: hidden;
@@ -13,7 +21,7 @@
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
-.link:hover {
+.logoLink:hover {
   border-color: rgba(var(--color-main-rgb), 0.6);
   box-shadow:
     0 0 10px rgba(var(--color-main-rgb), 0.25),
@@ -21,10 +29,9 @@
   transform: scale(1.06);
 }
 
-.logo {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  display: block;
+.empty {
+  color: var(--color-deep);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
 }

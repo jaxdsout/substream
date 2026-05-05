@@ -1,7 +1,7 @@
 'use client'
 
 import { PLATFORM_LIST } from '@/lib/platforms'
-import { usePlatformStore } from '@/store/usePlatformStore'
+import { useStore } from '@/store/useStore'
 import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import styles from './PlatformPicker.module.css'
@@ -23,7 +23,7 @@ function LogoBtn({ p, selected, onToggle }: { p: (typeof PLATFORM_LIST)[0]; sele
 }
 
 export default function PlatformPicker() {
-  const { userPlatforms, togglePlatform, clearPlatforms } = usePlatformStore()
+  const { userPlatforms, togglePlatform, clearPlatforms } = useStore()
   const [isExpanded, setExpanded] = useState(false)
 
   const sorted = useMemo(() => {

@@ -4,6 +4,7 @@ import type { ResultData } from '@/lib/types'
 import { useStore } from '@/store/useStore'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import styles from './Card.module.css'
 
 interface CardProps {
@@ -13,8 +14,9 @@ interface CardProps {
 export default function Card({ result }: CardProps) {
   const router = useRouter()
   const { region, loadChoice } = useStore()
+  const [imgError, setImgError] = useState(false)
 
-  if (!result.image_url || result.image_url === 'https://cdn.watchmode.com/posters/blank.gif') {
+  if (!result.image_url || result.image_url === 'https://cdn.watchmode.com/posters/blank.gif' || imgError) {
     return null
   }
 
@@ -41,6 +43,7 @@ export default function Card({ result }: CardProps) {
           fill
           unoptimized
           sizes="(max-width: 480px) 50vw, (max-width: 768px) 33vw, 20vw"
+          onError={() => setImgError(true)}
         />
       </div>
       <p className={styles.title}>{title}</p>

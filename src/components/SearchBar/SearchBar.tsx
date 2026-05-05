@@ -1,13 +1,11 @@
 'use client'
 
-import { usePlatformStore } from '@/store/usePlatformStore'
 import { useStore } from '@/store/useStore'
 import { useRouter } from 'next/navigation'
 import { type ChangeEvent, type KeyboardEvent, useState } from 'react'
 import { BackIcon, CloseIcon, FilterIcon, LayerIcon, SearchIcon } from '../Icons/Icons'
 import PlatformPicker from '../PlatformPicker/PlatformPicker'
 import styles from './SearchBar.module.css'
-
 
 export default function SearchBar() {
   const router = useRouter()
@@ -18,13 +16,13 @@ export default function SearchBar() {
     isLoaded,
     results,
     choice,
+    userPlatforms,
     setSearchString,
     setFilter,
     autoSearch,
     clearStream,
     resetChoice,
   } = useStore()
-  const { userPlatforms } = usePlatformStore()
 
   const [isDropdownOpen, setDropdownOpen] = useState(false)
   const [isPlatformOpen, setPlatformOpen] = useState(false)
@@ -65,11 +63,7 @@ export default function SearchBar() {
 
   const handleBack = () => {
     resetChoice()
-    if (searchString) {
-      router.push(`/search/${encodeURIComponent(searchString)}`)
-    } else {
-      router.push('/')
-    }
+    router.back()
   }
 
   return (

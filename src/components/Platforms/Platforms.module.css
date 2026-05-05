@@ -4,6 +4,14 @@
   gap: 0.5rem;
 }
 
+.logo {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
 .logoLink {
   display: block;
   border-radius: var(--radius);
@@ -18,14 +26,6 @@
     0 0 10px rgba(var(--color-main-rgb), 0.25),
     0 0 22px rgba(var(--color-main-rgb), 0.1);
   transform: scale(1.06);
-}
-
-.logo {
-  width: 76px;
-  height: 76px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  display: block;
 }
 
 .empty {

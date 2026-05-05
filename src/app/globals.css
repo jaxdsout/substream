@@ -64,6 +64,29 @@ img {
   letter-spacing: 0.06em;
 }
 
+.logoLink {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(var(--color-main-rgb), 0.08);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.logoLink:hover {
+  border-color: rgba(var(--color-main-rgb), 0.6);
+  box-shadow:
+    0 0 10px rgba(var(--color-main-rgb), 0.25),
+    0 0 22px rgba(var(--color-main-rgb), 0.1);
+  transform: scale(1.06);
+}
+
+.empty {
+  color: var(--color-deep);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
 @keyframes text-pop-up-top {
   0% {
     transform: translateY(0);

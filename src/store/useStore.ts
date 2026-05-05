@@ -1,4 +1,5 @@
 import type { ChoiceData, ResultData } from '@/lib/types'
+import cookieStorage from '@/store/cookieStorage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
@@ -10,6 +11,7 @@ interface AppStore {
   region: string
   isLoaded: boolean
   searchFail: boolean
+  userPlatforms: string[]
 
   setSearchString: (s: string) => void
   setFilter: (f: number) => void
@@ -18,6 +20,8 @@ interface AppStore {
   resetFail: () => void
   autoSearch: (query: string, filter: number, region: string, platforms?: string[]) => Promise<void>
   loadChoice: (id: string, region: string) => Promise<void>
+  togglePlatform: (imagePath: string) => void
+  clearPlatforms: () => void
 }
 
 const initialState = {
@@ -28,6 +32,7 @@ const initialState = {
   region: 'US',
   isLoaded: false,
   searchFail: false,
+  userPlatforms: [] as string[],
 }
 
 export const useStore = create<AppStore>()(
@@ -69,15 +74,21 @@ export const useStore = create<AppStore>()(
           set({ choice: null })
         }
       },
+
+      togglePlatform: (imagePath) =>
+        set((state) => ({
+          userPlatforms: state.userPlatforms.includes(imagePath)
+            ? state.userPlatforms.filter((p) => p !== imagePath)
+            : [...state.userPlatforms, imagePath],
+        })),
+      clearPlatforms: () => set({ userPlatforms: [] }),
     }),
     {
-      name: 'substream-session',
-      storage: createJSONStorage(() => sessionStorage),
+      name: 'substream',
+      storage: createJSONStorage(() => cookieStorage),
       partialize: (state) => ({
-        searchString: state.searchString,
         filter: state.filter,
-        region: state.region,
-        isLoaded: state.isLoaded,
+        userPlatforms: state.userPlatforms,
       }),
     }
   )

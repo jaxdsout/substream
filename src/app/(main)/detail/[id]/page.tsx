@@ -16,7 +16,6 @@ export default function DetailPage() {
     if (id && choice?.id !== id) {
       loadChoice(id, region)
     }
-    // intentionally excludes choice — re-running when choice is cleared (e.g. back nav) would re-load and leak into the search page
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, region])
 

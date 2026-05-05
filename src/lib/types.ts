@@ -28,3 +28,10 @@ export interface ChoiceData {
   rating?: string
   [key: string]: unknown
 }
+
+export interface PlatformEntry {
+  imagePath: string
+  displayName: string
+  globNames: string[]
+  type: 'sub' | 'free'
+}

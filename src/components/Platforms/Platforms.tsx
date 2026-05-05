@@ -2,7 +2,6 @@
 
 import { findPlatformImage } from '@/lib/platforms'
 import type { SourceData } from '@/lib/types'
-import { usePlatformStore } from '@/store/usePlatformStore'
 import { useStore } from '@/store/useStore'
 import Image from 'next/image'
 import { useMemo } from 'react'
@@ -30,8 +29,7 @@ function filterUniqueSources(sources: SourceData[], userPlatforms: string[]): So
 }
 
 export default function Platforms() {
-  const { choice, region } = useStore()
-  const { userPlatforms } = usePlatformStore()
+  const { choice, region, userPlatforms } = useStore()
 
   const filteredSources = useMemo(
     () => (choice?.sources ? filterUniqueSources(choice.sources, userPlatforms) : []),

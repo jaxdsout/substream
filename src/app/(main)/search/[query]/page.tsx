@@ -1,7 +1,6 @@
 'use client'
 
 import Card from '@/components/Card/Card'
-import { usePlatformStore } from '@/store/usePlatformStore'
 import { useStore } from '@/store/useStore'
 import { useParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
@@ -9,8 +8,7 @@ import styles from '../../layout.module.css'
 
 export default function SearchPage() {
   const { query } = useParams<{ query: string }>()
-  const { results, isLoaded, searchFail, filter, region, searchString, autoSearch } = useStore()
-  const { userPlatforms } = usePlatformStore()
+  const { results, isLoaded, searchFail, filter, region, searchString, autoSearch, userPlatforms } = useStore()
 
   useEffect(() => {
     if (results.length === 0 && query && !isLoaded) {
@@ -18,15 +16,21 @@ export default function SearchPage() {
     }
   }, [query, filter, region, results.length, isLoaded, autoSearch, userPlatforms])
 
-  // Re-search when platforms change while results are already showing
   const prevPlatforms = useRef(userPlatforms)
   useEffect(() => {
     if (prevPlatforms.current === userPlatforms) return
     prevPlatforms.current = userPlatforms
     if (query) autoSearch(decodeURIComponent(query), filter, region, userPlatforms)
-    // intentionally reads filter/region/autoSearch as stable values, not re-run triggers
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userPlatforms])
+
+  const prevFilter = useRef(filter)
+  useEffect(() => {
+    if (prevFilter.current === filter) return
+    prevFilter.current = filter
+    if (query) autoSearch(decodeURIComponent(query), filter, region, userPlatforms)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter])
 
   if (searchFail) {
     return <p className={styles.empty}>Search failed — please try again.</p>
