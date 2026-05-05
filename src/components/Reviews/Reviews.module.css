@@ -22,8 +22,8 @@
 }
 
 .logo {
-  width: 76px;
-  height: 76px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
   border-radius: var(--radius);
   display: block;

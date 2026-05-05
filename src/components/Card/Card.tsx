@@ -1,9 +1,9 @@
 'use client'
 
+import type { ResultData } from '@/lib/types'
+import { useStore } from '@/store/useStore'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useStore } from '@/store/useStore'
-import type { ResultData } from '@/lib/types'
 import styles from './Card.module.css'
 
 interface CardProps {

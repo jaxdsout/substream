@@ -51,9 +51,6 @@
   transition: color 0.2s;
 }
 
-.card:hover .title {
-  color: var(--color-deep);
-}
 
 @media (min-width: 640px) {
   .title {

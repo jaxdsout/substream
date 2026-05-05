@@ -72,11 +72,12 @@ export default function DetailPage() {
               {choice.genre_names.join(', ')}
             </div>
           )}
+          <Reviews />
+
         </div>
 
         <div className={styles.divider} />
 
-        <Reviews />
 
         <div className={styles.sourcesSection}>
           <h3 className={styles.servicesHeading}>// SERVICES</h3>

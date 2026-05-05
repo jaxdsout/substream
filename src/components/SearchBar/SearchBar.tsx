@@ -1,16 +1,13 @@
 'use client'
 
+import { usePlatformStore } from '@/store/usePlatformStore'
 import { useStore } from '@/store/useStore'
 import { useRouter } from 'next/navigation'
 import { type ChangeEvent, type KeyboardEvent, useState } from 'react'
-import { BackIcon, CloseIcon, FilterIcon, SearchIcon } from '../Icons/Icons'
+import { BackIcon, CloseIcon, FilterIcon, LayerIcon, SearchIcon } from '../Icons/Icons'
+import PlatformPicker from '../PlatformPicker/PlatformPicker'
 import styles from './SearchBar.module.css'
 
-const filters = [
-  { key: '2', text: 'TV & Movies', value: 2 },
-  { key: '3', text: 'Movies', value: 3 },
-  { key: '4', text: 'TV Shows', value: 4 },
-]
 
 export default function SearchBar() {
   const router = useRouter()
@@ -27,8 +24,10 @@ export default function SearchBar() {
     clearStream,
     resetChoice,
   } = useStore()
+  const { userPlatforms } = usePlatformStore()
 
   const [isDropdownOpen, setDropdownOpen] = useState(false)
+  const [isPlatformOpen, setPlatformOpen] = useState(false)
 
   const handleClear = () => {
     setSearchString('')
@@ -53,9 +52,15 @@ export default function SearchBar() {
     if (e.key === 'Enter') handleSubmit()
   }
 
-  const handleFilterSelect = (value: number) => {
-    setFilter(value)
-    setDropdownOpen(false)
+  const moviesOn = filter === 2 || filter === 3
+  const tvOn = filter === 2 || filter === 4
+
+  const handleToggleMovies = () => {
+    setFilter(moviesOn ? (tvOn ? 4 : 2) : (tvOn ? 2 : 3))
+  }
+
+  const handleToggleTV = () => {
+    setFilter(tvOn ? (moviesOn ? 3 : 2) : (moviesOn ? 2 : 4))
   }
 
   const handleBack = () => {
@@ -66,8 +71,6 @@ export default function SearchBar() {
       router.push('/')
     }
   }
-
-  const activeFilter = filters.find((f) => f.value === filter)
 
   return (
     <div className={styles.wrapper}>
@@ -82,7 +85,11 @@ export default function SearchBar() {
         <div className={styles.inputWrapper}>
           <input
             type="search"
-            placeholder="Search movies & TV..."
+            placeholder={
+              filter === 3 ? 'Search movies...' :
+              filter === 4 ? 'Search TV...' :
+              'Search movies & TV...'
+            }
             value={searchString}
             onChange={handleSearchChange}
             onKeyDown={handleKeyDown}
@@ -103,29 +110,52 @@ export default function SearchBar() {
         </button>
 
         <button
-          onClick={() => setDropdownOpen((p) => !p)}
-          className={styles.filterBtn}
+          onClick={() => { setDropdownOpen((p) => !p); setPlatformOpen(false) }}
+          className={`${styles.filterBtn} ${isDropdownOpen ? styles.btnOpen : ''}`}
           aria-label="Filter content type"
           aria-expanded={isDropdownOpen}
         >
           <FilterIcon />
-          <span className={styles.filterLabel}>{activeFilter?.text ?? 'Filter'}</span>
+        </button>
+
+        <button
+          onClick={() => { setPlatformOpen((p) => !p); setDropdownOpen(false) }}
+          className={`${styles.filterBtn} ${userPlatforms.length > 0 ? styles.platformBtnActive : ''} ${isPlatformOpen ? styles.btnOpen : ''}`}
+          aria-label="My platforms"
+          aria-expanded={isPlatformOpen}
+        >
+          <LayerIcon />
+          {userPlatforms.length > 0 && (
+            <span className={styles.badge}>{userPlatforms.length}</span>
+          )}
         </button>
       </div>
 
       {isDropdownOpen && (
-        <div className={styles.dropdown} role="listbox">
-          {filters.map((f) => (
-            <button
-              key={f.key}
-              role="option"
-              aria-selected={filter === f.value}
-              onClick={() => handleFilterSelect(f.value)}
-              className={`${styles.dropdownItem} ${filter === f.value ? styles.dropdownItemSelected : ''}`}
-            >
-              {f.text}
-            </button>
-          ))}
+        <div className={styles.dropdown} role="group" aria-label="Content filter">
+          <span className={`panelHeader ${styles.dropdownHeader}`}>Content Filter</span>
+          <button
+            role="checkbox"
+            aria-checked={moviesOn}
+            onClick={handleToggleMovies}
+            className={`${styles.dropdownItem} ${moviesOn ? styles.dropdownItemSelected : ''}`}
+          >
+            Movies
+          </button>
+          <button
+            role="checkbox"
+            aria-checked={tvOn}
+            onClick={handleToggleTV}
+            className={`${styles.dropdownItem} ${tvOn ? styles.dropdownItemSelected : ''}`}
+          >
+            TV Shows
+          </button>
+        </div>
+      )}
+
+      {isPlatformOpen && (
+        <div className={styles.platformPanel}>
+          <PlatformPicker />
         </div>
       )}
     </div>

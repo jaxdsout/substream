@@ -20,6 +20,8 @@
   --color-secondary-rgb: 76, 255, 77;
   --color-tertiary-rgb: 109, 229, 103;
 
+  --color-panel-header: #1a1a1a;
+
   --radius: 6px;
   --neon-glow: 0 0 6px rgba(var(--color-main-rgb), 0.8), 0 0 20px rgba(var(--color-main-rgb), 0.4);
   --neon-glow-sm: 0 0 4px rgba(var(--color-main-rgb), 0.6), 0 0 10px rgba(var(--color-main-rgb), 0.25);
@@ -51,6 +53,15 @@ button {
 img {
   display: block;
   max-width: 100%;
+}
+
+.panelHeader {
+  padding: 0.75rem 1rem;
+  background: var(--color-panel-header);
+  color: var(--color-main);
+  font-size: 0.8rem;
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.06em;
 }
 
 @keyframes text-pop-up-top {

@@ -1,7 +1,7 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
 import { useStore } from '@/store/useStore'
+import { usePathname, useRouter } from 'next/navigation'
 import styles from './Logo.module.css'
 
 export default function Logo() {

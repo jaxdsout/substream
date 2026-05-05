@@ -1,8 +1,8 @@
+import type { ChoiceData, ResultData } from '@/lib/types'
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
-import type { ResultData, ChoiceData } from '@/lib/types'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
-interface SubstreamStore {
+interface AppStore {
   results: ResultData[]
   choice: ChoiceData | null
   searchString: string
@@ -16,7 +16,7 @@ interface SubstreamStore {
   clearStream: () => void
   resetChoice: () => void
   resetFail: () => void
-  autoSearch: (query: string, filter: number, region: string) => Promise<void>
+  autoSearch: (query: string, filter: number, region: string, platforms?: string[]) => Promise<void>
   loadChoice: (id: string, region: string) => Promise<void>
 }
 
@@ -30,7 +30,7 @@ const initialState = {
   searchFail: false,
 }
 
-export const useStore = create<SubstreamStore>()(
+export const useStore = create<AppStore>()(
   persist(
     (set) => ({
       ...initialState,
@@ -41,13 +41,15 @@ export const useStore = create<SubstreamStore>()(
       resetChoice: () => set({ choice: null }),
       resetFail: () => set({ searchFail: false }),
 
-      autoSearch: async (query, filter, region) => {
+      autoSearch: async (query, filter, region, platforms = []) => {
+        set({ searchFail: false })
         try {
           const params = new URLSearchParams({
             q: query,
             filter: String(filter),
             region,
           })
+          if (platforms.length > 0) params.set('platforms', platforms.join(','))
           const res = await fetch(`/api/search?${params}`)
           if (!res.ok) throw new Error('Search failed')
           const data = await res.json()
@@ -75,7 +77,6 @@ export const useStore = create<SubstreamStore>()(
         searchString: state.searchString,
         filter: state.filter,
         region: state.region,
-        results: state.results,
         isLoaded: state.isLoaded,
       }),
     }
