@@ -11,7 +11,6 @@
   align-items: center;
 }
 
-
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -87,4 +86,3 @@
 .clearBtn:hover {
   color: var(--color-main);
 }
-
