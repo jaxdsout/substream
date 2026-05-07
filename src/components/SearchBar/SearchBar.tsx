@@ -36,6 +36,8 @@ export default function SearchBar() {
     autoSearch(searchString, filter, region)
     resetChoice()
     router.push(`/search/${encodeURIComponent(searchString.toLowerCase())}`)
+    setPlatformOpen(false)
+    setDropdownOpen(false)
   }
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -81,8 +83,8 @@ export default function SearchBar() {
             type="search"
             placeholder={
               filter === 3 ? 'Search movies...' :
-              filter === 4 ? 'Search TV...' :
-              'Search movies & TV...'
+                filter === 4 ? 'Search TV...' :
+                  'Search movies & TV...'
             }
             value={searchString}
             onChange={handleSearchChange}

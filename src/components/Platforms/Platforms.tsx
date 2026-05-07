@@ -31,15 +31,21 @@ function filterUniqueSources(sources: SourceData[], userPlatforms: string[]): So
 export default function Platforms() {
   const { choice, region, userPlatforms } = useStore()
 
+  const allSources = useMemo(
+    () => (choice?.sources ? filterUniqueSources(choice.sources, []) : []),
+    [choice]
+  )
+
   const filteredSources = useMemo(
     () => (choice?.sources ? filterUniqueSources(choice.sources, userPlatforms) : []),
     [choice, userPlatforms]
   )
 
   if (filteredSources.length === 0) {
+    const hiddenByFilter = allSources.length > 0 && userPlatforms.length > 0
     return (
       <p className={styles.empty}>
-        {userPlatforms.length > 0
+        {hiddenByFilter
           ? 'Not available on your platforms.'
           : `Not currently streaming on any ${region} platforms.`}
       </p>

@@ -52,6 +52,7 @@
 
 .ellipsisBtn {
   height: 60px;
+  width: 30px;
   padding: 0 0.625rem;
   background: var(--color-surface-raised);
   border: 1px solid transparent;
